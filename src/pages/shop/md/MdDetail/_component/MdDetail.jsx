@@ -7,13 +7,18 @@ import {
   faCircleExclamation,
   faChevronUp,
 } from "@fortawesome/free-solid-svg-icons";
+import DeliveryPopup from "../../../auction/AuctionDetail/_component/DeliveryPopup";
 
 const MdDetail = () => {
   const { id } = useParams();
   const [product, setProduct] = useState(null);
   const [quantity, setQuantity] = useState(1); // 기본 수량 1개
+  const [PopupVisible2, setPopupVisible2] = useState(false);
   const navigate = useNavigate();
   const { currentUser } = useSelector((state) => state.user); // Redux에서 currentUser 가져오기
+
+  const openPopup2 = () => setPopupVisible2(true);
+  const closePopup2 = () => setPopupVisible2(false);
 
   useEffect(() => {
     const getMdDetail = async () => {
@@ -140,10 +145,13 @@ const MdDetail = () => {
             {/* 카트 추가 버튼 */}
             <S.ButtonWrapper2>
               <div className="button-wrapper1">
-                <button className="button cart" onClick={addToCart}>
+                {/* <button className="button cart" onClick={addToCart}>
                   <p>카트 추가</p>
+                </button> */}
+                {/* 배송 정보 */}
+                <button className="button delivery" onClick={openPopup2}>
+                  <p>배송 정보</p>
                 </button>
-
                 {/* 바로 구매 버튼 */}
                 <S.BuyButton onClick={purchase}>
                   <p>바로 구매</p>
@@ -151,19 +159,26 @@ const MdDetail = () => {
               </div>
 
               {/* 문의하기 버튼 */}
-              <div className="button-wrapper1">
+              {/* <div className="button-wrapper1">
                 <button className="button inquiry" onClick={sendInquiry}>
                   <p>문의하기</p>
-                </button>
+                </button> */}
 
                 {/* 문의 내역 버튼 */}
-                <button className="button inquiry" onClick={sendInquiryList}>
+                {/* <button className="button inquiry" onClick={sendInquiryList}>
                   <p>문의 내역</p>
                 </button>
-              </div>
+              </div> */}
             </S.ButtonWrapper2>
           </S.DetailWrapper>
         </S.DetailContainer>
+
+        {PopupVisible2 && (
+            <DeliveryPopup
+              title="배송 정보"
+              onClose={closePopup2}
+            ></DeliveryPopup>
+          )}
 
         <S.MdInfo>
           <p className="description">상품 설명</p>
@@ -175,12 +190,12 @@ const MdDetail = () => {
               alt="상세 이미지"
             />
           </S.ImageWrapper2>
-          <S.ButtonWrapper3>
+          {/* <S.ButtonWrapper3>
             <button>
               <FontAwesomeIcon icon={faChevronUp} className="icon2" />
               상세 정보 접기
             </button>
-          </S.ButtonWrapper3>
+          </S.ButtonWrapper3> */}
 
           <S.Notice>
             <p className="notice">상품 고시정보</p>

@@ -5,15 +5,16 @@ const S = {}
   S.Background=styled.div`
     width: 100%;
     position: relative;
-    min-height: 100%;
-    background-color: black;
+    height: 100%;
+    background-color: #fff;
   `
 
   S.header=styled.header`
-    min-width: 1240px;
-    background-color: black;
-    padding: 10px 20px;
-    position: sticky;
+    width: 100%;
+    background-color: #fff;
+    top: 0;
+    z-index: 999;
+    position: fixed;
   `
 
   S.topbar=styled.div`
@@ -37,14 +38,14 @@ const S = {}
   `
 
   S.logo=styled.div`
-    color: white;
+    color: #000;
     font-size: 24px;
     font-weight: bold;
   
 
     & .logolink{
       font-size: 1.5rem;
-      color: white;
+      color: #000;
       text-decoration: none;
     }
 
@@ -95,14 +96,14 @@ const S = {}
     font-size: 14px;
 
     & .highlight{
-      color: #FDDE39;
+      color: #000;
     }
 
     & .showUlink{
       color: #717171;
     }
     & span {
-      color: #FDDE39;
+      color: #000;
       
     }
 
@@ -116,7 +117,7 @@ const S = {}
 
     & .menuitem{
       text-decoration: none;
-      color: white;
+      color: #000;
       font-size: 18px;
     }
   `
@@ -145,10 +146,11 @@ const S = {}
     margin: 0 auto;
     padding-bottom: 50px;
     height: 100%;
-    min-height: 1080px;
+    /* min-height: 1080px; */
     overflow: hidden;
-    min-width: 1240px;
-    background-color: black;
+    /* min-width: 1240px; */
+    background-color: #fff;
+    margin-top: 200px;
 
     & .slider{
 
@@ -160,8 +162,8 @@ const S = {}
 
   S.dropdown = styled.div`
     position: absolute;
-    background-color: black;
-    border: 1px solid #ccc;
+    background-color: #fff;
+    /* border: 1px solid #ccc; */
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
     z-index: 10;
     display: block;
@@ -171,7 +173,7 @@ const S = {}
     padding: 10px 20px;
 
       a {
-        color: white;
+        color: #000;
         text-decoration: none;
         display: block;
         padding: 5px 0;
@@ -186,7 +188,7 @@ const S = {}
 
   S.AfterLogin = styled.div`
     & button {
-      background-color: #000;
+      background-color: #fff;
       border: none;
     }
   `

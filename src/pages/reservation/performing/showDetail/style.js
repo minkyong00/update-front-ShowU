@@ -57,7 +57,7 @@ S.DetailTitle = styled.span`
 
 S.DetailText = styled.p`
   font-size: ${({ theme }) => theme.FONT_SIZE.body};
-  color: #fff;
+  color: #000;
   margin-bottom: 5px;
 `;
 
@@ -82,7 +82,7 @@ S.InfoColumn = styled.div`
 S.DiscountList = styled.ul`
   li {
     font-size: ${({ theme }) => theme.FONT_SIZE.body};
-    color: #fff;
+    color: #000;
     margin-bottom: 5px;
   }
 `;
@@ -149,12 +149,12 @@ S.NavButton = styled.button`
   font-size: 20px;
   cursor: pointer;
   &:hover {
-    color: #fff;
+    color: #000;
   }
 `;
 
 S.MonthTitle = styled.div`
-  color: #fff;
+  color: #000;
   font-size: 16px;
   font-weight: ${({ theme }) => theme.FONT_WEIGHT.bold};
 `;
@@ -165,7 +165,7 @@ S.CalendarContainer = styled.div`
   justify-content: center;
   width: 100%;
   max-width: 400px;
-  background-color: #2a2a2a;
+  background-color: #fff;
   border: 1px solid #ccc;
   padding: 10px;
   border-radius: 10px;
@@ -180,7 +180,7 @@ S.CalendarGrid = styled.div`
 S.CalendarHeader = styled.div`
   text-align: center;
   font-weight: ${({ theme }) => theme.FONT_WEIGHT.bold};
-  color: #fff;
+  color: #000;
   margin-bottom: 5px;
 `;
 
@@ -191,11 +191,11 @@ S.CalendarDay = styled.div`
   align-items: center;
   justify-content: center;
   margin: 5px;
-  color: ${({ selected }) => (selected ? "#000" : "#fff")};
+  color: #000;
   background-color: ${({ selected }) => (selected ? "#ffd400" : "transparent")};
   cursor: pointer;
   &:hover {
-    background-color: ${({ selected }) => (selected ? "#ffd400" : "#ffd400")};
+    background-color: #ffd400;
   }
 `;
 
@@ -210,8 +210,8 @@ S.TimeSlot = styled.div`
   margin: 5px;
   padding: 10px;
   font-size: 16px;
-  color: white;
-  background-color: ${({ selected }) => (selected ? "#000" : "#000")};
+  color: #000;
+  background-color: #fff;
   border: 1px solid ${({ selected }) => (selected ? "white" : "transparent")}; /* 선택된 경우에도 흰색 보더 유지 */
   border-radius: 5px;
   cursor: pointer;
@@ -420,13 +420,13 @@ S.CommentInput = styled.textarea`
   font-size: ${({ theme }) => theme.FONT_SIZE.h4};
   border: 1px solid ${({ theme }) => theme.PALLETE.primary.main};
   border-radius: 5px;
-  background-color: #000;
+  background-color: #fff;
   padding: 10px;
   margin-bottom: 10px;
   resize: none; // 크기 조절 비활성화
 
   &::placeholder { font-size: ${({ theme }) =>theme.FONT_SIZE.body}; 
-  color: #aaa; 
+  color: #000; 
   text-align: left; // 텍스트 위치 조정 (left, right, center) 
   line-height: 1.5; // 줄 높이 조정     
   }
@@ -438,14 +438,14 @@ S.CommentButton = styled.button`
   padding: 10px 20px;
   font-weight: ${({ theme }) => theme.FONT_WEIGHT.bold};
   font-size: ${({ theme }) => theme.FONT_SIZE.body};
-  background-color: ${({ theme }) => theme.PALLETE.primary.main};
+  background-color: #fff;
   color: #000;
   border: none;
   border-radius: 5px;
   margin-top: 10px;
   cursor: pointer;
   &:hover {
-    background-color: ${({ theme }) => theme.PALLETE.primary.dark};
+    background-color: #fff;
   }
 `;
 
@@ -461,8 +461,8 @@ S.CommentItem = styled.div`
   padding: 10px;
   margin-bottom: 70px;
   font-size: ${({ theme }) => theme.FONT_SIZE.body};
-  background-color: #000;
-  color: ${({ theme }) => theme.PALLETE.text};
+  background-color: #fff;
+  color: #000;
   word-wrap: break-word; // 텍스트가 컨테이너를 넘지 않도록 설정
 `;
 
@@ -480,7 +480,7 @@ S.EditCommentInput = styled.textarea`
   font-size: ${({ theme }) => theme.FONT_SIZE.body};
   margin-bottom: 20px;
   border: none;
-  background-color: #000;
+  background-color: #fff;
   resize: none; // 크기 조절 비활성화
 `;
 

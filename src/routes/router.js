@@ -389,7 +389,7 @@ const router = createBrowserRouter([
       },
       // {
       //   path: "/shop/md/payment",
-      //   element: <PaymentContainer />, // MD 주문/결제
+      //   element: <MdPaymentContainer />, // MD 주문/결제
       // },
       {
         path: "/shop/md/payment/info",

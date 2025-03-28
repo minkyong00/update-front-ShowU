@@ -7,7 +7,7 @@ S.Card = styled.div`
   max-width: 200px;
   height: 300px; 
   flex-shrink: 0;
-  background: #222;
+  background: #fff;
   border-radius: 10px;
   overflow: hidden;
   position: relative;
@@ -39,14 +39,14 @@ S.showuRecommendationPage = styled.div`
 
 
 S.showuRecommendation = styled.div`
-  background-color: black;
+  background-color: #fff;
   display: flex;
   flex-direction: column;
   align-items: center;
   padding: 20px;
   max-width: 1240px;
   margin: 0 auto;
-  color: white;
+  color: #000;
   position: relative;
   `;
 S.topwrapper=styled.div`
@@ -54,7 +54,7 @@ S.topwrapper=styled.div`
  width: 1240px;
   justify-content: flex-start;
   align-items: center;
-  background-color: black;
+  background-color: #fff;
   padding: 20px;
   position: relative;  
   gap: 16px;

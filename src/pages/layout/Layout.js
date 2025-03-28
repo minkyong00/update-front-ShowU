@@ -78,7 +78,7 @@ const Layout = () => {
     <div>
       <S.Background className="Background">
         {!hideHeaderPage.includes(location.pathname) && (
-          <header className="header">
+          <S.header className="header">
             <S.topbar className="topbar"></S.topbar>
 
             <S.navbar className="navbar">
@@ -166,12 +166,12 @@ const Layout = () => {
 
               <span className="menudivider">|</span>
 
-              <NavLink to={"/hot"} className="menuitemhot">
+              {/* <NavLink to={"/hot"} className="menuitemhot">
                 <S.HotBox className="HotBox">
                   <FontAwesomeIcon icon={faFire} className="fire" />
                   <p>HOT</p>
                 </S.HotBox>
-              </NavLink>
+              </NavLink> */}
 
               {/* 커뮤니티 */}
               <HoverMenu
@@ -187,17 +187,18 @@ const Layout = () => {
                 마이페이지
               </NavLink>
             </S.menubar>
-          </header>
+          </S.header>
         )}
 
         {/* 메인 */}
         <S.main className="main">
           <Outlet />
         </S.main>
-      </S.Background>
 
-      {/* 푸터 */}
-      <Footer />
+        {/* 푸터 */}
+        <Footer />
+
+      </S.Background>
     </div>
   );
 };

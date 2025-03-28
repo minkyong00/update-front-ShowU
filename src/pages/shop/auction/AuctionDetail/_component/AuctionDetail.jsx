@@ -170,7 +170,7 @@ const AuctionDetail = () => {
                 <p>배송 정보</p>
               </button>
             </div>
-            <div className="button-wrapper1">
+            {/* <div className="button-wrapper1">
               <button
                 className="button delivery"
                 onClick={() => {
@@ -191,7 +191,7 @@ const AuctionDetail = () => {
               >
                 <p>문의 내역</p>
               </button>
-            </div>
+            </div> */}
           </S.ButtonContainer>
 
           {/* {PopupVisible1 && (
@@ -212,7 +212,7 @@ const AuctionDetail = () => {
         </S.Auction>
       </S.AuctionWrapper>
 
-      <S.Info>
+      {/* <S.Info>
         <p>물품 정보</p>
         <tbody>
           <tr>
@@ -224,7 +224,7 @@ const AuctionDetail = () => {
             <td>한국</td>
           </tr>
         </tbody>
-      </S.Info>
+      </S.Info> */}
 
       <S.Content>
         <p>{auctionProduct.description}</p>

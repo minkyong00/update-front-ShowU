@@ -9,7 +9,7 @@ const flexStyle = css`
 `
 
   S.MainWrapper = styled.div`
-    background-color: #000;
+    background-color: #fff;
     display: flex;
     flex-direction: column;
   `
@@ -23,7 +23,7 @@ const flexStyle = css`
         font-size: 30px;
         text-align: center;
         margin-top : 50px;
-        color: #ffd400; 
+        color: #000; 
       }
       
     & .icon1 {
@@ -33,7 +33,7 @@ const flexStyle = css`
       }
 
       path {
-        color: #ffd400;
+        color: #000;
       }
     `
 
@@ -46,7 +46,7 @@ const flexStyle = css`
     & .best-title {
         font-size: 30px;
         font-weight: bold;
-        color : #fff;
+        color : #000;
       }
   `
 
@@ -167,8 +167,8 @@ const flexStyle = css`
   S.CategoryButton = styled.button`
     border-radius: 30px;
     padding: 10px 15px;
-    background-color: ${({ isActive }) => (isActive ? "#ffd400" : "black")};  // isActive일 때 배경색 변경
-    color: ${({ isActive, theme }) => (isActive ? theme.PALLETE.black : theme.PALLETE.white)};
+    background-color: ${({ isActive }) => (isActive ? "#ffd400" : "#fff")};  // isActive일 때 배경색 변경
+    color: ${({ isActive, theme }) => (isActive ? theme.PALLETE.black : theme.PALLETE.black)};
     border: 1.5px solid #ffd400;
     cursor: pointer;
 

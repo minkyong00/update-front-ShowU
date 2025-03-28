@@ -7,8 +7,8 @@ S.Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: #000;
-  color: #fff;
+  background-color: #fff;
+  color: #000;
   padding: 20px;
   width: 100%;
   min-height: 100vh;
@@ -58,7 +58,7 @@ S.RentalList = styled.div`
 `;
 
 S.RentalItem = styled.div`
-  background-color: #2a2a2a;
+  background-color: #fff;
   padding: 20px;
   border-radius: 10px;
   display: flex;

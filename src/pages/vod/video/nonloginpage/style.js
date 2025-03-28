@@ -8,7 +8,7 @@ S.container = styled.div`
   align-items: center;
   justify-content: center;
   height: 100%;
-  background-color: black;
+  background-color: #fff;
 `;
 
 S.Wapper = styled.div`
@@ -24,7 +24,7 @@ S.VideoDetailArea = styled.div`
   min-height: 590px;
   gap: 20px;
   padding: 20px;
-  background-color: black;
+  background-color: #fff;
   position: relative;
 
   img {
@@ -41,7 +41,7 @@ S.VideoDetailArea = styled.div`
     display: flex;
     flex-direction: column;
     gap: 10px;
-    color: white;
+    color: #000;
     bottom: 400px;
 
     h1 {
@@ -145,13 +145,13 @@ S.page = styled.div`
     transition: color 0.3s ease, box-shadow 0.3s ease;
     cursor: pointer;
     &.active {
-      color: #ffffff;
+      color: #000;
       box-shadow: 0 3px 0 0 #ffd400;
     }
   }
 
   & li:hover {
-    color: #ffffff;
+    color: #000;
     box-shadow: 0 3px 0 0 #ffd400;
   }
 `;
@@ -161,7 +161,7 @@ S.hert = styled.nav`
   height: 100px;
 
   & p {
-    color: #ffffff;
+    color: #ffd400;
   }
 
   .icon.filled {
@@ -195,7 +195,7 @@ S.pages = styled.main`
   height: 400px;
   overflow: hidden;
   min-width: 1240px;
-  background-color: black;
+  background-color: #fff;
 `;
 
 S.Card = styled.div`
@@ -203,7 +203,7 @@ S.Card = styled.div`
   max-width: 200px;
   height: 300px;
   flex-shrink: 0;
-  background: #222;
+  background: #fff;
   border-radius: 10px;
   overflow: hidden;
   position: relative;
@@ -225,7 +225,7 @@ S.Card = styled.div`
     top: 10px;
     left: 10px;
     background: #4169e1;
-    color: white;
+    color: #000;
     padding: 5px 10px;
     border-radius: 5px;
     font-size: 12px;
@@ -248,7 +248,7 @@ S.showuRecommendationPage = styled.div`
 `;
 
 S.showuRecommendation = styled.div`
-  background-color: black;
+  background-color: #fff;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -256,7 +256,7 @@ S.showuRecommendation = styled.div`
   padding: 20px;
   min-height: 100px;
   max-height: 440px;
-  color: white;
+  color: #000;
   align-items: flex-start;
 `;
 

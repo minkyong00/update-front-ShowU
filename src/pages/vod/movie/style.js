@@ -40,14 +40,14 @@ S.showuRecommendationPage = styled.div`
 
 
 S.showuRecommendation = styled.div`
-  background-color: black;
+  background-color: #fff;
   display: flex;
   flex-direction: column;
   align-items: center;
   padding: 20px;
   max-width: 1240px;
   margin: 0 auto;
-  color: white;
+  color: #000;
   position: relative;
   `;
 S.topwrapper=styled.div`
@@ -55,7 +55,7 @@ S.topwrapper=styled.div`
  width: 1240px;
   justify-content: flex-start;
   align-items: center;
-  background-color: black;
+  background-color: #fff;
   padding: 20px;
   position: relative;  
   gap: 16px;
@@ -64,7 +64,7 @@ S.topwrapper=styled.div`
 
 S.title=styled.div`
  font-size: 1.5rem;
-  color: #fdde39;
+  color: #000;
   font-weight: bold;
   margin: 0;
 `
@@ -76,7 +76,7 @@ S.DropdownWrapper = styled.div`
 `;
 
 S.Dropdown = styled.select`
-  background-color: #fdde39;
+  background-color: #fff;
   color: black;
   border-radius: 5px;
   padding: 8px 10px;

@@ -10,7 +10,7 @@ const flexStyle = css`
 `
 
   S.DetailWrapper = styled.div`
-    background-color: #000;
+    background-color: #fff;
     display: flex;
     flex-direction: column;
   `
@@ -39,7 +39,7 @@ const flexStyle = css`
 
   S.Image = styled.img`
     width: 400px;
-    height: 650px;
+    height: 550px;
     flex: 1;
   `
 
@@ -59,12 +59,12 @@ const flexStyle = css`
   S.Auction = styled.div`
       flex: 1;
       width: 500px;
-      height: 700px;
-      background-color: #ffd400;
+      background-color: #fff;
       border-radius: 8px;
+      border: 1px solid #797979;
       display: flex;
-      height: 650px;
-    flex-direction: column;
+      height: 550px;
+      flex-direction: column;
     /* justify-content: space-between; */
 
   `
@@ -107,7 +107,7 @@ const flexStyle = css`
     
     .bid, .delivery {
       background-color: #ffd400;
-      border: 1.5px solid #000;
+      /* border: 1.5px solid #000; */
 
       p {
         color: #000;
@@ -154,14 +154,14 @@ const flexStyle = css`
     }
 
     & th, & td {
-      border: 0.5px solid #fff;
+      border: 0.5px solid #000;
       padding: 10px;
       text-align: left;
       text-align: center;
     }
     
     & th {
-      background-color: #fff;
+      background-color: #ffd400;
       color: #000;
       width: 180px;
       border: 0.5px solid #000;
@@ -186,8 +186,8 @@ const flexStyle = css`
   `
 
   S.Image2 = styled.img`
-    width: 400px;
-    height: 500px;
+    width: 950px;
+    height: 1000px;
   `
 
   S.Customized = styled.div`
@@ -431,7 +431,7 @@ const flexStyle = css`
   S.Seller = styled.div`
     width: 1110px;
     height: 55px;
-    background-color: #000;
+    background-color: #fff;
     border: 1px solid #ffd400;
     border-radius: 5px;
     display: flex;
@@ -440,7 +440,7 @@ const flexStyle = css`
   & p {
     font-size: 19px;
     font-weight: bold;
-    color: #ffd400;
+    color: #000;
     margin-left: 10px;
   }
   `

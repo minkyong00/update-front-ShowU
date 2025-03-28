@@ -6,7 +6,7 @@ const S = {};
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color:#000; 
+    background-color:#fff; 
     /* min-height: 100vh; */
   `
 
@@ -142,7 +142,7 @@ const S = {};
       }
       & p.subContent {
         font-size: 17px;
-        color: #fff;
+        color: #000;
       }
     }
   `
@@ -171,9 +171,9 @@ const S = {};
     cursor: pointer;
     width: 40px;
     height: 40px;
-    border: 1px solid #fff;
+    border: 1px solid #000;
     border-radius: 50%;
-    background-color: #000;
+    background-color: #fff;
     text-align: center;
     line-height: 2.3;
 
@@ -190,9 +190,9 @@ const S = {};
     cursor: pointer;
     width: 40px;
     height: 40px;
-    border: 1px solid #fff;
+    border: 1px solid #000;
     border-radius: 50%;
-    background-color: #000;
+    background-color: #fff;
     text-align: center;
     line-height: 2.6;
 
@@ -200,7 +200,7 @@ const S = {};
       width: 15px;
       height: 15px;
       & path{
-        color: ${(props) => (props.liked ? "#ffd400" : "#fff")}
+        color: ${(props) => (props.liked ? "#ffd400" : "#000")}
       }
     }
   `

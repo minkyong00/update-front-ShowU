@@ -5,7 +5,7 @@ const S = {};
 
 // 전체 배경 색상
 S.MainContainer = styled.div`
-  ${backgroundBlack}
+  background-color: #fff;
   ${flexCenterColumn}
   width: 100%;
   min-height: 100%;
@@ -15,7 +15,7 @@ S.MainContainer = styled.div`
 S.SectionTitle = styled.h2`
   font-size: ${({ theme }) => theme.FONT_SIZE.h3};
   font-weight: ${({ theme }) => theme.FONT_WEIGHT.bold};
-  color: #ffffff;
+  color: #000;
   justify-content: center;
   display: flex;
   margin-top: 10px;
@@ -27,7 +27,7 @@ S.SectionTitle = styled.h2`
 S.TicketOpen = styled.div`
   margin-top: 40px;
   width: 1200px;
-  background-color: black;
+  background-color: #fff;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -57,7 +57,7 @@ S.TicketBox = styled.div`
   h3,
   p {
     margin: 5px 0;
-    color: white;
+    color: #000;
   }
 
   h3 {
@@ -73,7 +73,7 @@ S.TicketBox = styled.div`
 S.CurrentlyPerforming = styled.div`
   margin-top: 50px;
   width: 1200px;
-  background-color: black;
+  background-color: #fff;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -103,7 +103,7 @@ S.PerformingBox = styled.div`
   h3,
   p {
     margin: 5px 0;
-    color: white;
+    color: #000;
   }
 
   h3 {

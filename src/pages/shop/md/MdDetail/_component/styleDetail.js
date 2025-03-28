@@ -220,7 +220,7 @@ const flexStyle = css`
   `;
 
   S.QuantityButton = styled.button`
-    background-color: #000;
+    background-color: #fff;
     border: 0.5px solid white;
     padding: 5px 10px;
     cursor: pointer;
@@ -234,7 +234,7 @@ const flexStyle = css`
 
   S.Max = styled.div`
     display: flex;
-    border : 0.5px solid #ffd400;
+    border : 0.5px solid #000;
     width : 505px;
     padding: 10px;
     margin: 10px 0 30px;
@@ -242,12 +242,12 @@ const flexStyle = css`
 
     & p {
       font-size: 14px;
-      color : #ffd400;
+      color : #000;
       margin-left: 10px;
     }
 
     path {
-      color : #ffd400;
+      color : #000;
     }
 
     svg {
@@ -325,13 +325,13 @@ const flexStyle = css`
   S.Notice = styled.table`
     width: 1070px;
     border-collapse: collapse;
-    background-color: #000;
+    background-color: #fff;
     color: #fff;
     font-size: 16px;
     margin-bottom: 70px;
     
     & th, & td {
-      border: 0.5px solid #fff;
+      border: 0.5px solid #000;
       padding: 10px;
       text-align: left;
     }

@@ -9,8 +9,8 @@ S.Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: #000;
-  color: #fff;
+  background-color: #fff;
+  color: #000;
   padding: 20px;
   margin-top: 40px;
   width: 100%;
@@ -250,19 +250,19 @@ S.DetailIconText = styled.p`
 /* 모달 스타일 */
 const modalStyles = {
   content: {
-    top: "50%",
+    top: "60%",
     left: "50%",
     right: "auto",
     bottom: "auto",
     marginRight: "-50%",
     transform: "translate(-50%, -50%)",
-    backgroundColor: "#000",
     border: "none",
     padding: 0,
     borderRadius: "10px",
     width: "1000px",
     height: "500px",
     display: "flex",
+    backgroundColor : "#000",
     justifyContent: "center",
     alignItems: "center",
     overflow: "hidden",
@@ -311,7 +311,7 @@ S.NextButton = styled.button`
   z-index: 1;
   background: none;
   border: none;
-  color: white;
+  color: #fff;
   font-size: 2rem;
   cursor: pointer;
 `;
@@ -323,7 +323,7 @@ S.CloseButton = styled.button`
   background: none;
   border: 1px solid white;
   border-radius: 5px;
-  color: white;
+  color: #fff;
   font-size: 1.5rem;
   cursor: pointer;
   padding: 5px;

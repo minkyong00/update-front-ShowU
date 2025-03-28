@@ -9,7 +9,7 @@ S.DropdownWrapper = styled.div`
 `;
 
 S.Dropdown = styled.select`
-  background-color: #fdde39;
+  background-color: #fff;
   color: black;
   border-radius: 10px;
   padding: 8px 10px;
@@ -21,14 +21,14 @@ S.Dropdown = styled.select`
 `;
 
 S.showumain = styled.div`
-  background-color: black;
+  background-color: #fff;
   display: flex;
   flex-direction: column;
   align-items: center;
   padding: 20px;
   max-width: 1240px;
   margin: 0 auto;
-  color: white;
+  color: #000;
   position: relative;
 `;
 
@@ -118,7 +118,7 @@ font-weight: bold;
 text-align: center;
 word-wrap: break-word; 
 white-space: normal;
-color: white;
+color: #fff;
 text-overflow: ellipsis;
 
   }
@@ -165,7 +165,7 @@ S.ModalBackground = styled.div`
 `;
 
 S.ModalContent = styled.div`
-  background-color: black;
+  background-color: #fff;
   border-radius: 10px;
   padding: 20px;
   width: 960px;

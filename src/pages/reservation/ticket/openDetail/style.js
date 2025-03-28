@@ -67,7 +67,7 @@ S.InfoColumn = styled.div`
 S.DetailText = styled.p`
   font-size: ${({ theme }) => theme.FONT_SIZE.h3};
   font-weight: ${({ theme }) => theme.FONT_WEIGHT.body};
-  color: #fff;
+  color: #000;
   padding: 40px;
   margin-bottom: 5px;
 `;

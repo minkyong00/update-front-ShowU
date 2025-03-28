@@ -135,7 +135,7 @@ S.showuRecommendationPage = styled.div`
 
 
 S.showuRecommendation = styled.div`
-  background-color: black;
+  background-color: #fff;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -143,7 +143,7 @@ S.showuRecommendation = styled.div`
   padding: 20px;
   min-height: 100px;
   max-height: 440px;
-  color: white;
+  color: #000;
  
   
   

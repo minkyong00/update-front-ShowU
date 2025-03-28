@@ -10,7 +10,7 @@ const S = {};
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color:#000; 
+    background-color:#fff; 
     min-height: 100vh;
 
     position: relative;
@@ -20,7 +20,7 @@ const S = {};
       font-weight: bold;
       margin-bottom: 5px;
       margin-top: 50px;
-      color: #ffd400;
+      color: #000;
     }
   `
 
@@ -42,7 +42,7 @@ const S = {};
       margin-bottom: 30px;
 
       & path {
-        color: #ffd400;
+        color: #000;
       }
     }
   `
@@ -80,8 +80,8 @@ const S = {};
 
     & .total {
       width: 70px;
-      background-color: #797979;
-      color: #fff;
+      background-color: #fff;
+      color: #000;
       padding: 5px;
       border-radius: 20px;
       text-align: center;
@@ -182,8 +182,8 @@ const S = {};
   S.CategoryButton = styled.button`
     border-radius: 30px;
     padding: 10px 15px;
-    background-color: #000;
-    color: #fff;
+    background-color: #fff;
+    color: #000;
     border: 1.5px solid #ffd400;
     cursor: pointer;
 

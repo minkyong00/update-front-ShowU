@@ -410,9 +410,9 @@ useEffect(() => {
             </div>
             <S.detail className="detail">
               <span>{showuvideoinfo.detail}</span>
-              <S.more className="more">
+              {/* <S.more className="more">
                 <p>자세히보기</p>
-              </S.more>
+              </S.more> */}
             </S.detail>
   
             <S.commentsSection className="comments-section">

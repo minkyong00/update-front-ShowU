@@ -5,7 +5,7 @@ const S = {};
   S.ShopWrapper = styled.div`
     display: flex;
     flex-direction: column;
-    background-color: #000;
+    background-color: #fff;
     min-height: 100vh;
   `
 
@@ -19,17 +19,17 @@ const S = {};
       font-size: 30px;
       text-align: center;
       margin-top : 50px;
-      color: #ffd400; 
+      color: #000; 
     }
     
   & .icon1 {
       margin-top: 5px;
-      color: #ffd400;
+      color: #000;
       font-size: 20px;
     }
 
     path {
-      color: #ffd400;
+      color: #000;
     }
   `
   S.Title = styled.div`
@@ -50,9 +50,9 @@ const S = {};
   font-weight: bold;
   font-size: 17px;
   cursor: pointer;
-  background-color: #000;
+  background-color: #fff;
   border: 1px solid #ffd400;
-  color: #ffd400;
+  color: #000;
   `;
 
   S.ShopButton = styled.div`

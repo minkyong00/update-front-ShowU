@@ -7,8 +7,8 @@ S.SeatSelectionContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: #000; /* ShowDetail과 비슷한 배경 색상 */
-  color: #fff;
+  background-color: #fff; /* ShowDetail과 비슷한 배경 색상 */
+  color: #000;
   padding: 20px;
   width: 100%;
   min-height: 100vh;
@@ -55,7 +55,7 @@ S.Seat = styled.div`
   justify-content: center;
   cursor: pointer;
   background-color: ${({ selected, type }) =>
-    selected ? "#ffd400" : type === "S" ? "#000" : "#000"};
+    selected ? "#ffd400" : type === "S" ? "#fff" : "#fff"};
   border: 1px solid ${({ type }) => (type === "S" ? "#ffd400" : "#bdbdbd")};
   border-radius: 5px;
   &:hover {

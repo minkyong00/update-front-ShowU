@@ -10,7 +10,7 @@ S.app = styled.div`
   min-height: 590px;
   gap: 20px;
   padding: 20px;
-  background-color: black;
+  background-color: #fff;
   position: relative; 
   margin: 0 auto;
 `;
@@ -27,7 +27,7 @@ S.logo = styled.h1`
   font-size: 2rem;
   gap: 5px;
   .back{
-    color: #FFD400;
+    color: #000;
   }
 `;
 
@@ -106,11 +106,11 @@ S.commentsSection = styled.div`
 
 S.commentInput = styled.input`
   width: 100%;
-  background-color: black;
+  background-color: #fff;
   padding: 0.5rem;
   margin-bottom: 1rem;
   border-radius: 5px;
-  color: white;
+  color: #000;
   border-bottom: 2px solid gray;
 
   &:focus {
@@ -162,7 +162,7 @@ S.replies = styled.div`
 
 S.sidebar = styled.div`
   flex: 1;
-  background-color: #111;
+  background-color: #fff;
   padding: 1rem;
   border-radius: 5px;
 `;
@@ -204,17 +204,17 @@ justify-content: flex-end;
 }
 
 .comment-options button:hover {
-  color: #000;
+  color: #fff;
 }
 
 
 .point{
-  background-color: black;
-    color: white;
+  background-color: #fff;
+    color: #000;
     font-size: 24px;
     border: none;
     &:hover{
-      background-color: black;
+      background-color: #fff;
     }
 }
 button{
@@ -232,7 +232,7 @@ S.detail=styled.div`
 width: 795px;
 height: 111px;
 position: relative;
-background-color: #222222;
+background-color: #fff;
 `
 S.more=styled.div`
   display: flex;
@@ -265,7 +265,7 @@ S.ModalBackground = styled.div`
 `;
 
 S.ModalContent = styled.div`
-  background-color: black;
+  background-color: #fff;
   border-radius: 10px;
   padding: 20px;
   width: 400px;
@@ -330,7 +330,7 @@ margin-top: 40px;
     border: 2px solid white; 
     border-radius: 50%;
     margin-right: 10px;
-    background-color: transparent;
+    background-color: #000;
   }
 
   &.selected .empty-circle {
@@ -345,7 +345,7 @@ span{
 S.reportbutton=styled.div`
 display: flex;
 button{
-  background-color: black;
+  background-color: #fff;
   border: none;
   color: #FFD400;
 }
