@@ -6,7 +6,7 @@ import { backgroundBlack } from "../../../global/common";
 const S = {};
 
     S.Wrapper = styled.div`
-        background-color: #444444; 
+        background-color: #fff; 
     `
 
     S.box = styled.div`
@@ -23,7 +23,7 @@ const S = {};
     `
 
     S.SubWrapper = styled.div` // 전체 배경 black
-        ${backgroundBlack}  
+        background-color: #fff;
         display: flex;
         flex-direction: column;
         gap: 20px;

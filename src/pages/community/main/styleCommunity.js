@@ -18,7 +18,7 @@ const S = {};
     S.FilterButton = styled.div`
         display: flex;
         align-items: center;
-        background-color: #000;
+        background-color: #fff;
         padding: 10px 15px;
         color: #ffd400;
         cursor: pointer;
@@ -42,7 +42,7 @@ const S = {};
 
     S.FilterDropdown = styled.div`
         position: absolute;
-        background-color: #000;
+        background-color: #fff;
         color: #797979;
         border: 0.5px solid #fff;
         border-radius: 5px;
@@ -61,11 +61,11 @@ const S = {};
 `;
 
     S.Wrapper = styled.div` // 전체 배경 gray
-        background-color: #444444;      
+        background-color: #fff;      
     `
 
     S.SubWrapper = styled.div`
-        ${backgroundBlack}
+        background-color: #fff;
         margin-left: 140px;
         margin-right: 140px;
     `

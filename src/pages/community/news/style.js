@@ -10,7 +10,7 @@ const S = {};
         flex: 3;
     `
     S.Wrapper = styled.div` 
-        background-color: #444444;      
+        background-color: #fff;      
     `
 
     S.IconWrapper = styled.div`

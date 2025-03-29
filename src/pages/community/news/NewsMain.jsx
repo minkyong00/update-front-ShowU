@@ -45,7 +45,7 @@ const NewsMain = () => {
   }
 
 
-
+  console.log("filterNews", filterNews)
 
 
   return (
@@ -84,6 +84,7 @@ const NewsMain = () => {
         <S.NewsList>
           {filterNews.map((news) => (
             <S.NewsItem key={news._id}>
+              {/* /community/newsMain/news/:id */}
                 <Link to={`/community/newsMain/news/${news._id}`}>
               <S.ImageWrapper>
                 {/* <Link to={`/community/news/${news.id}`}> */}

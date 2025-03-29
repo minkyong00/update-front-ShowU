@@ -4,10 +4,10 @@ import styled  from "styled-components";
 
     const S = {};
     S.Wrapper = styled.div` // 전체 배경 gray
-    background-color: #444444;      
+    background-color: #fff;      
     ` 
     S.SubWrapper = styled.div` // 내용 black 배경
-    background-color: #000;
+    background-color: #fff;
     margin-left: 140px;
     margin-right: 140px;
 `
