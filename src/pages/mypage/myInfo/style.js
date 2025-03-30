@@ -54,7 +54,7 @@ const S = {};
 
   S.ProfileImgChangeButton = styled.div`
     & button{
-      background-color: #000;
+      background-color: #fff;
       border: none;
       border: 1px solid #444444;
       border-radius: 5px;
@@ -150,16 +150,16 @@ const S = {};
     height: 28px;
     margin-left: auto;
 
-    background-color: #000;
+    background-color: #fff;
     border-color: #ffd400;
-    color: #fff;
+    color: #000;
     border: none;
     font-size: 17px;
     text-align: right;
     padding: 15px;
 
     &::placeholder{
-      color: #fff;
+      color: #000;
       font-size: 17px;
       text-align: right;
 
