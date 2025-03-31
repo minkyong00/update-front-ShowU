@@ -43,8 +43,8 @@ S.Table = styled.table`
 
     &:hover {
       /* border-left: 2px solid #ffd400; */
-      background-color: rgb(255, 212, 0, 0.1);
-      cursor: pointer;
+      /* background-color: rgb(255, 212, 0, 0.1);
+      cursor: pointer; */
     }
 
 

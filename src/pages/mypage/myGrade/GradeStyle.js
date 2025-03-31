@@ -16,8 +16,8 @@ const S = {};
     flex-direction: column;
 
     & input {
-      background-color: black;
-      color: #fff;
+      background-color: #fff;
+      color: #000;
 
       width: 648px;
       height: 40px;
@@ -27,13 +27,13 @@ const S = {};
     }
 
     & input::placeholder{
-      color: #fff;
+      color: #000;
       font-size: 17px;
     }
 
     & textarea {
-      background-color: black;
-      color: white;
+      background-color: #fff;
+      color: #000;
       border: none;
 
       width: 680px;
@@ -43,7 +43,7 @@ const S = {};
     }
 
     & textarea::placeholder{
-      color: #fff;
+      color: #000;
       font-size: 17px;
     }
 
@@ -261,8 +261,8 @@ const S = {};
     S.DropdownButton = styled.button`
       width: 698px;
       height: 40px;
-      background-color: black;
-      color: white;
+      background-color: #fff;
+      color: #000;
       text-align: left;
       border: none;
       cursor: pointer;  
@@ -284,7 +284,7 @@ const S = {};
       left: 115px;  
       width: 698px;
       height: auto;
-      background-color: black;
+      background-color: #fff;
       border-radius: 5px;
       font-size: 17px;
       z-index: 1000;
