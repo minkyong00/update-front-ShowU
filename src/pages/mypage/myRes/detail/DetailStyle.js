@@ -12,8 +12,8 @@ const S = {};
     font-size: 15px;
 
     & th {
-      color: white;
-      background-color: black;
+      color: #000;
+      background-color: #fff;
       text-align: left;
       font-weight: 700;
 
@@ -34,13 +34,13 @@ S.DetailTable = styled.table`
 
 S.DetailThead = styled.thead`
   font-size: 16px;
-  background-color: black;
+  background-color: #fff;
   font-weight: 700;
 `
 
 S.DetailTrTitle = styled.tr`
   & th {
-    color: white;
+    color: #000;
     padding: 10px;
     text-align: left;
   }
@@ -54,7 +54,7 @@ S.DetailTbody = styled.tbody`
 
 S.DetailTr = styled.tr`
   & th {
-    cursor: pointer;
+    /* cursor: pointer; */
     text-align: left;
 
     &.num {
@@ -77,7 +77,7 @@ S.DetailTr = styled.tr`
     font-weight: 400;
     padding-bottom: 3px;
     border-bottom: 3px solid #ffd400;
-    color: #fff;
+    color: #000;
   `
 
   S.Button = styled.button`
@@ -89,6 +89,7 @@ S.DetailTr = styled.tr`
     padding: 10px;
     font-weight: 700;
     border-radius: 20px;
+    border: none;
 
     &:hover{
       background-color: #ffd400;
