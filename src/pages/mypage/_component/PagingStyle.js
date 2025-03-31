@@ -7,7 +7,7 @@ const S = {};
     border: none;
     margin: 0 20px;
 
-    color: ${props => (props.$active ? '#ffd400' : 'white')};
+    color: ${props => (props.$active ? '#ffd400' : '#000')};
   `  
 
   S.Nav = styled.div`

@@ -26,7 +26,7 @@ const S = {};
     display: flex;
     flex-wrap: wrap;
     column-gap: 30px;
-    row-gap: 30px;
+    /* row-gap: 30px; */
   `
 
   S.Wrapper = styled.div`
