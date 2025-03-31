@@ -4,6 +4,7 @@ import Paging from '../../_component/Paging';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPen, faXmark } from '@fortawesome/free-solid-svg-icons';
 import { useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 const Apply = ({ PAGINATION, currentList, page, setPage, totalPost, jwtToken, getTeamManagment, navigate }) => {
   const { currentUser } = useSelector((state) => state.user)
@@ -35,7 +36,19 @@ const Apply = ({ PAGINATION, currentList, page, setPage, totalPost, jwtToken, ge
     }
   }
   
-  console.log("currentList", currentList)
+  if (currentList.length === 0) {
+    return (
+      <S.NoneItem>
+        <p>아직 팀을 지원하지 않았네요!</p>
+        <p>새로운 팀을 만나 성장할 기회를 얻으세요.</p>
+        <Link to={"/showu/team"}>
+          <S.LinkToPath>팀 보러가기</S.LinkToPath>
+        </Link>
+      </S.NoneItem>
+    );
+  }
+
+  // console.log("currentList", currentList)
 
   return (
     <>
@@ -62,7 +75,7 @@ const Apply = ({ PAGINATION, currentList, page, setPage, totalPost, jwtToken, ge
 
               <ul>
                 <S.UserInfo>  
-                  <img src={currentUser.picture || 'http://localhost:8000/uploads/profiles/user.png'} alt="team profile"></img>
+                  <img src={`http://localhost:8000${item.teamId.teamProfile}`} alt="team profile"></img>
                   <div>
                     <li>{item.teamId.teamName}</li>
                     <li className='teamName'>{item.applyId.name}</li>

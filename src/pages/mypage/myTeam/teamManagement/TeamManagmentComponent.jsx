@@ -18,7 +18,7 @@ const TeamManagmentComponent = () => {
           <p>MY TEAM</p>
           <S.SubTitle className="subTitle">
             <ul>
-              <li onClick={() => navigate("/my-team")}>팀 매칭 내역</li>
+              <li onClick={() => navigate("/my-team")}>개설한 팀 매칭 내역</li>
               <li onClick={() => navigate("/my-team/management")}>팀원 관리</li>
             </ul>
           </S.SubTitle>

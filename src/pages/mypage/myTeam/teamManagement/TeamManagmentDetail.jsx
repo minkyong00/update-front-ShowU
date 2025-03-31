@@ -1,8 +1,22 @@
 import React from 'react';
 import S from './styleTeamManagment';
 import ManagmentModal from './_component/ManagmentModal';
+import { Link } from 'react-router-dom';
 
 const TeamManagmentDetail = ({ handleRowClick, handleTeamMatchingChange, currentList, showModal, selectedTeamManagment, closeModal }) => {
+
+  if (currentList.length === 0) {
+    return (
+      <S.NoneItem>
+        <p>아직 개설한 팀에 지원한 팀원이 없네요!</p>
+        <p>새로운 팀을 개설해 팀원을 구해보세요.</p>
+        <Link to={"/showu/team"}>
+          <S.LinkToPath>팀 보러가기</S.LinkToPath>
+        </Link>
+      </S.NoneItem>
+    );
+  }
+
   return (
     <div>
       <S.Container>

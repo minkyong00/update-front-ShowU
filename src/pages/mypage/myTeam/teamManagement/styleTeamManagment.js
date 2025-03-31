@@ -2,6 +2,24 @@ import styled from 'styled-components';
 
 const S = {};
 
+  S.NoneItem = styled.div`
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    margin-top: 60px;
+  `
+
+  S.LinkToPath = styled.p`
+    cursor: pointer;
+    border: 1px solid #ffd400;
+    background-color: #ffd400;
+    color: #000;
+    padding: 10px;
+    border-radius: 5px;
+  `
+
   S.Title = styled.p`
     font-size: 30px;
     font-weight: 700;
@@ -23,7 +41,7 @@ const S = {};
   `
 
   S.Container = styled.div`
-    background-color: #000;
+    background-color: #fff;
 
     display: flex;
     justify-content: center;
@@ -37,14 +55,14 @@ const S = {};
 
   S.Thead = styled.thead`
     font-size: 18px;
-    background-color: black;
+    background-color: #fff;
     font-weight: 700;
   `
 
   S.Tr = styled.tr`
 
     & th {
-      color: white;
+      color: #000;
       padding: 10px 10px 10px 0;
       text-align: left;
       font-size: 18px;
@@ -89,14 +107,14 @@ const S = {};
     }
 
     & button.exportButton {
-      background-color: #000;
+      background-color: #fff;
       border-radius: 5px;
       font-size: 16px;
       border: 1px solid #ffd400;
     }
 
     & button.rejectButton {
-      background-color: #000;
+      background-color: #fff;
       border-radius: 5px;
       font-size: 16px;
       border: 1px solid #797979;
@@ -118,7 +136,7 @@ const S = {};
   `
 
   S.ModalContent = styled.div`
-    background-color: #000;
+    background-color: #fff;
     /* padding: 20px; */
     border-radius: 20px;
     border: 1px solid #797979;
@@ -158,9 +176,9 @@ const S = {};
     width: 750px;
     margin: 5px 0;
     font-size: 16px;
-    border: 1px solid #444444;
+    border: 1px solid #797979;
     padding: 10px;
-    background-color: #000;
+    background-color: #fff;
     display: flex;
     flex-direction: column;
     gap: 10px;

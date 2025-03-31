@@ -8,6 +8,7 @@ const S = {};
     justify-content: center;
     align-items: center;
     gap: 5px;
+    margin-top: 60px;
   `
 
   S.LinkToPath = styled.p`

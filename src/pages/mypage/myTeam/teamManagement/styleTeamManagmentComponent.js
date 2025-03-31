@@ -38,14 +38,14 @@ import styled from "styled-components";
         &:hover{
           padding-bottom: 3px;
           border-bottom: 3px solid #ffd400;
-          color: #fff;
+          color: #000;
         }
       }
 
       & li:nth-child(2) {
         padding-bottom: 3px;
         border-bottom: 3px solid #ffd400;
-        color: #fff;
+        color: #000;
       }
     }
   `

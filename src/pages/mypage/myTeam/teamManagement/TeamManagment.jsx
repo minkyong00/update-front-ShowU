@@ -64,7 +64,7 @@ const TeamManagment = ({ PAGINATION }) => {
       status : status === '승인' ? "매칭 완료" : "매칭 대기"
     };
 
-    console.log("data", data)
+    // console.log("data", data)
 
     try {
       const response = await fetch(`http://localhost:8000/my/showu/request-status/${status === '승인' ? 'approve' : 'reject'}`, {
@@ -116,9 +116,9 @@ const TeamManagment = ({ PAGINATION }) => {
     }
   }
 
-  console.log("managment", managment)
+  // console.log("managment", managment)
 
-  console.log("selectedTeamManagment", selectedTeamManagment)
+  // console.log("selectedTeamManagment", selectedTeamManagment)
 
   return (
     <div>

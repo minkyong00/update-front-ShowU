@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faXmark } from '@fortawesome/free-solid-svg-icons';
 
 const ManagmentModal = ({ showModal, selectedTeamManagment, closeModal }) => {
+
   return (
     <div>
       {showModal && selectedTeamManagment && (

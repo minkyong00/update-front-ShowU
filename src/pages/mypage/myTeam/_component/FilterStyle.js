@@ -35,7 +35,7 @@ const S = {};
     left: 580px;  
     width: 105px;
     height: auto;
-    background-color: black;
+    background-color: #fff;
     border-radius: 5px;
     font-size: 17px;
     z-index: 1000;

@@ -82,8 +82,8 @@ const NewsMain = () => {
         </S.ButtonsAll>
   
         <S.NewsList>
-          {filterNews.map((news) => (
-            <S.NewsItem key={news._id}>
+          {filterNews.map((news, i) => (
+            <S.NewsItem key={i}>
               {/* /community/newsMain/news/:id */}
                 <Link to={`/community/newsMain/news/${news._id}`}>
               <S.ImageWrapper>
