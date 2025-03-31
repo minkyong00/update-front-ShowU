@@ -3,7 +3,7 @@ import styled from 'styled-components'
 const S = {};
 
   S.Container = styled.div`
-    background-color: #000;
+    background-color: #fff;
     height: 150vh;
   `
 
@@ -12,7 +12,7 @@ const S = {};
     height: 600px;
     margin: auto;
     padding: 40px 0 40px 0;
-    background-color: #252525;
+    background-color: #fff;
 
     display: flex;
     flex-direction: column;
@@ -59,9 +59,9 @@ const S = {};
     width: 480px;
     height: 53px;
     padding: 16px;
-    background-color: #2F2F2F;
-    color: #888888;
-    border: none;
+    background-color: #fff;
+    color: #000;
+    border: 2px solid #2f2f2f;
     font-size: 15px;
     border-radius: 5px;
   `

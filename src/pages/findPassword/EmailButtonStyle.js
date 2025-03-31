@@ -17,9 +17,9 @@ const S = {};
       width: 480px;
       height: 53px;
       padding: 16px;
-      background-color: #2F2F2F;
-      color: #888888;
-      border: none;
+      background-color: #fff;
+      color: #000;
+      border: 2px solid #2f2f2f;
       font-size: 15px;
       border-radius: 5px;
 

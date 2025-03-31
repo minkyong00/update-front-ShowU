@@ -16,7 +16,7 @@ const S = {};
     & .show {
       font-weight: 900;
       font-size: 24px;
-      color: #fff;
+      color: #000;
       margin-right: 5px;
     }
 

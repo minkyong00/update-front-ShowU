@@ -7,13 +7,13 @@ const S = {};
     height: 830px;
     margin: auto;
     padding: 40px 0;
-    background-color: #252525;
+    background-color: #fff;
 
     flex-direction: column;
   `
 
   S.Container = styled.div`
-    background-color: #000;
+    background-color: #fff;
     height: 150vh;
   `
 
@@ -21,7 +21,7 @@ const S = {};
     width: 560px;
     height: 630px;
     margin: auto;
-    background-color: #252525;
+    background-color: #fff;
 
     display: flex;
     
@@ -70,9 +70,9 @@ const S = {};
     width: 480px;
     height: 53px;
     padding: 16px;
-    background-color: #2F2F2F;
-    color: #888888;
-    border: none;
+    background-color: #fff;
+    color: #000;
+    border: 2px solid #2f2f2f;
     font-size: 15px;
     border-radius: 5px;
   `
