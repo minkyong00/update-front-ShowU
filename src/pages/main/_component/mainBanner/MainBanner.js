@@ -1,10 +1,11 @@
 import React from 'react';
+import S from './style';
 
 const MainBanner = () => {
   return (
-    <div>
-      
-    </div>
+    <S.container>
+      <S.Banner>배너</S.Banner>
+    </S.container>
   );
 };
 
