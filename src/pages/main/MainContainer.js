@@ -7,7 +7,7 @@ import MainHot from './_component/mainHot/MainHot';
 import MainOpen from './_component/mainOpen/MainOpen';
 import MainIntro from './_component/mainIntro/MainIntro';
 import MainNotice from './_component/mainNotice/MainNotice';
-import MainVod from './_component/mainVod/MainVod';
+import MainVodContainer from './_component/mainVod/MainVodContainer';
 
 const MainContainer = () => {
   return (
@@ -18,7 +18,7 @@ const MainContainer = () => {
       <MainNotice />
       {/* <MainChat /> */}
       <MainTeam />
-      <MainVod />
+      <MainVodContainer />
       {/* <MainTalent /> */}
       {/* <MainHot /> */}
       {/* <MainOpen /> */}
