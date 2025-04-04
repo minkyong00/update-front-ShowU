@@ -59,44 +59,48 @@ const MainTeam = () => {
   }, [])
 
   return (
-    <S.Wrapper>
-      <p>모집 중인 팀</p>
-      <S.MoreLesson>
-        <Link to={"/showu/team"} className='more'>더보기</Link>
-        <span>&gt;</span>
-      </S.MoreLesson>
-      <S.LessonWrapper>
-        {randomTeams.map((team, i) => (
-          <S.LessonBox key={i} data-aos="fade-up">
-            <ul>
-              <S.UserInfo>
-                <img src={`http://localhost:8000${team.teamProfile}`}></img>
-                <div>
-                  <li className='teamName'>{team.teamName}</li>
+    <S.Container>
+      <S.Wrapper>
+        <S.MoreTeamTitleBox>
+          <p>모집 중인 팀</p>
+          <S.MoreLesson>
+            <Link to={"/showu/team"} className='more'>더보기</Link>
+            <span>&gt;</span>
+          </S.MoreLesson>
+        </S.MoreTeamTitleBox>
+        <S.LessonWrapper>
+          {randomTeams.map((team, i) => (
+            <S.LessonBox key={i} data-aos="fade-up">
+              <ul>
+                <S.UserInfo>
+                  <img src={`http://localhost:8000${team.teamProfile}`}></img>
+                  <div>
+                    <li className='teamName'>{team.teamName}</li>
+                    <li className='category'>{team.category}</li>
+                  </div>
+                </S.UserInfo>
+                <S.Hr />
+                <S.category>
+                  {/* <li className='total'>{team.userName.role}</li> */}
                   <li className='category'>{team.category}</li>
-                </div>
-              </S.UserInfo>
-              <S.Hr />
-              <S.category>
-                {/* <li className='total'>{team.userName.role}</li> */}
-                <li className='category'>{team.category}</li>
-              </S.category>
-              <S.LessonExplantion>
-                <li className='lessonDetail'>{team.teamIntro}</li>
-                <S.Career>
-                  <FontAwesomeIcon icon={faThumbtack} />
-                  <li className='lessonName'>{team.careerHistory}</li>
-                </S.Career>
-              </S.LessonExplantion>
-              <S.Period>
-                <FontAwesomeIcon icon={faCalendarDays} />
-                <li>{team.deadLine}</li>
-              </S.Period>
-            </ul>
-          </S.LessonBox>
-        ))}
-      </S.LessonWrapper>
-    </S.Wrapper>
+                </S.category>
+                <S.LessonExplantion>
+                  <li className='lessonDetail'>{team.teamIntro}</li>
+                  <S.Career>
+                    <FontAwesomeIcon icon={faThumbtack} />
+                    <li className='lessonName'>{team.careerHistory}</li>
+                  </S.Career>
+                </S.LessonExplantion>
+                <S.Period>
+                  <FontAwesomeIcon icon={faCalendarDays} />
+                  <li>{team.deadLine}</li>
+                </S.Period>
+              </ul>
+            </S.LessonBox>
+          ))}
+        </S.LessonWrapper>
+      </S.Wrapper>
+    </S.Container>
   );
 };
 

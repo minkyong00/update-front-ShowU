@@ -7,6 +7,7 @@ import MainHot from './_component/mainHot/MainHot';
 import MainOpen from './_component/mainOpen/MainOpen';
 import MainIntro from './_component/mainIntro/MainIntro';
 import MainNotice from './_component/mainNotice/MainNotice';
+import MainVod from './_component/mainVod/MainVod';
 
 const MainContainer = () => {
   return (
@@ -15,11 +16,12 @@ const MainContainer = () => {
       {/* <MainLesson /> */}
       <MainIntro />
       <MainNotice />
-      <MainChat />
+      {/* <MainChat /> */}
       <MainTeam />
-      <MainTalent />
-      <MainHot />
-      <MainOpen />
+      <MainVod />
+      {/* <MainTalent /> */}
+      {/* <MainHot /> */}
+      {/* <MainOpen /> */}
     </div>
   );
 };

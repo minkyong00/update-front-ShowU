@@ -3,52 +3,70 @@ import styled from 'styled-components';
 const S = {};
 
   S.Hr = styled.hr`
-    border: 1px solid #444444;
+    border: 1px solid rgba(0, 0, 0, 0.3);
+  `
+
+  S.Container = styled.div`
+    background-color: #EFF0F2;
   `
 
   S.Wrapper = styled.div`
+    width: 1100px;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    /* align-items: center; */
     justify-content: center;
-    background-color:#000; 
+    /* background-color:#fff; */
+    /* background-color: #EFF0F2;  */
     min-height: 100vh;
-    padding: 60px 20px;
+    /* padding: 60px 20px; */
+    margin: 0 auto;
+    gap: 30px;
 
     & p{
-      font-size: 36px;
+      font-size: 30px;
       font-weight: bold;
       margin-bottom: 10px;
     }
   `
 
+  S.MoreTeamTitleBox = styled.div`
+    display: flex;
+    align-items: center;
+  `
+
   S.LessonWrapper = styled.div`
     display: flex;
     gap: 30px;
-   
+    justify-content: flex-end;
   `
 
   S.MoreLesson = styled.div`
     display: flex;
-    align-items: center;
-    justify-content: center;
+    /* align-items: center; */
+    /* justify-content: center; */
     gap: 5px;
+    margin-left: 20px;
 
     & .more, 
     & span {
       font-size: 20px;
-      margin-bottom: 30px;
+      color: rgba(0, 0, 0, 0.6);
+      /* margin-bottom: 30px; */
     }
   `
 
   S.LessonBox = styled.div`
     width: 290px;
     height: 400px;
-    border: 1px solid #444444;
-    border-radius: 10px;
+    border: 1px solid #EFF0F2;
+    /* background-color: #EFF0F2; */
+
+    border-radius: 30px;
     padding: 33px 27px;
 
     position: relative;
+    background-color: #fff;
 
     img {
       width: 80px;
