@@ -144,7 +144,7 @@ const S = {}
     width: 100%;
     z-index: 10;
     margin: 0 auto;
-    padding-bottom: 50px;
+    /* padding-bottom: 50px; */
     height: 100%;
     /* min-height: 1080px; */
     overflow: hidden;
