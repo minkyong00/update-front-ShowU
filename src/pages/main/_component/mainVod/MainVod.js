@@ -1,5 +1,6 @@
 import React from 'react';
 import S from './style';
+import { Link } from 'react-router-dom';
 
 const MainVod = () => {
   return (
@@ -15,7 +16,7 @@ const MainVod = () => {
 
       <S.MoreVodBox>
         <div>
-          SHOWU VOD 더보기
+          <Link to={'/vod/my-ShowU'}>SHOWU VOD 더보기</Link>
         </div>
         <div>
           &gt;
