@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import S from './style';
+import { Link } from 'react-router-dom';
 
 const MainNotice = () => {
   const [newsList, setNewsList] = useState([]); //뉴스목록
@@ -37,7 +38,7 @@ const MainNotice = () => {
     <S.Container>
       <S.Wrapper>
         <S.News>
-          NEWS
+          <Link to={'/community/newsMain'}>NEWS</Link>
         </S.News>
         
         {newsList.length > 0 && 
