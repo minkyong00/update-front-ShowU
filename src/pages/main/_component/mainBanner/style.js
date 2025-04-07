@@ -4,14 +4,15 @@ const S = {};
 
   S.container = styled.div`
     width: 1100px;
-    height: 700px;
+    height: 500px;
     margin: 0 auto;
+    border-radius: 30px;
 
     position: relative;
   `
 
   S.Banner = styled.div`
-    background-color: gray;
+    /* background-color: gray; */
     width: 100%;
     height: 100%;
 
@@ -19,7 +20,7 @@ const S = {};
 
     & img {
       width: 1100px;
-      height: 700px;
+      height: 500px;
     }
   `
 
@@ -29,16 +30,18 @@ const S = {};
   `
 
   S.NextPrevButtonBox = styled.div`
+    z-index: 99;
+
     position: absolute;
-    bottom: 30px;
-    right: 30px;
+    top: 440px;
+    right: 20px;
 
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 10px;
 
-    width: 100px;
+    width: 120px;
     height: 40px;
     background-color: #fff;
     border-radius: 30px;
@@ -48,8 +51,10 @@ const S = {};
     color: rgba(0, 0, 0, 0.3);
   `
 
-  S.NextPrevButton = styled.div`
-    cursor: pointer;
+  S.NextPrevButton = styled.button`
+    z-index: 99;
+    background: none;
+    border: none;
   `
 
 export default S;

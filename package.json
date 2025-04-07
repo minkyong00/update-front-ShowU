@@ -30,8 +30,10 @@
     "react-scripts": "^5.0.1",
     "redux": "^5.0.1",
     "redux-actions": "^3.0.3",
+    "sass": "^1.86.3",
     "styled-components": "^6.1.13",
     "styled-reset": "^4.5.2",
+    "swiper": "^11.2.6",
     "web-vitals": "^2.1.0"
   },
   "scripts": {
