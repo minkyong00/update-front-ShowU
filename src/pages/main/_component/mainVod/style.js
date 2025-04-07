@@ -57,6 +57,14 @@ const S = {};
     height: 500px;
     background-color: gray;
     border-radius: 30px;
+    cursor: pointer;
+
+    & img {
+      width: 520px;
+      height: 500px;
+      border-radius: 30px;
+      object-fit: cover;
+    }
   `
 
   S.Vod2 = styled.div`
@@ -64,14 +72,16 @@ const S = {};
     height: 240px;
     background-color: gray;
     border-radius: 30px;
+    cursor: pointer;
+
+    & img {
+      width: 320px;
+      height: 240px;
+      border-radius: 30px;
+      object-fit: cover;
+    }
   `
 
-  S.Vod3 = styled.div`
-    width: 320px;
-    height: 240px;
-    background-color: gray;
-    border-radius: 30px;
-  `
 
   S.VodRightSide = styled.div`
     display: flex;
