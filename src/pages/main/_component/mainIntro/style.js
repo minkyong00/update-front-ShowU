@@ -37,9 +37,16 @@ const S = {};
   S.LiIcon = styled.div`
     width: 100px;
     height: 100px;
-    padding: 35px;
+    padding: 30px;
     background-color: #EFF0F2;
     border-radius: 30px;
+
+    & svg.icon {
+      width: 40px;
+      height: 40px;
+    }
   `
+
+
 
 export default S;
