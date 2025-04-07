@@ -16,6 +16,16 @@ const S = {};
     height: 100%;
 
     border-radius: 30px;
+
+    & img {
+      width: 1100px;
+      height: 700px;
+    }
+  `
+
+  S.Ul = styled.ul`
+    display: flex;
+    overflow: hidden;
   `
 
   S.NextPrevButtonBox = styled.div`
