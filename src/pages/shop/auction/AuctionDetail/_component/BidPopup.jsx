@@ -2,11 +2,15 @@
 import React, { useEffect, useState } from 'react';
 import S from './styleBidPopup';
 import { useLocation, useNavigate, useParams } from 'react-router-dom';
+import AuctionBidContaienr from '../../auctionBid/AuctionBidContaienr';
 
 const BidPopup = ({ onClose, auctionProduct, bidCount }) => {
-  const location = useLocation();
-  // const { bidCount, auctionProduct } = location.state || {};
   const navigate = useNavigate();
+  const [showBidContainer, setShowBidContainer] = useState(false);
+
+  const handleBidClick = () => {
+    setShowBidContainer(true);
+  };
 
   // console.log("bidCount", bidCount)
 
@@ -44,7 +48,12 @@ const BidPopup = ({ onClose, auctionProduct, bidCount }) => {
 
         <S.BidButton>
           <S.BackButton onClick={onClose}>취소</S.BackButton>
-          <S.NextButton onClick={handleBid}>신중하게 입찰하기</S.NextButton>
+          { !showBidContainer ? (
+            <S.NextButton onClick={handleBidClick}>신중하게 입찰하기</S.NextButton>
+          ) : (
+            <AuctionBidContaienr onClose={onClose} auctionProduct={auctionProduct} bidCount={bidCount} />
+          )
+          }
         </S.BidButton>
       </S.PopupContainer>
     </S.PopupOverlay>
