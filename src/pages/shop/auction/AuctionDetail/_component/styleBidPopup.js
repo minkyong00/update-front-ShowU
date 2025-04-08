@@ -17,8 +17,8 @@ const S = {};
   `
 
   S.PopupContainer = styled.div`
-    background-color: #000;
-    color: #fff;
+    background-color: #fff;
+    color: #000;
     border-radius: 5px;
     width: 900px;
     height: 400px;
@@ -26,7 +26,7 @@ const S = {};
   `
 
   S.PopupTitle = styled.h2`
-    background-color: #ffd400;
+    background-color: #fff;
     color: #000;
     font-size: 20px;
     font-weight: bold;
@@ -44,7 +44,7 @@ const S = {};
     & span {
       font-size: 18px;
       font-weight: bold;
-      color: #ffd400;
+      color: #000;
     }
   `
 

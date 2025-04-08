@@ -1,28 +1,36 @@
 // 경매 팝업 - 입찰 정보
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import S from './styleBidPopup';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate, useParams } from 'react-router-dom';
 
-const BidPopup = ({ title, onClose, auctionProduct }) => {
+const BidPopup = ({ onClose, auctionProduct, bidCount }) => {
+  const location = useLocation();
+  // const { bidCount, auctionProduct } = location.state || {};
   const navigate = useNavigate();
+
+  // console.log("bidCount", bidCount)
 
   const handleBid = () => {
     navigate('/shop/auction/payment', {
-      state: { auctionProduct } 
+      state: { auctionProduct, bidCount } 
     });
   };
+
+
+  // console.log("auctionProduct", auctionProduct)
+
 
   return (
     <S.PopupOverlay onClick={onClose}>
       <S.PopupContainer onClick={(e) => e.stopPropagation()}>
-        <S.PopupTitle>{title}</S.PopupTitle>
+        <S.PopupTitle>{auctionProduct.auctionName}</S.PopupTitle>
         <S.PopupContent>
           <p>
-            <span>입찰 실수 및 허위 입찰</span>은 사고건으로 이어질 수 있으며, 
-            <span> 사고건(미입금, 구매취소, 반품 실책 등) 2건</span> 이상 누적 시
+            <span>모든 입찰은 구속력이 있으며</span> 취소할 수 없고 최종적입니다.
+            <span> 낙찰자인 경우 낙찰된 제품을 구매해야 </span>  할 의무가 있습니다.
           </p>
           <p> 
-            사이트 이용 제한 및 사고수수료가 발생할 수 있습니다. 
+            계정 소유자로서 계정에서 이루어지는 모든 행동에 대한 책임은 회원님에게 있습니다.
           </p>
           <p>
             따라서 물품의 이미지 및 설명을 자세히 확인하시어 신중한 입찰 부탁드립니다.
@@ -30,7 +38,7 @@ const BidPopup = ({ title, onClose, auctionProduct }) => {
         </S.PopupContent>
         <S.BoxWrapper>
           <S.Box>
-            <p>입찰금액</p>
+            <p>입찰금액 {bidCount}원</p>
           </S.Box>
         </S.BoxWrapper>
 

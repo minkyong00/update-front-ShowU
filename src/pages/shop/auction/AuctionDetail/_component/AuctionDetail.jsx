@@ -26,6 +26,7 @@ const AuctionDetail = () => {
   const ProductsPerSlide = 3; // 한 번에 3개씩 보여줌
   const navigate = useNavigate();
   const { currentUser } = useSelector((state) => state.user); // Redux에서 currentUser 가져오기
+  const [bidCount, setBidCount] = useState(0);
 
   const openPopup1 = () => setPopupVisible1(true);
   const closePopup1 = () => setPopupVisible1(false);
@@ -72,21 +73,19 @@ const AuctionDetail = () => {
   }, [id]);
 
   // 바로 구매 함수 정의
-  const purchase = (e) => {
-    const confirmPurchase = window.confirm("결제 페이지로 이동하시겠습니까?");
+  const purchase = () => {
+    // const confirmPurchase = window.confirm("결제 페이지로 이동하시겠습니까?");
 
-    if (confirmPurchase) {
-      console.log("Navigating to payment page with currentUser:", currentUser); // currentUser 로그 추가
-      console.log("AuctionProduct data being passed:", auctionProduct); // auctionProduct 로그 추가
-      navigate("/shop/auction/payment", {
+    // if (confirmPurchase) {
+      // console.log("Navigating to payment page with currentUser:", currentUser); // currentUser 로그 추가
+      // console.log("AuctionProduct data being passed:", auctionProduct); // auctionProduct 로그 추가
+      navigate(`/shop/auction/bid/${id}`, {
         state: {
-          auctionProduct,
-          quantity: 1,
-          name: auctionProduct?.auctionName,
-          userId: currentUser?._id,
-        }, // currentUser의 userId 추가
+          bidCount : bidCount,
+          auctionProduct : auctionProduct
+        }, 
       });
-    }
+    // }
   };
 
   if (!auctionProduct) {
@@ -118,6 +117,23 @@ const AuctionDetail = () => {
     navigate("shop/auction/inquiry/list");
   };
 
+  const decreaseBid = () => {
+    if (bidCount >= 1) {
+      setBidCount(bidCount - 1);
+    }
+  };
+
+  const increaseBid = () => {
+    if (bidCount >= 0) {
+      setBidCount(bidCount + 1);
+    }
+  };
+
+  const onChangeBid = (e) => {
+    setBidCount(e.target.value);
+
+  }
+
   return (
     <S.DetailWrapper>
       <S.Title>
@@ -128,6 +144,40 @@ const AuctionDetail = () => {
         <S.Image src={auctionProduct.image} alt="경매 상품" />
         <S.Auction>
           <S.InfoContainer>
+            <div>
+              <div>{auctionProduct.auctionName}</div>
+              <div>{auctionProduct.category}</div>
+              <div>
+                <p>현재 입찰가</p>
+                <p>{auctionProduct.bid}원</p>
+                <p>{auctionProduct.time}</p>
+              </div>
+            </div>
+
+            <div>
+              <div>￦</div>
+              <input 
+                type="text" 
+                value={bidCount} 
+                onChange={onChangeBid} 
+                placeholder="입찰하기"
+              ></input>
+              <div onClick={decreaseBid}>-</div>
+              <div onClick={increaseBid}>+</div>
+            </div>
+
+            <div>
+              <p>최신 입찰</p>
+              <div>입찰자 회원아이디</div>
+              <div>날짜</div>
+              <div>입찰 가격</div>
+            </div>
+            {/* <S.InfoWrapper>
+              <div>{auctionProduct.auctionName}</div>
+            </S.InfoWrapper>
+            <div>
+              <div>{auctionProduct.category}</div>
+            </div>
             <S.InfoWrapper>
               <S.Label>남은 시간</S.Label>
               <S.AuctionInfo>{auctionProduct.time}</S.AuctionInfo>
@@ -158,12 +208,12 @@ const AuctionDetail = () => {
               <S.AuctionInfo>
                 {Number(auctionProduct.finalPrice).toLocaleString()}원
               </S.AuctionInfo>
-            </S.InfoWrapper>
+            </S.InfoWrapper> */}
           </S.InfoContainer>
 
           <S.ButtonContainer>
             <div className="button-wrapper1">
-              <button className="button bid" onClick={purchase}>
+              <button className="button bid" onClick={openPopup1}>
                 <p>입찰하기</p>
               </button>
               <button className="button delivery" onClick={openPopup2}>
@@ -194,14 +244,15 @@ const AuctionDetail = () => {
             </div> */}
           </S.ButtonContainer>
 
-          {/* {PopupVisible1 && (
+          {PopupVisible1 && (
             <BidPopup
               title="입찰하기"
               onClose={closePopup1}
-              handleBid={handleBid}
+              // handleBid={handleBid}
               auctionProduct={auctionProduct}
+              bidCount={bidCount}
             ></BidPopup>
-          )} */}
+          )}
 
           {PopupVisible2 && (
             <DeliveryPopup

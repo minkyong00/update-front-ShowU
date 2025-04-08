@@ -17,8 +17,8 @@ const S = {};
   `
 
   S.PopupContainer = styled.div`
-    background-color: #000;
-    color: #fff;
+    background-color: #fff;
+    color: #000;
     border-radius: 5px;
     width: 900px;
     height: 380px;
@@ -44,24 +44,24 @@ const S = {};
     width: 750px;
     border: 1px solid #fff; 
     border-collapse: collapse; 
-    background-color: black;
+    background-color: #fff;
     margin-top: 30px;
   `
 
   S.PopupLabel = styled.td`
-    color: white;
+    color: #000;
     font-weight: bold;
     text-align: center;
     padding: 12px;
-    border: 1px solid #fff;
+    border: 1px solid #000;
     width: 20%; 
   `
 
   S.PopupValue = styled.td`
-    color: white;
+    color: #000;
     text-align: left;
     padding: 12px;
-    border: 1px solid #fff; 
+    border: 1px solid #000; 
     width: 80%; 
   `
 
