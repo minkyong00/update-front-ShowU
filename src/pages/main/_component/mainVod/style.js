@@ -42,7 +42,7 @@ const S = {};
     margin: 0 auto;
 
     position: absolute;
-    top: 74%;
+    top: 73%;
     left: 13%;
   `
 
@@ -53,32 +53,91 @@ const S = {};
   `
 
   S.Vod1 = styled.div`
+    position: relative; 
     width: 520px;
     height: 500px;
     background-color: gray;
     border-radius: 30px;
     cursor: pointer;
+    overflow: hidden;
 
     & img {
       width: 520px;
       height: 500px;
       border-radius: 30px;
       object-fit: cover;
+      display: block;
+    }
+
+    & .overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border-radius: 30px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: rgba(0, 0, 0, 0.5); 
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      text-align: center;
+      padding: 20px;
+
+      & p {
+        color: #fff;
+        font-size: 17px;
+      }
+    }
+
+    &:hover .overlay {
+      opacity: 1;
     }
   `
 
+
   S.Vod2 = styled.div`
+    position: relative; 
     width: 320px;
     height: 240px;
     background-color: gray;
     border-radius: 30px;
     cursor: pointer;
+    overflow: hidden;
 
     & img {
       width: 320px;
       height: 240px;
       border-radius: 30px;
       object-fit: cover;
+      display: block;
+    }
+
+    & .overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border-radius: 30px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: rgba(0, 0, 0, 0.5); 
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      text-align: center;
+      padding: 20px;
+
+      & p {
+        color: #fff;
+        font-size: 17px;
+      }
+    }
+
+    &:hover .overlay {
+      opacity: 1;
     }
   `
 
