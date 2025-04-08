@@ -133,12 +133,16 @@ import TeamApplyContainer from '../pages/showu/team/teamApply/TeamApplyContainer
 const router = createBrowserRouter([
   {
     path: "/",
+    element: <IndexContainer />
+  },
+  {
+    path: "/",
     element: <Layout />,
     children: [
-      {
-        index: true,
-        element: <IndexContainer />,
-      },
+      // {
+      //   index: true,
+      //   element: <IndexContainer />,
+      // },
       {
         path: "/main",
         element: <Main />,

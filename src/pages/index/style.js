@@ -12,7 +12,7 @@ const S = {};
 
   S.Left = styled.div`
     flex: 1;
-    height: 1080px;
+    /* height: 1080px; */
     background-color: #fff;
 
     display: flex;
@@ -92,11 +92,12 @@ const S = {};
 
   S.Right = styled.div`
     flex: 1;
-    height: 1080px;
+    /* height: 1080px; */
 
     display: flex;
     position: relative;
     cursor: pointer;
+    background-color: #000;
   `
 
   S.RightLamp = styled.div`

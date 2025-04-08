@@ -42,8 +42,9 @@ const Layout = () => {
 
   const location = useLocation();
 
-  // index 페이지에서 헤더 숨김
+  // index 페이지에서 헤더, 푸터 숨김
   const hideHeaderPage = ['/'];
+  const hideFooterPage = ['/'];
 
   useEffect(() => {
     if (searchParams.get("jwtToken")) {
@@ -196,7 +197,9 @@ const Layout = () => {
         </S.main>
 
         {/* 푸터 */}
-        <Footer />
+        {!hideFooterPage.includes(location.pathname) && (
+          <Footer />
+        )}
 
       </S.Background>
     </div>
