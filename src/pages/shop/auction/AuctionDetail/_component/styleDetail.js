@@ -39,7 +39,7 @@ const flexStyle = css`
 
   S.Image = styled.img`
     width: 400px;
-    height: 550px;
+    height: 425px;
     flex: 1;
   `
 
@@ -47,23 +47,117 @@ const flexStyle = css`
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    margin: 50px 20px;
+    margin: 35px 20px;
+  `
 
-`
   S.InfoWrapper = styled.div`
     display: flex;
-    margin: 20px;
-    `
+    flex-direction: column;
+    gap: 30px;
+  `
+
+  S.InfoTitleBox = styled.div`
+    display: flex;
+    flex-direction: column;
+
+    & p.auctionName {
+      font-size: 25px;
+    }
+
+    & p.category {
+      font-size: 18px;
+      color: rgba(0, 0, 0, 0.5);
+    }
+  `
+
+  S.InfoBidBox = styled.div`
+    display: flex;
+    flex-direction: column;
+
+    & p.currentBidTitle {
+      font-size: 20px;
+      color: rgba(0, 0, 0, 0.7);
+    }
+
+    & p.currentBid {
+      font-size: 30px;
+    }
+
+    & p.time {
+      font-size: 20px;
+      color: #ffd400;
+    }
+  `
+
+  S.InfoInputBox = styled.div`
+    display: flex;
+    width: 320px;
+    height: 60px;
+    align-items: center;
+    border: 1px solid rgba(0, 0, 0, 0.5);
+
+    & div.w {
+      padding: 16px 0 16px 16px;
+      font-size: 16px;
+    }
+
+    & input {
+      border: none;
+      width: 268px;
+      height: 58px;
+      padding: 16px 16px 16px 8px;
+      font-size: 20px;
+    }
+  `
+
+  S.UpDownButton = styled.div`
+    display: flex;
+    flex-direction: column;
+    padding-right: 8px;
+  `
+
+  S.BidHistoryBox = styled.div`
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    /* margin: 30px auto; */
+
+    & p.title {
+      font-size: 24px;
+    }
+
+    & div{
+      display: flex;
+      gap: 10px;
+    }
+
+    & p.date {
+      color: rgba(0, 0, 0, 0.5);
+    } 
+  `
+
+  S.InfoRightBox = styled.div`
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+  `
+  
+  
+
+  // S.InfoWrapper = styled.div`
+  //   display: flex;
+  //   margin: 20px;
+  //   `
 
 
   S.Auction = styled.div`
-      flex: 1;
+      /* flex: 1; */
       width: 500px;
       background-color: #fff;
       border-radius: 8px;
       border: 1px solid #797979;
       display: flex;
-      height: 550px;
+      height: 425px;
       flex-direction: column;
     /* justify-content: space-between; */
 
@@ -96,7 +190,7 @@ const flexStyle = css`
     
     .button {
       border-radius: 50px; 
-      width: 250px;
+      width: 200px;
       height: 55px;
       font-size: 20px;
       border-radius: 50px;

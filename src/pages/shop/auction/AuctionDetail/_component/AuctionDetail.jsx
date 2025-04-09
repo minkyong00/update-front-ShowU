@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import S from "./styleDetail";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
+  faAngleDown,
+  faAngleUp,
   faChevronDown,
   faCircleChevronLeft,
   faCircleChevronRight,
@@ -142,126 +144,141 @@ const AuctionDetail = () => {
 
       <S.AuctionWrapper>
         <S.Image src={auctionProduct.image} alt="경매 상품" />
-        <S.Auction>
-          <S.InfoContainer>
-            <div>
-              <div>{auctionProduct.auctionName}</div>
-              <div>{auctionProduct.category}</div>
+        <S.InfoRightBox>
+          <S.Auction>
+            <S.InfoContainer>
+              <S.InfoWrapper>
+                <S.InfoTitleBox>
+                  <p className="auctionName">{auctionProduct.auctionName}</p>
+                  <p className="category">{auctionProduct.category}</p>
+                </S.InfoTitleBox>
+                <S.InfoBidBox>
+                  <p className="currentBidTitle">현재 입찰가</p>
+                  <p className="currentBid">￦3000{auctionProduct.bid}원</p>
+                  <p className="time">1일 2시간{auctionProduct.time}</p>
+                </S.InfoBidBox>
+                <S.InfoInputBox>
+                  <div className="w">￦</div>
+                  <input
+                    type="text"
+                    value={bidCount}
+                    onChange={onChangeBid}
+                    placeholder="입찰하기"
+                  ></input>
+                  <S.UpDownButton>
+                    <div onClick={increaseBid}>
+                      <FontAwesomeIcon icon={faAngleUp} />
+                    </div>
+                    <div onClick={decreaseBid}>
+                      <FontAwesomeIcon icon={faAngleDown} />
+                    </div>
+                  </S.UpDownButton>
+                </S.InfoInputBox>
+              </S.InfoWrapper>
+              {/* <S.InfoWrapper>
+                <div>{auctionProduct.auctionName}</div>
+              </S.InfoWrapper>
               <div>
-                <p>현재 입찰가</p>
-                <p>{auctionProduct.bid}원</p>
-                <p>{auctionProduct.time}</p>
+                <div>{auctionProduct.category}</div>
               </div>
-            </div>
+              <S.InfoWrapper>
+                <S.Label>남은 시간</S.Label>
+                <S.AuctionInfo>{auctionProduct.time}</S.AuctionInfo>
+              </S.InfoWrapper>
+              <S.InfoWrapper>
+                <S.Label>경매 번호</S.Label>
+                <S.AuctionInfo>{auctionProduct.auctionId}</S.AuctionInfo>
+              </S.InfoWrapper>
+              <S.InfoWrapper>
+                <S.Label>입찰 기록</S.Label>
+                <S.AuctionInfo>{auctionProduct.count}회</S.AuctionInfo>
+              </S.InfoWrapper>
+              <S.InfoWrapper>
+                <S.Label>입찰 단위</S.Label>
+                <S.AuctionInfo>
+                  {Number(auctionProduct.unit).toLocaleString()}원
+                </S.AuctionInfo>
+              </S.InfoWrapper>
+              <S.InfoWrapper>
+                <S.Label>희망 입찰가</S.Label>
+                <S.AuctionInfo>
+                  {" "}
+                  {Number(auctionProduct.bid).toLocaleString()}원
+                </S.AuctionInfo>
+              </S.InfoWrapper>
+              <S.InfoWrapper>
+                <S.Label>예상 구매가</S.Label>
+                <S.AuctionInfo>
+                  {Number(auctionProduct.finalPrice).toLocaleString()}원
+                </S.AuctionInfo>
+              </S.InfoWrapper> */}
+            </S.InfoContainer>
+            <S.ButtonContainer>
+              <div className="button-wrapper1">
+                <button className="button bid" onClick={openPopup1}>
+                  <p>입찰하기</p>
+                </button>
+                <button className="button delivery" onClick={openPopup2}>
+                  <p>배송 정보</p>
+                </button>
+              </div>
+              {/* <div className="button-wrapper1">
+                <button
+                  className="button delivery"
+                  onClick={() => {
+                    sendInquiry();
+                    navigate("/shop/auction/inquiry", {
+                      state: { auctionName: auctionProduct.auctionName },
+                    });
+                  }}
+                >
+                  <p>문의하기</p>
+                </button>
+                <button
+                  className="button delivery"
+                  onClick={() => {
+                    sendInquiryList();
+                    navigate("/shop/auction/inquiry/list");
+                  }}
+                >
+                  <p>문의 내역</p>
+                </button>
+              </div> */}
+            </S.ButtonContainer>
 
+            {/* 입찰하기 버튼 모달창 */}
+            {PopupVisible1 && (
+              <BidPopup
+                title="입찰하기"
+                onClose={closePopup1}
+                // handleBid={handleBid}
+                auctionProduct={auctionProduct}
+                bidCount={bidCount}
+              ></BidPopup>
+            )}
+
+            {/* 배송정보 버튼 모달창 */}
+            {PopupVisible2 && (
+              <DeliveryPopup
+                title="배송 정보"
+                onClose={closePopup2}
+              ></DeliveryPopup>
+            )}
+          </S.Auction>
+
+          {/* 최신 입찰가 기록 */}
+          <S.BidHistoryBox>
+            <p className="title">최신 입찰</p>
             <div>
-              <div>￦</div>
-              <input 
-                type="text" 
-                value={bidCount} 
-                onChange={onChangeBid} 
-                placeholder="입찰하기"
-              ></input>
-              <div onClick={decreaseBid}>-</div>
-              <div onClick={increaseBid}>+</div>
+              <p className="userId">입찰자 회원아이디</p>
+              <p className="date">2025.01.02</p>
+              <p className="price">￦3000원</p>
             </div>
-
-            <div>
-              <p>최신 입찰</p>
-              <div>입찰자 회원아이디</div>
-              <div>날짜</div>
-              <div>입찰 가격</div>
-            </div>
-            {/* <S.InfoWrapper>
-              <div>{auctionProduct.auctionName}</div>
-            </S.InfoWrapper>
-            <div>
-              <div>{auctionProduct.category}</div>
-            </div>
-            <S.InfoWrapper>
-              <S.Label>남은 시간</S.Label>
-              <S.AuctionInfo>{auctionProduct.time}</S.AuctionInfo>
-            </S.InfoWrapper>
-            <S.InfoWrapper>
-              <S.Label>경매 번호</S.Label>
-              <S.AuctionInfo>{auctionProduct.auctionId}</S.AuctionInfo>
-            </S.InfoWrapper>
-            <S.InfoWrapper>
-              <S.Label>입찰 기록</S.Label>
-              <S.AuctionInfo>{auctionProduct.count}회</S.AuctionInfo>
-            </S.InfoWrapper>
-            <S.InfoWrapper>
-              <S.Label>입찰 단위</S.Label>
-              <S.AuctionInfo>
-                {Number(auctionProduct.unit).toLocaleString()}원
-              </S.AuctionInfo>
-            </S.InfoWrapper>
-            <S.InfoWrapper>
-              <S.Label>희망 입찰가</S.Label>
-              <S.AuctionInfo>
-                {" "}
-                {Number(auctionProduct.bid).toLocaleString()}원
-              </S.AuctionInfo>
-            </S.InfoWrapper>
-            <S.InfoWrapper>
-              <S.Label>예상 구매가</S.Label>
-              <S.AuctionInfo>
-                {Number(auctionProduct.finalPrice).toLocaleString()}원
-              </S.AuctionInfo>
-            </S.InfoWrapper> */}
-          </S.InfoContainer>
-
-          <S.ButtonContainer>
-            <div className="button-wrapper1">
-              <button className="button bid" onClick={openPopup1}>
-                <p>입찰하기</p>
-              </button>
-              <button className="button delivery" onClick={openPopup2}>
-                <p>배송 정보</p>
-              </button>
-            </div>
-            {/* <div className="button-wrapper1">
-              <button
-                className="button delivery"
-                onClick={() => {
-                  sendInquiry();
-                  navigate("/shop/auction/inquiry", {
-                    state: { auctionName: auctionProduct.auctionName },
-                  });
-                }}
-              >
-                <p>문의하기</p>
-              </button>
-              <button
-                className="button delivery"
-                onClick={() => {
-                  sendInquiryList();
-                  navigate("/shop/auction/inquiry/list");
-                }}
-              >
-                <p>문의 내역</p>
-              </button>
-            </div> */}
-          </S.ButtonContainer>
-
-          {PopupVisible1 && (
-            <BidPopup
-              title="입찰하기"
-              onClose={closePopup1}
-              // handleBid={handleBid}
-              auctionProduct={auctionProduct}
-              bidCount={bidCount}
-            ></BidPopup>
-          )}
-
-          {PopupVisible2 && (
-            <DeliveryPopup
-              title="배송 정보"
-              onClose={closePopup2}
-            ></DeliveryPopup>
-          )}
-        </S.Auction>
+          </S.BidHistoryBox>
+        </S.InfoRightBox>
       </S.AuctionWrapper>
+
+      
 
       {/* <S.Info>
         <p>물품 정보</p>
