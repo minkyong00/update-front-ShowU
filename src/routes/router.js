@@ -129,6 +129,7 @@ import AuctionTossPaymentContainer from "../pages/shop/auction/AuctionPayment/pa
 import AuctionSuccess from "../pages/shop/auction/AuctionPayment/payment/auctionTossPayment/AuctionSuccess";
 import AuctionFailed from "../pages/shop/auction/AuctionPayment/payment/auctionTossPayment/AuctionFailed";
 import TeamApplyContainer from '../pages/showu/team/teamApply/TeamApplyContainer';
+import CreateBidCount from '../pages/shop/auction/auctionBid/CreateBidCount';
 
 const router = createBrowserRouter([
   {

@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import S from '../AuctionDetail/_component/styleBidPopup';
 import emailjs from 'emailjs-com';
-import { faEnvelopeCircleCheck } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import EmailCode from './EmailCode';
+import CreateBidCount from './CreateBidCount';
+
 
 const AuctionBidContaienr = ({ onClose, auctionProduct, bidCount }) => {
   const [step, setStep] = useState(1);
@@ -11,6 +11,7 @@ const AuctionBidContaienr = ({ onClose, auctionProduct, bidCount }) => {
   const [name, setName] = useState('');
   const [ verificationCode, setVerificationCode ] = useState('');
   const [ createdCode, setCreatedCode ] = useState('');
+
 
   const handleSendCode = () => {
     if (!email) {
@@ -30,7 +31,7 @@ const AuctionBidContaienr = ({ onClose, auctionProduct, bidCount }) => {
         to_email: email,
         code: code,
       },
-      'kFcGXKs0UUkucev49'
+      process.env.REACT_APP_PUBLIC_KEY
     )
       .then(() => {
         alert('인증번호가 이메일로 전송되었습니다!');
@@ -42,11 +43,10 @@ const AuctionBidContaienr = ({ onClose, auctionProduct, bidCount }) => {
       });
   };
 
-  
-  //경매 입찰가격 입력 후 결제 전
-  //이메일 인증 페이지
-  //이메일 인증 후 입찰 추가
-  //node-cron
+  // 경매 입찰 시 auction 컬렉션 배열로 저장
+  // 최근 경매가 페이지네이션 swiper
+  // 남은 시간 타이머
+  // node-schedule //https://velog.io/@skh9797/%EC%8B%A4%EC%8B%9C%EA%B0%84-%EA%B2%BD%EB%A7%A4-%EC%8B%9C%EC%8A%A4%ED%85%9C-%EB%A7%8C%EB%93%A4%EA%B8%B0
   //마감기한 지나면 가장 높은 금액이 낙찰된 사용자에게 결제 요청 이메일 전송
   //낙찰된 사용자의 마이페이지에서 결제 대기 페이지 추가
   //결제 토스페이 사용
@@ -91,14 +91,7 @@ const AuctionBidContaienr = ({ onClose, auctionProduct, bidCount }) => {
         )}
 
         { step === 3 && (
-          <>
-            <S.PopupTitle>입찰 완료</S.PopupTitle>
-            <hr />
-            <S.PopupContent>
-              <p>최종적으로 {bidCount}원이 입찰이 완료되었습니다.</p>
-              <p>경매가 마감되고 사용자가 낙찰될 시 이메일으로 결제 요청 이메일이 전송됩니다.</p>
-            </S.PopupContent>
-          </>
+          <CreateBidCount bidCount={bidCount} />
         )}
 
         <S.BidButton>

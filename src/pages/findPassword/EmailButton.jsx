@@ -39,7 +39,7 @@ const EmailButton = () => {
         to_email: email,
         code: code,
       },
-      'kFcGXKs0UUkucev49'
+      process.env.REACT_APP_PUBLIC_KEY
     )
       .then(() => {
         alert('인증번호가 이메일로 전송되었습니다!');
