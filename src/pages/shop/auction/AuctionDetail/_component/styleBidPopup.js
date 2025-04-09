@@ -53,6 +53,20 @@ const S = {};
     justify-content: center;
   `
 
+  S.PopupWrapper = styled.div`
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin: 30px;
+    gap: 10px;
+
+    & input {
+      width: 300px;
+      height: 30px;
+      border: 1px solid rgba(0, 0, 0, 0.5);
+    }
+  `
+
   S.Box = styled.div`
     width: 800px;
     height: 50px;
