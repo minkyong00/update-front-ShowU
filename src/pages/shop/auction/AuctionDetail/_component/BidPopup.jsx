@@ -4,7 +4,7 @@ import S from './styleBidPopup';
 import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import AuctionBidContaienr from '../../auctionBid/AuctionBidContaienr';
 
-const BidPopup = ({ onClose, auctionProduct, bidCount }) => {
+const BidPopup = ({ onClose, auctionProduct, bidCount, getAuctionDetail }) => {
   const navigate = useNavigate();
   const [showBidContainer, setShowBidContainer] = useState(false);
 
@@ -51,7 +51,12 @@ const BidPopup = ({ onClose, auctionProduct, bidCount }) => {
           { !showBidContainer ? (
             <S.NextButton onClick={handleBidClick}>신중하게 입찰하기</S.NextButton>
           ) : (
-            <AuctionBidContaienr onClose={onClose} auctionProduct={auctionProduct} bidCount={bidCount} />
+            <AuctionBidContaienr 
+              onClose={onClose} 
+              auctionProduct={auctionProduct} 
+              bidCount={bidCount} 
+              getAuctionDetail={getAuctionDetail}
+            />
           )
           }
         </S.BidButton>

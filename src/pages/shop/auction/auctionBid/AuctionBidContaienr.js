@@ -5,17 +5,18 @@ import EmailCode from './EmailCode';
 import CreateBidCount from './CreateBidCount';
 
 
-const AuctionBidContaienr = ({ onClose, auctionProduct, bidCount }) => {
-  const [step, setStep] = useState(1);
+const AuctionBidContaienr = ({ onClose, getAuctionDetail, bidCount }) => {
+  // 파라미터 AuctionDetail
+  const [ step, setStep ] = useState(1);
   const [ email, setEmail ] = useState('');
-  const [name, setName] = useState('');
+  const [ name, setName ] = useState('');
   const [ verificationCode, setVerificationCode ] = useState('');
   const [ createdCode, setCreatedCode ] = useState('');
 
 
   const handleSendCode = () => {
     if (!email) {
-      alert('이름과 이메일을 입력해주세요.');
+      alert('이메일을 입력해주세요.');
       return;
     }
 
@@ -43,10 +44,7 @@ const AuctionBidContaienr = ({ onClose, auctionProduct, bidCount }) => {
       });
   };
 
-  // 경매 입찰 시 auction 컬렉션 배열로 저장
-  // 최근 경매가 페이지네이션 swiper
-  // 남은 시간 타이머
-  // node-schedule //https://velog.io/@skh9797/%EC%8B%A4%EC%8B%9C%EA%B0%84-%EA%B2%BD%EB%A7%A4-%EC%8B%9C%EC%8A%A4%ED%85%9C-%EB%A7%8C%EB%93%A4%EA%B8%B0
+  // node-cron
   //마감기한 지나면 가장 높은 금액이 낙찰된 사용자에게 결제 요청 이메일 전송
   //낙찰된 사용자의 마이페이지에서 결제 대기 페이지 추가
   //결제 토스페이 사용
@@ -91,7 +89,11 @@ const AuctionBidContaienr = ({ onClose, auctionProduct, bidCount }) => {
         )}
 
         { step === 3 && (
-          <CreateBidCount bidCount={bidCount} />
+          <CreateBidCount 
+            bidCount={bidCount} 
+            onClose={onClose} 
+            getAuctionDetail={getAuctionDetail} 
+          />
         )}
 
         <S.BidButton>

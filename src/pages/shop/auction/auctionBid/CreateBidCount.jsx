@@ -4,7 +4,7 @@ import S from '../AuctionDetail/_component/styleBidPopup';
 import { useParams } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
-const CreateBidCount = ({ bidCount }) => {
+const CreateBidCount = ({ bidCount, onClose, getAuctionDetail }) => {
   const { id } = useParams();
   const { currentUser } = useSelector((state) => state.user);
   const jwtToken = localStorage.getItem("jwtToken");
@@ -23,11 +23,20 @@ const CreateBidCount = ({ bidCount }) => {
         price : bidCount
       }),
     })
-      .then((res) => {
+      .then(async (res) => {
+        const data = await res.json();
+
         if(!res.ok){
           console.log("입찰 실패")
+          console.log(data.message)
+          alert(data.message)
+          onClose(true) //모달창 닫기
         } else {
           console.log("입찰 성공")
+          alert(data.message)
+          console.log(data.message)
+          onClose(true) //모달창 닫기
+          getAuctionDetail()
         }
       })
       .catch((error) => {

@@ -17,6 +17,8 @@ import DeliveryPopup from "./DeliveryPopup";
 import { Link, useLocation, useNavigate, useParams } from "react-router-dom";
 import BidPopup from "./BidPopup";
 import { useSelector } from "react-redux"; // Redux에서 currentUser 가져오기
+import Timer from "./Timer";
+import BidHistoryComponent from "./BidHistoryComponent";
 
 const AuctionDetail = () => {
   const { id } = useParams();
@@ -28,7 +30,8 @@ const AuctionDetail = () => {
   const ProductsPerSlide = 3; // 한 번에 3개씩 보여줌
   const navigate = useNavigate();
   const { currentUser } = useSelector((state) => state.user); // Redux에서 currentUser 가져오기
-  const [bidCount, setBidCount] = useState(0);
+  const [bidCount, setBidCount] = useState(0); //사용자가 입력한 입찰가
+  
 
   const openPopup1 = () => setPopupVisible1(true);
   const closePopup1 = () => setPopupVisible1(false);
@@ -57,22 +60,25 @@ const AuctionDetail = () => {
     getAuctionProducts();
   }, []);
 
+  const getAuctionDetail = async () => {
+    try {
+      const response = await fetch(
+        `http://localhost:8000/shop/auction/detail/${id}`
+      );
+      const datas = await response.json();
+      console.log("Auction detail data:", datas); // 콘솔 로그 추가
+      setAuctionProduct(datas);
+    } catch (error) {
+      console.error("AuctionDetailError", error);
+    }
+  };
+
   useEffect(() => {
-    const getAuctionDetail = async () => {
-      try {
-        const response = await fetch(
-          `http://localhost:8000/shop/auction/detail/${id}`
-        );
-        const datas = await response.json();
-        console.log("Auction detail data:", datas); // 콘솔 로그 추가
-        setAuctionProduct(datas);
-      } catch (error) {
-        console.error("AuctionDetailError", error);
-      }
-    };
 
     getAuctionDetail();
   }, [id]);
+
+  // console.log("auctionProduct", auctionProduct)
 
   // 바로 구매 함수 정의
   const purchase = () => {
@@ -121,13 +127,13 @@ const AuctionDetail = () => {
 
   const decreaseBid = () => {
     if (bidCount >= 1) {
-      setBidCount(bidCount - 1);
+      setBidCount(Number(bidCount) - 1);
     }
   };
 
   const increaseBid = () => {
     if (bidCount >= 0) {
-      setBidCount(bidCount + 1);
+      setBidCount(Number(bidCount) + 1);
     }
   };
 
@@ -135,6 +141,7 @@ const AuctionDetail = () => {
     setBidCount(e.target.value);
 
   }
+
 
   return (
     <S.DetailWrapper>
@@ -154,8 +161,8 @@ const AuctionDetail = () => {
                 </S.InfoTitleBox>
                 <S.InfoBidBox>
                   <p className="currentBidTitle">현재 입찰가</p>
-                  <p className="currentBid">￦3000{auctionProduct.bid}원</p>
-                  <p className="time">1일 2시간{auctionProduct.time}</p>
+                  <p className="currentBid">￦{auctionProduct.currentHighestBid}원</p>
+                  <Timer endTime={auctionProduct.endTime} />
                 </S.InfoBidBox>
                 <S.InfoInputBox>
                   <div className="w">￦</div>
@@ -175,43 +182,6 @@ const AuctionDetail = () => {
                   </S.UpDownButton>
                 </S.InfoInputBox>
               </S.InfoWrapper>
-              {/* <S.InfoWrapper>
-                <div>{auctionProduct.auctionName}</div>
-              </S.InfoWrapper>
-              <div>
-                <div>{auctionProduct.category}</div>
-              </div>
-              <S.InfoWrapper>
-                <S.Label>남은 시간</S.Label>
-                <S.AuctionInfo>{auctionProduct.time}</S.AuctionInfo>
-              </S.InfoWrapper>
-              <S.InfoWrapper>
-                <S.Label>경매 번호</S.Label>
-                <S.AuctionInfo>{auctionProduct.auctionId}</S.AuctionInfo>
-              </S.InfoWrapper>
-              <S.InfoWrapper>
-                <S.Label>입찰 기록</S.Label>
-                <S.AuctionInfo>{auctionProduct.count}회</S.AuctionInfo>
-              </S.InfoWrapper>
-              <S.InfoWrapper>
-                <S.Label>입찰 단위</S.Label>
-                <S.AuctionInfo>
-                  {Number(auctionProduct.unit).toLocaleString()}원
-                </S.AuctionInfo>
-              </S.InfoWrapper>
-              <S.InfoWrapper>
-                <S.Label>희망 입찰가</S.Label>
-                <S.AuctionInfo>
-                  {" "}
-                  {Number(auctionProduct.bid).toLocaleString()}원
-                </S.AuctionInfo>
-              </S.InfoWrapper>
-              <S.InfoWrapper>
-                <S.Label>예상 구매가</S.Label>
-                <S.AuctionInfo>
-                  {Number(auctionProduct.finalPrice).toLocaleString()}원
-                </S.AuctionInfo>
-              </S.InfoWrapper> */}
             </S.InfoContainer>
             <S.ButtonContainer>
               <div className="button-wrapper1">
@@ -222,28 +192,6 @@ const AuctionDetail = () => {
                   <p>배송 정보</p>
                 </button>
               </div>
-              {/* <div className="button-wrapper1">
-                <button
-                  className="button delivery"
-                  onClick={() => {
-                    sendInquiry();
-                    navigate("/shop/auction/inquiry", {
-                      state: { auctionName: auctionProduct.auctionName },
-                    });
-                  }}
-                >
-                  <p>문의하기</p>
-                </button>
-                <button
-                  className="button delivery"
-                  onClick={() => {
-                    sendInquiryList();
-                    navigate("/shop/auction/inquiry/list");
-                  }}
-                >
-                  <p>문의 내역</p>
-                </button>
-              </div> */}
             </S.ButtonContainer>
 
             {/* 입찰하기 버튼 모달창 */}
@@ -254,6 +202,7 @@ const AuctionDetail = () => {
                 // handleBid={handleBid}
                 auctionProduct={auctionProduct}
                 bidCount={bidCount}
+                getAuctionDetail={getAuctionDetail}
               ></BidPopup>
             )}
 
@@ -268,12 +217,7 @@ const AuctionDetail = () => {
 
           {/* 최신 입찰가 기록 */}
           <S.BidHistoryBox>
-            <p className="title">최신 입찰</p>
-            <div>
-              <p className="userId">입찰자 회원아이디</p>
-              <p className="date">2025.01.02</p>
-              <p className="price">￦3000원</p>
-            </div>
+            <BidHistoryComponent auctionProduct={auctionProduct} />
           </S.BidHistoryBox>
         </S.InfoRightBox>
       </S.AuctionWrapper>
