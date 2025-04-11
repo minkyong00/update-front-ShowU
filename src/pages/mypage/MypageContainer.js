@@ -89,6 +89,9 @@ const MypageContainer = () => {
         </S.Ul>
         <S.Ul>
             <li>결제 정보</li>
+            <Link to={"/my-pay/padding"}>
+              <li>미결제 내역</li>
+            </Link>
             <Link to={"/my-pay"}>
               <li>결제 내역</li>
             </Link>

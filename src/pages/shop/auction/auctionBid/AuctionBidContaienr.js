@@ -15,8 +15,8 @@ const AuctionBidContaienr = ({ onClose, getAuctionDetail, bidCount }) => {
 
 
   const handleSendCode = () => {
-    if (!email) {
-      alert('이메일을 입력해주세요.');
+    if (!email && !name) {
+      alert('이름과 이메일을 입력해주세요.');
       return;
     }
 
@@ -44,8 +44,6 @@ const AuctionBidContaienr = ({ onClose, getAuctionDetail, bidCount }) => {
       });
   };
 
-  // node-cron
-  //마감기한 지나면 가장 높은 금액이 낙찰된 사용자에게 결제 요청 이메일 전송
   //낙찰된 사용자의 마이페이지에서 결제 대기 페이지 추가
   //결제 토스페이 사용
   return (

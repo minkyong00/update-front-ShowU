@@ -24,7 +24,7 @@ S.Table = styled.table`
 
   S.Tr = styled.tr`
     & th {
-      color: white;
+      color: #000;
       padding: 10px;
       text-align: center;
     }

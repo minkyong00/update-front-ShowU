@@ -129,6 +129,7 @@ import AuctionTossPaymentContainer from "../pages/shop/auction/AuctionPayment/pa
 import AuctionSuccess from "../pages/shop/auction/AuctionPayment/payment/auctionTossPayment/AuctionSuccess";
 import AuctionFailed from "../pages/shop/auction/AuctionPayment/payment/auctionTossPayment/AuctionFailed";
 import TeamApplyContainer from '../pages/showu/team/teamApply/TeamApplyContainer';
+import PaddingContainer from '../pages/mypage/myPay/paddingMyPay/PaddingContainer';
 
 const router = createBrowserRouter([
   {
@@ -337,7 +338,11 @@ const router = createBrowserRouter([
       },
       {
         path: "/my-pay",
-        element: <MyPayContainer />, //결제 정보
+        element: <MyPayContainer />, //결제 완료된 내역 정보
+      },
+      {
+        path: "/my-pay/padding",
+        element: <PaddingContainer />, //미결제 내역 정보
       },
       {
         path: "/my-team",
