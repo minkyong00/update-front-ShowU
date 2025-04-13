@@ -44,7 +44,7 @@ const PaddingComponent = ({ currentList, handleNavigate }) => {
                       <S.Image>
                         <img
                           onClick={() =>
-                            handleNavigate(`/shop/auction/detail/${item.productId._id}`)
+                            handleNavigate(`/shop/auction/detail/${item._id}`)
                           }
                           src={item.image}
                           alt="상품 이미지"
