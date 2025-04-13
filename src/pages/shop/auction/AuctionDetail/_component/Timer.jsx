@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 const Timer = ({ endTime }) => {
   const calculateTimeLeft = () => {
     const now = new Date();
-    const end = new Date(endTime);
+    const end = new Date(endTime); // 이미 한국 시간으로 변환된 endTime을 사용
     const difference = end - now;
 
     if (difference <= 0) return null;
@@ -28,15 +28,13 @@ const Timer = ({ endTime }) => {
   }, [endTime]);
 
   if (!timeLeft) {
-    return <div style={{ fontSize : '20px', color: '#ffd400' }} >경매 종료</div>;
+    return <div style={{ fontSize: "20px", color: "#ffd400" }}>경매 종료</div>;
   }
 
   const { days, hours, minutes, seconds } = timeLeft;
 
   return (
-    <div
-      style={{ fontSize : '20px', color: '#ffd400' }}
-    >
+    <div style={{ fontSize: "20px", color: "#ffd400" }}>
       {days}일 {hours}시간 {minutes}분 {seconds}초
     </div>
   );
