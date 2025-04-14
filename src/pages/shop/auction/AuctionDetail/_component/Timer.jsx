@@ -2,9 +2,13 @@ import { useEffect, useState } from "react";
 
 const Timer = ({ endTime }) => {
   const calculateTimeLeft = () => {
+    // const korTime = 9 * 60 * 60 * 1000; //9시간을 밀리초로 변환
     const now = new Date();
-    const end = new Date(endTime); // 이미 한국 시간으로 변환된 endTime을 사용
+    // console.log("지금", now)
+    const end = new Date(endTime);
+    // console.log("end", end)
     const difference = end - now;
+    // console.log("차이", difference)
 
     if (difference <= 0) return null;
 

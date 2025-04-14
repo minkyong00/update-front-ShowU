@@ -248,7 +248,7 @@ const AuctionMain = () => {
       </S.AuctionWrapper>
 
 
-      {closingProducts.length > shownProducts && (
+      {auctionProducts.length > shownProducts && (
         <S.ButtonWrapper>
           <button onClick={handleShowMore}>
             <FontAwesomeIcon icon={faChevronRight} className="icon2" />
