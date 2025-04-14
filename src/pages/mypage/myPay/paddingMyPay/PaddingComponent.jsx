@@ -1,11 +1,28 @@
 import React from 'react';
 import S from '../PayStyle';
 import { useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
 
 const PaddingComponent = ({ currentList, handleNavigate }) => {
   const { currentUser } = useSelector((state) => state.user)
   // console.log("미결제 경매", currentList)
+  const navigate = useNavigate();
+
+  // 바로 구매
+  const purchase = (e) => {
+    const confirmPurchase = window.confirm("결제 페이지로 이동하시겠습니까?");
+
+    if (confirmPurchase) {
+      navigate("/shop/auction/payment", {
+        state: {
+          currentList,
+          userId: currentUser?._id,
+        },
+      });
+    }
+  };
+
 
   return (
     <div>
@@ -32,7 +49,7 @@ const PaddingComponent = ({ currentList, handleNavigate }) => {
 
               return (
                 <React.Fragment key={item._id || i}>
-                  <S.ContentTr>
+                  <S.ContentTr onClick={purchase}>
                     <th scope="row">{new Date(latestBid.timestamp).toLocaleString()}</th>
                     <td>{item.auctionName}</td>
                     <td>{latestBid.price.toLocaleString()}원</td>

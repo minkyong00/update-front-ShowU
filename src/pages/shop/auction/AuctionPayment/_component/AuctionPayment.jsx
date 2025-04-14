@@ -7,7 +7,7 @@ import Postcode from "./PostCode";
 const AuctionPayment = () => {
   const { state } = useLocation();
   const navigate = useNavigate();
-  const { currentUser } = useSelector((state) => state.user); // Redux에서 currentUser 가져오기
+  const { currentUser } = useSelector((state) => state.user);
   const [userName, setUserName] = useState(currentUser?.name || "");
   const [userEmail, setUserEmail] = useState("");
   const [userEmailDomain, setUserEmailDomain] = useState("");
@@ -22,18 +22,21 @@ const AuctionPayment = () => {
   const [selectedMessage, setSelectedMessage] = useState("");
   const [quantity, setQuantity] = useState(1); 
   const [auctionProduct, setAuctionProduct] = useState(
-    state?.auctionProduct || {}
+    state?.currentList || {}
   );
 
+  // console.log("현재 경매 상품 정보", auctionProduct)
+
   useEffect(() => {
-    console.log("Location state in AuctionPayment:", state); // state 로그 추가
-    if (state && state.auctionProduct) {
-      setAuctionProduct(state.auctionProduct);
+    if (state && state.currentList) {
+      setAuctionProduct(state.currentList);
+      console.log("마이페이지 미결제 내역에서 가져온 state", state)
     } else {
-      console.error("No auctionProduct in state");
+      console.error("state에 currentList가 없습니다.");
     }
   }, [state]);
 
+  // 우편번호 
   const handleAddressSelect = (zonecode, address) => {
     setUserPostcode(zonecode);
     setUserAddress(address);
@@ -41,10 +44,11 @@ const AuctionPayment = () => {
   };
 
   // 배송비 계산
-  let productTotal = auctionProduct ? auctionProduct.finalPrice : 0;
+  const auctionProductToBid = auctionProduct.map((auction) => auction.currentHighestBid)
+
+  let productTotal = auctionProduct ? auctionProductToBid : 0;
   const deliveryFee = productTotal >= 70000 ? 0 : 3000; // 배송비 조건 (7만원 이상 무배)
-  const discountAmount = 0;
-  const totalAmount = productTotal + deliveryFee - discountAmount;
+  const totalAmount = Number(productTotal) + Number(deliveryFee);
 
   const validateField = (field, value) => {
     return value.trim() === "";
@@ -57,6 +61,7 @@ const AuctionPayment = () => {
     }));
   };
 
+  //이전으로 버튼 핸들러
   const handleBackButton = () => {
     const confirmLeave = window.confirm(
       "작성하신 정보가 모두 사라집니다. 취소하시겠습니까?"
@@ -66,28 +71,35 @@ const AuctionPayment = () => {
     }
   };
 
+
+  // 결제 요청 핸들러
   const handlePayment = async () => {
     const token = localStorage.getItem("jwtToken");
 
     const emailInput = `${userEmail}@${userEmailDomain}`;
+    const productId = auctionProduct.map((el) => el._id)
+    const productBidPrice = auctionProduct.map((el) => el.currentHighestBid)
+    const productImg = auctionProduct.map((el) => el.image)
+    const productName = auctionProduct.map((el) => el.auctionName)
 
     const paymentData = {
-      productName: auctionProduct._id,
-      finalPrice: auctionProduct.finalPrice,
-      quantity,
-      image: auctionProduct.image,
-      name: userName,
-      address: `${userAddress} ${userDetailAddress}`,
-      totalAmount,
-      deliveryFee,
-      discount: 0,
-      userEmail: emailInput,
-      userPhone: `${userPhone1}-${userPhone2}-${userPhone3}`,
-      deliveryMessage: selectedMessage,
-      userId: currentUser?._id, // Redux에서 가져온 userId 추가
-    };
-
+        productName: productId,
+        finalPrice: productBidPrice,
+        quantity,
+        image: productImg,
+        name: userName,
+        address: `${userAddress} ${userDetailAddress}`,
+        totalAmount,
+        deliveryFee,
+        // discount: 0,
+        userEmail: emailInput,
+        userPhone: `${userPhone1}-${userPhone2}-${userPhone3}`,
+        deliveryMessage: selectedMessage,
+        userId: currentUser?._id,
+      };
+    
     console.log("Payment Data:", paymentData);
+
 
     try {
       const response = await fetch(
@@ -103,36 +115,31 @@ const AuctionPayment = () => {
       );
 
       if (!response.ok) {
-        const errorData = await response.json();
+        const errorData = await response.text();
         throw new Error(errorData.message || "결제 생성 중 오류 발생");
       }
 
-      alert("결제가 완료되었습니다!");
+      // 결제 진행 여부 확인
+    const isConfirmed = window.confirm("결제를 진행하시겠습니까?");
+    if (!isConfirmed) return; 
 
       navigate("/shop/auction/payment/toss", {
         state: {
           userName,
           userEmail: emailInput,
           userPhone: `${userPhone1}-${userPhone2}-${userPhone3}`,
-          auctionProduct, // 수정: product 대신 auctionProduct
+          auctionProduct, 
           quantity,
-          name: auctionProduct.auctionName,
+          name: productName,
           totalAmount,
           address: `${userAddress} ${userDetailAddress}`,
           deliveryMessage: selectedMessage,
-          userId: currentUser?._id, // Redux에서 가져온 userId 추가
+          userId: currentUser?._id, 
         },
       });
     } catch (error) {
       console.error("결제 생성 중 오류 발생:", error);
       alert(error.message);
-    }
-  };
-
-  const deleteProduct = () => {
-    const confirmDelete = window.confirm("해당 상품을 삭제하시겠습니까?");
-    if (confirmDelete) {
-      navigate(`/shop/auction`); // 이전 페이지로 이동
     }
   };
 
@@ -158,17 +165,19 @@ const AuctionPayment = () => {
           </S.Right>
         </S.Head>
 
-        <S.PaymentList>
-          <S.PaymentItem>
-            <S.ProductImage
-              src={auctionProduct.image || "/images/shop/md/md1.jpg"}
-              alt="주문 상품"
-            />
-            <S.Left>{auctionProduct.auctionName}</S.Left>
-            <S.Center>1</S.Center>
-            <S.Right>{auctionProduct.finalPrice.toLocaleString()} 원</S.Right>
-          </S.PaymentItem>
-        </S.PaymentList>
+        { auctionProduct && auctionProduct.map((auction, i) => (
+          <S.PaymentList key={i}>
+            <S.PaymentItem>
+              <S.ProductImage
+                src={auction.image || "/images/shop/md/md1.jpg"}
+                alt="주문 상품"
+              />
+              <S.Left>{auction.auctionName}</S.Left>
+              <S.Center>1</S.Center>
+              <S.Right>{auction.currentHighestBid} 원</S.Right>
+            </S.PaymentItem>
+          </S.PaymentList>
+        ))}
 
         <S.TotalAmount>총 상품 금액 (1개)</S.TotalAmount>
       </S.PaymentProduct>
@@ -325,30 +334,32 @@ const AuctionPayment = () => {
         </S.OrderInfo>
       </S.InfoWrapper>
 
-      <S.PayWrapper>
-        <S.Info>결제 금액</S.Info>
+      { auctionProduct && auctionProduct.map((auction, i) => (
+        <S.PayWrapper key={i}>
+          <S.Info>결제 금액</S.Info>
 
-        <S.OrderInfoWrapper>
-          <S.OrderInfo>
-            <p>상품 금액</p>
-          </S.OrderInfo>
-          <S.Price>{productTotal.toLocaleString()} 원</S.Price>
-        </S.OrderInfoWrapper>
+          <S.OrderInfoWrapper>
+            <S.OrderInfo>
+              <p>상품 금액</p>
+            </S.OrderInfo>
+            <S.Price>{auction.currentHighestBid} 원</S.Price>
+          </S.OrderInfoWrapper>
 
-        <S.OrderInfoWrapper>
-          <S.OrderInfo>
-            <p>배송비</p>
-          </S.OrderInfo>
-          <S.Price>{deliveryFee.toLocaleString()} 원</S.Price>
-        </S.OrderInfoWrapper>
+          <S.OrderInfoWrapper>
+            <S.OrderInfo>
+              <p>배송비</p>
+            </S.OrderInfo>
+            <S.Price>{deliveryFee.toLocaleString()} 원</S.Price>
+          </S.OrderInfoWrapper>
 
-        <S.OrderInfoWrapper>
+        {/* <S.OrderInfoWrapper>
           <S.OrderInfo>
             <p>할인 금액</p>
           </S.OrderInfo>
           <S.Price>{discountAmount.toLocaleString()} 원</S.Price>
-        </S.OrderInfoWrapper>
-      </S.PayWrapper>
+        </S.OrderInfoWrapper> */}
+        </S.PayWrapper>
+      ))}
 
       <S.OrderInfoWrapper>
         <S.TotalWrapper>

@@ -17,7 +17,7 @@ const PaymentButton = ({
   userId,
 }) => {
   const [isTossPayment, setIsTossPayment] = useState(false);
-  const { currentUser } = useSelector((state) => state.user); // Redux에서 currentUser 가져오기
+  const { currentUser } = useSelector((state) => state.user); 
 
   const toggleTossPayment = () => {
     setIsTossPayment(!isTossPayment);
@@ -33,7 +33,7 @@ const PaymentButton = ({
     userPhone,
     address,
     deliveryMessage,
-    userId: userId || currentUser?._id, // Redux 상태에서 가져온 userId
+    userId: userId || currentUser?._id, 
   });
 
   return (

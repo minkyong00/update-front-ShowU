@@ -21,9 +21,12 @@ const AuctionPaymentDetail = () => {
 
   const { currentUser } = useSelector((state) => state.user);
   const userId = currentUser ? currentUser._id : null;
+  console.log("auction", auctionProduct)
 
-  const name = auctionProduct.auctionName;
-  const productId = auctionProduct._id;
+  const name = auctionProduct.map((el) => el.auctionName);
+  const stringToName = Array.isArray(name) ? name[0] : name
+  const productId = auctionProduct.map((el) => el._id);
+  const stringToProductId = Array.isArray(productId) ? productId[0] : productId
 
   console.log("AuctionPaymentDetail 데이터:", {
     userName,
@@ -31,18 +34,18 @@ const AuctionPaymentDetail = () => {
     userPhone,
     auctionProduct,
     quantity,
-    name,
+    stringToName,
     totalAmount,
     address,
     deliveryMessage,
     userId,
-    productId,
+    stringToProductId,
   });
 
   return (
     <S.Container>
       <S.Details>
-        <p>상품 이름: {name}</p>
+        <p>상품 이름: {stringToName}</p>
         {totalAmount !== undefined && (
           <p>가격: {totalAmount.toLocaleString()} 원</p>
         )}
@@ -55,8 +58,8 @@ const AuctionPaymentDetail = () => {
       </S.Details>
       <PaymentButton
         productPrice={totalAmount}
-        orderName={name}
-        productId={productId}
+        orderName={stringToName}
+        productId={stringToProductId}
         quantity={quantity}
         userName={userName}
         userEmail={userEmail}
