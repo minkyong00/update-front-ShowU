@@ -34,11 +34,12 @@ const S = {};
   `
 
   S.PopupContent = styled.div`
+    padding: 20px;
 
     & p {
       font-size: 18px;
       text-align: center;
-      margin: 30px;
+      /* margin: 20px; */
     }
 
     & span {
@@ -57,13 +58,15 @@ const S = {};
     display: flex;
     align-items: center;
     flex-direction: column;
-    margin: 30px;
+    margin: 10px 10px 20px 10px;
     gap: 10px;
 
     & input {
-      width: 300px;
-      height: 30px;
-      border: 1px solid rgba(0, 0, 0, 0.5);
+      width: 500px;
+      height: 50px;
+      padding: 10px;
+      border: 1px solid rgba(0, 0, 0, 0.3);
+      border-radius: 30px;
     }
   `
 
@@ -74,7 +77,9 @@ const S = {};
     border-radius: 5px;
     display: flex;
     align-items: center; 
-    justify-content: center; 
+    justify-content: center;
+    border-radius: 30px;
+    margin-bottom: 20px;
 
     & p {
       font-size: 16px;
@@ -99,22 +104,46 @@ const S = {};
     display: flex;
     align-items: center;
     justify-content: center;
-    margin: 30px auto;
+    margin: 10px auto;
     gap: 20px;
   `
 
   S.BackButton = styled.button`
-    ${buttonStyles}
-    width: 90px;
+    /* ${buttonStyles} */
+    width: 300px;
+    height: 50px;
     background-color: #797979;
     color: #fff;
+    border: none;
+    border-radius: 30px;
+    font-size: 16px;
   `
 
   S.NextButton = styled.button`
-    ${buttonStyles}
-    width: 160px;
+    /* ${buttonStyles} */
+    width: 300px;
+    height: 50px;
     background-color: #ffd400;
     color: #000;
+    border: none;
+    border-radius: 30px;
+    font-size: 16px;
+  `
+
+  S.EmailSendButton = styled.button`
+    width: 300px;
+    height: 50px;
+    border: none;
+    border-radius: 30px;
+    background-color: #ffd400;
+    /* margin-top: 10px; */
+    font-size: 16px;
+  `
+
+  S.LastContainer = styled.div`
+    display: flex;
+    flex-direction: column;
+    margin: 20px;
   `
 
 export default S;

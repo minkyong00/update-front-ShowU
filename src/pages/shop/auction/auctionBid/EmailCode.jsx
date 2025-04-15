@@ -29,7 +29,6 @@ const EmailCode = ({ verificationCode, setVerificationCode, createdCode, setStep
           value={verificationCode}
           onChange={(e) => setVerificationCode(e.target.value)}
         />
-        <button onClick={handleVerifyCode}>인증번호 확인</button>
       </S.PopupWrapper>
     </>
   );

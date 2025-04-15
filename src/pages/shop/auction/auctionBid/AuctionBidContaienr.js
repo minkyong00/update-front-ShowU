@@ -3,6 +3,8 @@ import S from '../AuctionDetail/_component/styleBidPopup';
 import emailjs from 'emailjs-com';
 import EmailCode from './EmailCode';
 import CreateBidCount from './CreateBidCount';
+import { useParams } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 
 const AuctionBidContaienr = ({ onClose, getAuctionDetail, bidCount }) => {
@@ -12,6 +14,9 @@ const AuctionBidContaienr = ({ onClose, getAuctionDetail, bidCount }) => {
   const [ name, setName ] = useState('');
   const [ verificationCode, setVerificationCode ] = useState('');
   const [ createdCode, setCreatedCode ] = useState('');
+  const { id } = useParams();
+  const { currentUser } = useSelector((state) => state.user);
+  const jwtToken = localStorage.getItem("jwtToken");
 
 
   const handleSendCode = () => {
@@ -44,8 +49,50 @@ const AuctionBidContaienr = ({ onClose, getAuctionDetail, bidCount }) => {
       });
   };
 
-  //낙찰된 사용자의 마이페이지에서 결제 대기 페이지 추가
-  //결제 토스페이 사용
+  // 인증번호 확인
+  const handleVerifyCode = () => {
+    if (verificationCode === createdCode) {
+      alert('인증이 성공하였습니다.');
+      setStep(3); 
+    } else {
+      alert('인증번호가 일치하지 않습니다.');
+    }
+  };
+
+  // 최종 입찰하기 핸들러
+  const handleUpdateBid = () => {
+    fetch(`http://localhost:8000/shop/auction/bid/${id}`, {
+      method : "PUT",
+      headers : {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${jwtToken}`
+      },
+      body : JSON.stringify({ 
+        userId : currentUser._id,
+        price : bidCount
+      }),
+    })
+      .then(async (res) => {
+        const data = await res.json();
+
+        if(!res.ok){
+          console.log("입찰 실패")
+          console.log(data.message)
+          alert(data.message)
+          onClose(true) //모달창 닫기
+        } else {
+          console.log("입찰 성공")
+          alert(data.message)
+          console.log(data.message)
+          onClose(true) //모달창 닫기
+          getAuctionDetail()
+        }
+      })
+      .catch((error) => {
+        console.error("입찰 중 실패", error)
+      })
+  }
+
   return (
     <S.PopupOverlay onClick={onClose}>
       <S.PopupContainer onClick={(e) => e.stopPropagation()}>
@@ -72,7 +119,6 @@ const AuctionBidContaienr = ({ onClose, getAuctionDetail, bidCount }) => {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
               />
-              <button onClick={handleSendCode}>이메일 전송</button>
             </S.PopupWrapper>
           </>
         )}
@@ -96,6 +142,15 @@ const AuctionBidContaienr = ({ onClose, getAuctionDetail, bidCount }) => {
 
         <S.BidButton>
           <S.BackButton onClick={onClose}>취소</S.BackButton>
+          { step === 1 && (
+            <S.EmailSendButton onClick={handleSendCode}>이메일 전송</S.EmailSendButton>
+          )}
+          { step === 2 && (
+            <S.EmailSendButton onClick={handleVerifyCode}>인증번호 확인</S.EmailSendButton>
+          )}
+          { step === 3 && (
+            <S.EmailSendButton onClick={handleUpdateBid}>최종 입찰하기</S.EmailSendButton>
+          )}
           {/* <S.NextButton>이메일 인증하기</S.NextButton> */}
         </S.BidButton>
 
