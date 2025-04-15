@@ -17,7 +17,7 @@ const MyTeam = () => {
 
   // 쿼리 파라미터에서 page, stateValue 값 추출
   const queryParams = new URLSearchParams(location.search);
-  const stateValueFromUrl = queryParams.get("stateValue") || "매칭 완료";  // 초기값 "매칭 완료"
+  const stateValueFromUrl = queryParams.get("stateValue") || "개설 완료";  // 초기값 "개설 완료"
 
   // 매칭 상태, 팀 매칭 목록
   const [stateValue, setStateValue] = useState(stateValueFromUrl);
@@ -27,7 +27,7 @@ const MyTeam = () => {
   // 페이지 네이션
   const { page, currentList, setPage, totalPost } = usePagination({
     pageRange: PAGINATION.pageRange,
-    list: stateValue === "매칭 완료" ? completedTeams : waitingTeams,
+    list: stateValue === "개설 완료" ? completedTeams : waitingTeams,
   });
 
   // 페이지가 변경될 때마다 URL의 쿼리 파라미터를 업데이트
