@@ -31,6 +31,7 @@ const AuctionDetail = () => {
   const navigate = useNavigate();
   const { currentUser } = useSelector((state) => state.user); // Redux에서 currentUser 가져오기
   const [bidCount, setBidCount] = useState(0); //사용자가 입력한 입찰가
+
   
 
   const openPopup1 = () => setPopupVisible1(true);
@@ -164,34 +165,41 @@ const AuctionDetail = () => {
                   <p className="currentBid">￦{auctionProduct.currentHighestBid}원</p>
                   <Timer endTime={auctionProduct.endTime} />
                 </S.InfoBidBox>
-                <S.InfoInputBox>
-                  <div className="w">￦</div>
-                  <input
-                    type="text"
-                    value={bidCount}
-                    onChange={onChangeBid}
-                    placeholder="입찰하기"
-                  ></input>
-                  <S.UpDownButton>
-                    <div onClick={increaseBid}>
-                      <FontAwesomeIcon icon={faAngleUp} />
-                    </div>
-                    <div onClick={decreaseBid}>
-                      <FontAwesomeIcon icon={faAngleDown} />
-                    </div>
-                  </S.UpDownButton>
-                </S.InfoInputBox>
+
+                {/* 경매가 마감인 경우 입찰 input창 숨기기 */}
+                { !auctionProduct.isClosed && (
+                  <S.InfoInputBox>
+                    <div className="w">￦</div>
+                    <input
+                      type="text"
+                      value={bidCount}
+                      onChange={onChangeBid}
+                      placeholder="입찰하기"
+                    ></input>
+                    <S.UpDownButton>
+                      <div onClick={increaseBid}>
+                        <FontAwesomeIcon icon={faAngleUp} />
+                      </div>
+                      <div onClick={decreaseBid}>
+                        <FontAwesomeIcon icon={faAngleDown} />
+                      </div>
+                    </S.UpDownButton>
+                  </S.InfoInputBox>
+                 )}
+
               </S.InfoWrapper>
             </S.InfoContainer>
             <S.ButtonContainer>
-              <div className="button-wrapper1">
-                <button className="button bid" onClick={openPopup1}>
-                  <p>입찰하기</p>
-                </button>
-                <button className="button delivery" onClick={openPopup2}>
-                  <p>배송 정보</p>
-                </button>
-              </div>
+                { !auctionProduct.isClosed && (
+                  <div className="button-wrapper1">
+                    <button className="button bid" onClick={openPopup1}>
+                      <p>입찰하기</p>
+                    </button>
+                    <button className="button delivery" onClick={openPopup2}>
+                      <p>배송 정보</p>
+                    </button>
+                  </div>
+               )}
             </S.ButtonContainer>
 
             {/* 입찰하기 버튼 모달창 */}
@@ -216,9 +224,10 @@ const AuctionDetail = () => {
           </S.Auction>
 
           {/* 최신 입찰가 기록 */}
-          <S.BidHistoryBox>
-            <BidHistoryComponent auctionProduct={auctionProduct} />
-          </S.BidHistoryBox>
+            <S.BidHistoryBox>
+              <BidHistoryComponent auctionProduct={auctionProduct} />
+            </S.BidHistoryBox>
+
         </S.InfoRightBox>
       </S.AuctionWrapper>
 
