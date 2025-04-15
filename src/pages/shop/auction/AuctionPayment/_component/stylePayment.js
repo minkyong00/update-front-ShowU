@@ -129,7 +129,7 @@ const flexStyle = css`
       width: 1055px;
       height: 35px;
       background-color: #fff;
-      border: 0.5px solid #fff;
+      border: 0.5px solid rgba(0, 0, 0, 0.3);
       border-radius: 5px;
       padding-left: 10px;
       font-size: 15px;
@@ -138,6 +138,10 @@ const flexStyle = css`
   `
 
   S.InputEmail = styled.div`
+
+    & p {
+      margin: 0;
+    }
     // ${flexStyle}
     // justify-content: space-between;
     // width: 1165px;
@@ -146,7 +150,7 @@ const flexStyle = css`
       width: 500px;
       height: 35px;
       background-color: #fff;
-      border: 0.5px solid #fff;
+      border: 0.5px solid rgba(0, 0, 0, 0.3);
       border-radius: 5px;
       padding-left: 10px;
       font-size: 15px;
@@ -157,7 +161,7 @@ const flexStyle = css`
       width: 500px;
       height: 35px;
       background-color: #fff;
-      border: 0.5px solid #fff;
+      border: 0.5px solid rgba(0, 0, 0, 0.3);
       border-radius: 5px;
       padding-left: 10px;
       font-size: 15px;
@@ -167,7 +171,7 @@ const flexStyle = css`
     & span {
       font-size: 18px;
       margin: 0 10px;
-      color: #fff;
+      color: #000;
     }
   `;
 
@@ -188,7 +192,7 @@ const flexStyle = css`
       height: 35px; 
       text-align: center; 
       background-color: #fff;
-      border: 0.5px solid #fff;
+      border: 0.5px solid rgba(0, 0, 0, 0.3);
       border-radius: 5px; 
       ${inputHover}
     }
@@ -196,7 +200,7 @@ const flexStyle = css`
     & span {
       font-size: 18px;
       margin: 0 10px;
-      color: #fff; 
+      color: #000; 
     }
   `
 
@@ -211,7 +215,7 @@ const flexStyle = css`
       width: 1055px;
       height: 35px;
       background-color: #fff;
-      border: 0.5px solid #fff;
+      border: 0.5px solid rgba(0, 0, 0, 0.3);
       border-radius: 5px;
       padding-left: 10px;
       font-size: 15px;
@@ -224,7 +228,7 @@ const flexStyle = css`
      width: 1055px;
      height: 35px;
      background-color: #fff;
-     border: 0.5px solid #fff;
+     border: 0.5px solid rgba(0, 0, 0, 0.3);
      border-radius: 5px;
      padding-left: 10px;
      font-size: 15px;
@@ -461,7 +465,7 @@ S.CloseButton = styled.button`
 
 S.ReserveButton = styled.button`
   border: none;
-  border-radius: 5px;
+  border-radius: 30px;
   background-color: #ffd400;
   color: black;
   width: 250px;

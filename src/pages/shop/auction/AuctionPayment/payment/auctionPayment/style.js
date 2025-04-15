@@ -2,6 +2,10 @@ import styled from "styled-components";
 
 const S = {};
 
+S.Box = styled.div`
+  height: 60vh;
+`
+
 S.Container = styled.div`
   display: flex;
   flex-direction: column;
@@ -10,8 +14,9 @@ S.Container = styled.div`
   background-color: #f9f9f9;
   border: 1px solid #ddd;
   border-radius: 8px;
-  max-width: 600px;
-  margin: 0 auto;
+  width: 600px;
+  /* max-width: 600px; */
+  margin: 30px auto;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 `;
 

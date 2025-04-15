@@ -43,32 +43,34 @@ const AuctionPaymentDetail = () => {
   });
 
   return (
-    <S.Container>
-      <S.Details>
-        <p>상품 이름: {stringToName}</p>
-        {totalAmount !== undefined && (
-          <p>가격: {totalAmount.toLocaleString()} 원</p>
-        )}
-        <p>수량: {quantity}</p>
-        <p>사용자 이름: {userName}</p>
-        <p>이메일: {userEmail}</p>
-        <p>휴대전화: {userPhone}</p>
-        <p>주소: {address}</p>
-        <p>배송 메시지: {deliveryMessage}</p> {/* 배송 메시지 표시 */}
-      </S.Details>
-      <PaymentButton
-        productPrice={totalAmount}
-        orderName={stringToName}
-        productId={stringToProductId}
-        quantity={quantity}
-        userName={userName}
-        userEmail={userEmail}
-        userPhone={userPhone}
-        address={address}
-        deliveryMessage={deliveryMessage}
-        userId={userId}
-      />
-    </S.Container>
+    <S.Box>
+      <S.Container>
+        <S.Details>
+          <p>상품 이름: {stringToName}</p>
+          {totalAmount !== undefined && (
+            <p>가격: {totalAmount.toLocaleString()} 원</p>
+          )}
+          <p>수량: {quantity}</p>
+          <p>사용자 이름: {userName}</p>
+          <p>이메일: {userEmail}</p>
+          <p>휴대전화: {userPhone}</p>
+          <p>주소: {address}</p>
+          <p>배송 메시지: {deliveryMessage}</p> {/* 배송 메시지 표시 */}
+        </S.Details>
+        <PaymentButton
+          productPrice={totalAmount}
+          orderName={stringToName}
+          productId={stringToProductId}
+          quantity={quantity}
+          userName={userName}
+          userEmail={userEmail}
+          userPhone={userPhone}
+          address={address}
+          deliveryMessage={deliveryMessage}
+          userId={userId}
+        />
+      </S.Container>
+    </S.Box>
   );
 };
 

@@ -1,5 +1,8 @@
 import { useEffect, useState, useCallback } from "react";
 import { useSearchParams, useNavigate } from "react-router-dom";
+import S from "./styleSuccess";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCircleCheck } from "@fortawesome/free-regular-svg-icons";
 
 const AuctionSuccess = () => {
   const [searchParams] = useSearchParams();
@@ -67,43 +70,57 @@ const AuctionSuccess = () => {
   }, [confirmPayment, paymentKey, orderId, amount]);
 
   return (
-    <div>
+    <S.Outlet>
       {isConfirmed ? (
-        <div>
-          <h2>결제를 완료했어요</h2>
-          <br />
-          <div>
-            <span>상품 이름: {orderName}</span>
-            <br />
-            <br />
-            <span>결제 금액: {amount}</span>
-            <br />
-            <br />
-            <span>주문번호: {orderId}</span>
-            <br />
-            <br />
-            <span>paymentKey: {paymentKey}</span>
-            <br />
-            <br />
-            <span>수량: {quantity}</span>
-            <br />
-            <br />
-            <span>사용자 이름: {userName}</span>
-            <br />
-            <br />
-            <span>이메일: {userEmail}</span>
-            <br />
-            <br />
-            <span>휴대전화: {userPhone}</span>
-            <br />
-            <br />
-            <span>주소: {address}</span>
-            <br />
-            <br />
- <span>배송 메시지: {deliveryMessage}</span>
-          </div>
-          <br />
-          <a href="https://developers.tosspayments.com/sandbox">
+        <S.Container>
+          <S.PayDoneText>
+            <FontAwesomeIcon icon={faCircleCheck} className="check"/>
+            <p>결제를 완료했습니다</p>
+          </S.PayDoneText>
+          <S.Wrapper>
+            <S.ContentBox>
+              <p>상품 이름</p>
+              <p>{orderName}</p>
+            </S.ContentBox>
+            <S.ContentBox>
+              <p>결제 금액</p>
+              <p>{amount}</p>
+            </S.ContentBox>
+            <S.ContentBox>
+              <p>주문번호</p>
+              <p>{orderId}</p>
+            </S.ContentBox>
+            {/* <div>
+              paymentKey
+              {paymentKey}
+            </div> */}
+            <S.ContentBox>
+              <p>수량</p>
+              <p>{quantity}</p>
+            </S.ContentBox>
+            <S.ContentBox>
+              <p>성함</p>
+              <p>{userName}</p>
+            </S.ContentBox>
+            <S.ContentBox>
+              <p>이메일</p>
+              <p>{userEmail}</p>
+            </S.ContentBox>
+            <S.ContentBox>
+              <p>휴대전화</p>
+              <p>{userPhone}</p>
+            </S.ContentBox>
+            <S.ContentBox>
+              <p>주소</p>
+              <p>{address}</p>
+            </S.ContentBox>
+            <S.ContentBox>
+              <p>배송 메시지</p>
+              <p>{deliveryMessage}</p>
+            </S.ContentBox>
+          <S.ToMyPayButton onClick={() => navigate('/my-pay')}>마이페이 결제내역 바로가기</S.ToMyPayButton>
+          </S.Wrapper>
+          {/* <a href="https://developers.tosspayments.com/sandbox">
             다시 테스트하기
           </a>
           <br />
@@ -114,15 +131,15 @@ const AuctionSuccess = () => {
             rel="noopener noreferrer"
           >
             결제 연동 문서가기
-          </a>
-        </div>
+          </a> */}
+        </S.Container>
       ) : (
         <div>
           <h2>결제 요청까지 성공했어요. 결제 승인하고 완료해보세요.</h2>
           <button onClick={confirmPayment}>결제 승인하기</button>
         </div>
       )}
-    </div>
+    </S.Outlet>
   );
 };
 
