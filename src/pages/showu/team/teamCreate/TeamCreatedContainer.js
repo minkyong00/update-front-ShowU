@@ -5,6 +5,7 @@ import { faChevronDown } from '@fortawesome/free-solid-svg-icons';
 import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { useForm } from 'react-hook-form';
+import Dropdown from './_component/Dropdown';
 
 const TeamCreatedContainer = () => {
   const navigate = useNavigate();
@@ -147,7 +148,7 @@ const TeamCreatedContainer = () => {
               <S.Label htmlFor='activityPeriodStart'>
                 <p>팀 활동 시작일</p>
                 <input 
-                  type='date'
+                  type='datetime-local'
                   name='activityPeriodStart'
                   id='activityPeriodStart'
                   {...register("activityPeriodStart", {required : true})}
@@ -159,7 +160,7 @@ const TeamCreatedContainer = () => {
               <S.Label htmlFor='deadLine'>
                 <p>팀 공고 마감일</p>
                 <input 
-                  type='date'
+                  type='datetime-local'
                   name='deadLine'  
                   id='deadLine'
                   {...register("deadLine", {required : true})}
@@ -192,54 +193,18 @@ const TeamCreatedContainer = () => {
               </S.LabelTextAarea>
             </div>
 
-            <div>
-              <S.Label htmlFor='area'>
-                <p>지역</p>
-                <input 
-                  type='text'
-                  name='area'
-                  id='area'
-                  placeholder='ex)서울시, 중랑구'
-                  {...register("area", {required : true})}
-                />
-              </S.Label>
-            </div>
-
-            <div>
-              <S.Label htmlFor='category'>
-                <p>분야</p>
-                <input 
-                  type='text'
-                  name='category'  
-                  id='category'
-                  placeholder='연기, 음악, 마술 중 선택하여 작성해주세요'
-                  {...register("category", {required : true})}
-                />
-              </S.Label>
-            </div>
+            {/* 지역, 분야, 경력 드롭다운 */}
+            <Dropdown setValue={setValue} />
 
             <div>
               <S.Label htmlFor='recruit'>
                 <p>모집 인원</p>
                 <input 
-                  type='text'
+                  type='number'
                   name='recruit'
                   id='recruit'
-                  placeholder='모집 인원수를 입력해주세요 ex)1'
+                  placeholder='모집 인원수를 입력해주세요.'
                   {...register("recruit", {required : true})}
-                />
-              </S.Label>
-            </div>
-
-            <div>
-              <S.Label htmlFor='careerHistory'>
-                <p>경력</p>
-                <input 
-                  type='text'
-                  name='careerHistory'  
-                  id='careerHistory'
-                  placeholder='경력무관, 신입, 경력 중 선택하여 작성해주세요'
-                  {...register("careerHistory", {required : true})}
                 />
               </S.Label>
             </div>
@@ -276,19 +241,21 @@ const TeamCreatedContainer = () => {
               </S.Label>
             </S.Portfolio>
 
-            <S.Button
-              className='submit'
-              disabled={isSubmitting}
-            >
-              작성 완료
-            </S.Button>
+            <S.ButtonBox>
+              <S.Button
+                onClick={() => navigate(-1)}
+                className='back'
+              >이전으로</S.Button>
+              <S.Button
+                className='submit'
+                disabled={isSubmitting}
+              >
+                작성 완료
+              </S.Button>
+            </S.ButtonBox>
 
           </S.Form>
 
-          <S.Button 
-            onClick={() => navigate(-1)}
-            className='back'
-          >이전으로</S.Button>
 
         </S.Fieldset>
       </S.FormContainer>

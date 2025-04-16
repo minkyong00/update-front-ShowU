@@ -139,7 +139,12 @@ const S = {};
       margin-left: 32px;
     }
 
-    & input#area {
+    & select#area {
+      background-color: #fff;
+      border: none;
+      width: 670px;
+      height: 100%;
+      font-size: 17px;
       margin-left: 60px;
     }
 
@@ -207,16 +212,22 @@ const S = {};
       background-color: #797979;
       color: white;
 
-      position: absolute;
-      bottom: 68px;
-      left: 680px;
+      /* position: absolute; */
+      /* bottom: 68px;
+      left: 680px; */
     }
 
     &.submit {
-      position: absolute;
-      bottom: 68px;
-      left: 850px;
+      /* position: absolute; */
+      /* bottom: 68px;
+      left: 850px; */
     }
+  `
+
+  S.ButtonBox = styled.div`
+    display: flex;
+    justify-content: center;
+    gap: 30px;
   `
 
 export default S;
