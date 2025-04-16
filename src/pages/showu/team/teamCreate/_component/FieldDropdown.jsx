@@ -1,19 +1,26 @@
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { faAngleDown } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import useDropdown from '../../../../../hooks/useDropdown';
 import S from '../../../../mypage/myGrade/GradeStyle';
 import Field from './Field';
 
-const FieldDropdown = ({ setValue }) => {
+const FieldDropdown = ({ setValue, teamDatas }) => {
   const dropdownRef = useRef(null);
   const [fieldValue, setFieldValue] = useState("분야를 선택하세요"); 
   const [isOpen, setIsOpen] = useDropdown(dropdownRef, false);
   const fieldList = ["연기", "마술", "음악"];
 
+  useEffect(() => {
+    if(teamDatas?.category){
+      setFieldValue(teamDatas.category);
+      setValue("category", teamDatas.category)
+    }
+  }, [teamDatas, setValue])
+
   const handleDropdownSelect = (value) => {
     setFieldValue(value);
-    setValue("field", value);
+    setValue("category", value);
     setIsOpen(false);
   };
 

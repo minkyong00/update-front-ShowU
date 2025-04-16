@@ -5,6 +5,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { useForm } from 'react-hook-form';
 import S from '../../../showu/team/teamCreate/style';
+import Dropdown from '../../../showu/team/teamCreate/_component/Dropdown';
 
 const TeamUpdate = ({ handleFileChange, handleFileChange2, fileName, fileName2, setFilesPath, setFilesPath2 }) => {
   const navigate = useNavigate();
@@ -176,7 +177,7 @@ const TeamUpdate = ({ handleFileChange, handleFileChange2, fileName, fileName2, 
               <S.Label htmlFor='activityPeriodStart'>
                 <p>팀 활동 시작일</p>
                 <input 
-                  type='date'
+                  type='datetime-local'
                   name='activityPeriodStart'
                   id='activityPeriodStart'
                   {...register("activityPeriodStart", {required : true})}
@@ -188,7 +189,7 @@ const TeamUpdate = ({ handleFileChange, handleFileChange2, fileName, fileName2, 
               <S.Label htmlFor='deadLine'>
                 <p>팀 공고 마감일</p>
                 <input 
-                  type='date'
+                  type='datetime-local'
                   name='deadLine'  
                   id='deadLine'
                   {...register("deadLine", {required : true})}
@@ -221,31 +222,7 @@ const TeamUpdate = ({ handleFileChange, handleFileChange2, fileName, fileName2, 
               </S.LabelTextAarea>
             </div>
 
-            <div>
-              <S.Label htmlFor='area'>
-                <p>지역</p>
-                <input 
-                  type='text'
-                  name='area'
-                  id='area'
-                  placeholder={ teamDatas.area || 'ex)서울시, 중랑구'}
-                  {...register("area", {required : true})}
-                />
-              </S.Label>
-            </div>
-
-            <div>
-              <S.Label htmlFor='category'>
-                <p>분야</p>
-                <input 
-                  type='text'
-                  name='category'  
-                  id='category'
-                  placeholder={ teamDatas.category || '연기, 음악, 마술 중 선택하여 작성해주세요'}
-                  {...register("category", {required : true})}
-                />
-              </S.Label>
-            </div>
+            <Dropdown setValue={setValue} teamDatas={teamDatas} />
 
             <div>
               <S.Label htmlFor='recruit'>
@@ -256,19 +233,6 @@ const TeamUpdate = ({ handleFileChange, handleFileChange2, fileName, fileName2, 
                   id='recruit'
                   placeholder={ teamDatas.recruit || '모집 인원수를 입력해주세요 ex) 1'}
                   {...register("recruit", {required : true})}
-                />
-              </S.Label>
-            </div>
-
-            <div>
-              <S.Label htmlFor='careerHistory'>
-                <p>경력</p>
-                <input 
-                  type='text'
-                  name='careerHistory'  
-                  id='careerHistory'
-                  placeholder={ teamDatas.careerHistory || '경력무관, 신입, 경력 중 선택하여 작성해주세요'}
-                  {...register("careerHistory", {required : true})}
                 />
               </S.Label>
             </div>
@@ -285,7 +249,7 @@ const TeamUpdate = ({ handleFileChange, handleFileChange2, fileName, fileName2, 
                     handleFileChange(e);
                   }}
                 />
-                <span>{fileName ? fileName : teamDatas.file ? teamDatas.file : '+자료첨부'}</span>
+                <span>{fileName ? fileName : teamDatas.file.split("/").pop() ? teamDatas.file.split("/").pop() : '+자료첨부'}</span>
               </S.Label>
             </S.Portfolio>
 
@@ -301,23 +265,24 @@ const TeamUpdate = ({ handleFileChange, handleFileChange2, fileName, fileName2, 
                     handleFileChange2(e);
                   }}
                 />
-                <span>{fileName2 ? fileName2 : teamDatas.teamProfile ? teamDatas.teamProfile : '+자료첨부'}</span>
+                <span>{fileName2 ? fileName2 : teamDatas.teamProfile.split("/").pop() ? teamDatas.teamProfile.split("/").pop() : '+자료첨부'}</span>
               </S.Label>
             </S.Portfolio>
 
-            <S.Button
-              className='submit'
-              disabled={isSubmitting}
-            >
-              작성 완료
-            </S.Button>
+            <S.ButtonBox>
+              <S.Button
+                onClick={() => navigate(-1)}
+                className='back'
+              >이전으로</S.Button>
+              <S.Button
+                className='submit'
+                disabled={isSubmitting}
+              >
+                수정 완료
+              </S.Button>
+            </S.ButtonBox>
 
           </S.Form>
-
-          <S.Button 
-            onClick={() => navigate(-1)}
-            className='back'
-          >이전으로</S.Button>
 
         </S.Fieldset>
       </S.FormContainer>
