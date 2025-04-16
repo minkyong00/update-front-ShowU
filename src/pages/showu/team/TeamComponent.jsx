@@ -3,24 +3,25 @@ import S from './style';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCalendarDays, faThumbtack } from '@fortawesome/free-solid-svg-icons';
 import Paging from '../../mypage/_component/Paging';
+import Timer from '../../shop/auction/AuctionDetail/_component/Timer';
 
 const TeamComponent = ({ navigate, filteredProducts, page, setPage, totalPost, PAGINATION }) => {
 
-  //마감 공고일 d-day 함수
-  function calculateDDay(deadLine) {
-    const today = new Date();
-    const endDate = new Date(deadLine);
-    const diffTime = endDate - today;
-    const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24))
+  // //마감 공고일 d-day 함수
+  // function calculateDDay(deadLine) {
+  //   const today = new Date();
+  //   const endDate = new Date(deadLine);
+  //   const diffTime = endDate - today;
+  //   const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24))
 
-    if(diffDays > 0){
-      return `D-${diffDays}`
-    } else if (diffDays === 0){
-      return "D-Day"
-    } else {
-      return "마감된 공고"
-    }
-  }
+  //   if(diffDays > 0){
+  //     return `D-${diffDays}`
+  //   } else if (diffDays === 0){
+  //     return "D-Day"
+  //   } else {
+  //     return "마감된 공고"
+  //   }
+  // }
   
   return (
       <div>
@@ -49,7 +50,8 @@ const TeamComponent = ({ navigate, filteredProducts, page, setPage, totalPost, P
                   >{team.teamIntro}</li>
 
                   <div>
-                    <p>{calculateDDay(team.deadLine)}</p>
+                    {/* <p>{calculateDDay(team.deadLine)}</p> */}
+                    <Timer endTime={team.deadLine} endMessage='매칭 마감' />
                   </div>
 
                   <S.Career>

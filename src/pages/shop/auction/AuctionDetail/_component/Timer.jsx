@@ -1,8 +1,7 @@
 import { useEffect, useState } from "react";
 
-const Timer = ({ endTime }) => {
+const Timer = ({ endTime, endMessage = "경매 종료" }) => {
   const calculateTimeLeft = () => {
-    // const korTime = 9 * 60 * 60 * 1000; //9시간을 밀리초로 변환
     const now = new Date();
     // console.log("지금", now)
     const end = new Date(endTime);
@@ -32,7 +31,7 @@ const Timer = ({ endTime }) => {
   }, [endTime]);
 
   if (!timeLeft) {
-    return <div style={{ fontSize: "20px", color: "#ffd400" }}>경매 종료</div>;
+    return <div style={{ fontSize: "20px", color: "#ffd400" }}>{endMessage}</div>;
   }
 
   const { days, hours, minutes, seconds } = timeLeft;
