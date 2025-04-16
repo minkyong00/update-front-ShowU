@@ -5,6 +5,7 @@ import { faCalendarDays, faChevronDown, faThumbtack } from '@fortawesome/free-so
 import S from './style';
 import usePagination from '../../../hooks/usePagination';
 import TeamComponent from './TeamComponent';
+import { useSelector } from 'react-redux';
 
 const PAGINATION = {
   pageRange: 6,
@@ -14,6 +15,7 @@ const PAGINATION = {
 const TeamContainer = () => {
   const [ teams, setTeams ] = useState([]);
   const [currentCategory, setCurrentCategory] = useState("전체");
+  const { currentUser } = useSelector(state => state.user)
 
   const { page, currentList, setPage, totalPost } = usePagination({
     pageRange: PAGINATION.pageRange,
@@ -65,21 +67,28 @@ const TeamContainer = () => {
             <FontAwesomeIcon icon={faChevronDown} className="down" />
           </S.MoreLesson>
 
-          {/* 팀 개설 버튼 */}
-          <S.TeamCreateButton>
-            <div onClick={() => navigate("/showu/team/create")}>팀 개설하기</div>
-          </S.TeamCreateButton>
-
           <S.CategoryButtonWrapper>
-            {["전체", "연기", "음악", "마술"].map((category) => (
-              <S.CategoryButton
-                key={category}
-                onClick={() => handleCategoryChange(category)}
-                className={currentCategory === category ? 'active' : ''}
-              >
-                {category}
-              </S.CategoryButton>
-            ))}
+            <S.CategoryBox>
+              {["전체", "연기", "음악", "마술"].map((category) => (
+                <S.CategoryButton
+                  key={category}
+                  onClick={() => handleCategoryChange(category)}
+                  className={currentCategory === category ? 'active' : ''}
+                >
+                  {category}
+                </S.CategoryButton>
+              ))}
+            </S.CategoryBox>
+
+            {/* 팀 개설 버튼 */}
+            <div>
+              { currentUser.isUpgradeRequested && (
+                <S.TeamCreateButton>
+                  <div onClick={() => navigate("/showu/team/create")}>팀 개설하기</div>
+                </S.TeamCreateButton>
+                )}
+            </div>
+
           </S.CategoryButtonWrapper>
           
           <TeamComponent 

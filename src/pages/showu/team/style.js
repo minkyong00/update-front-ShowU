@@ -153,30 +153,32 @@ const S = {};
   `
 
   S.TeamCreateButton = styled.div`
-    position: absolute;
-    top: 210px;
-    right: 350px;
 
     & div{
       cursor: pointer;
       background-color: #ffd400;
-      width: 110px;
-      border-radius: 20px;
+      width: 120px;
+      border-radius: 30px;
       height: 38px;
       text-align: center;
       color: #000;
-      font-size: 17px;
-      font-weight: 600;
-      line-height: 2;
+      font-size: 16px;
+      /* font-weight: 600; */
+      line-height: 2.2;
     }
   `
 
   S.CategoryButtonWrapper = styled.div`
     display: flex;
-    gap: 10px;
+    justify-content: space-between;
     width: 1000px;
     margin: 60px auto 0;
     padding: 10px 20px;
+  `
+
+  S.CategoryBox = styled.div`
+    display: flex;
+    gap: 10px;
   `
 
   S.CategoryButton = styled.button`
@@ -184,12 +186,13 @@ const S = {};
     padding: 10px 15px;
     background-color: #fff;
     color: #000;
-    border: 1.5px solid #ffd400;
+    border: 1.5px solid rgba(0, 0, 0, 0.3);
     cursor: pointer;
 
     &.active {
       background-color: #ffd400;
       color: #000;
+      border: 1px solid #ffd400;
     }
 
     &:hover {

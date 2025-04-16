@@ -100,12 +100,7 @@ const TeamDetailContainer = () => {
   }, [])
 
   // console.log("teams", teams.map(item => item.file))
-  console.log("teams", teams)
-
-  // 모집 인원 확인 함수
-  const isRecruitmentClosed = (recruit, currentMemberCount) => {
-    return currentMemberCount >= recruit;
-  };
+  // console.log("teams", teams)
 
   return (
     <div>
@@ -148,7 +143,7 @@ const TeamDetailContainer = () => {
                   </S.Heart>
 
                   {/* 모집 인원 다 차면 지원 버튼 마감으로 변경 */}
-                  {isRecruitmentClosed(item.recruit, item.currentMemberCount) ? (
+                  {item.isClosed ? (
                     <S.Apply disabled>
                       <p>마감</p>
                     </S.Apply>
