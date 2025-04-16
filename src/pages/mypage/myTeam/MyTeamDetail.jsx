@@ -30,6 +30,7 @@ const MyTeamDetail = ({ page, currentList, setPage, totalPost, PAGINATION, jwtTo
     }
   }
 
+
   const handleTeamDelete = async (teamId) => {
     const confirmDelete = window.confirm("정말로 팀 매칭을 삭제하시겠습니까?");
     if (confirmDelete) {
@@ -133,7 +134,7 @@ const MyTeamDetail = ({ page, currentList, setPage, totalPost, PAGINATION, jwtTo
 
                 <S.Period>
                   <FontAwesomeIcon icon={faCalendarDays} />
-                  <li>{team.deadLine}</li>
+                  <li>{new Date(team.deadLine).toLocaleString()}</li>
                 </S.Period>
               </ul>
           </S.LessonBox>
