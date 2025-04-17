@@ -17,7 +17,7 @@ const flexStyle = css`
   S.PaymentWrapper = styled.div`
     display: flex;
     flex-direction: column;
-    background-color: #000;
+    background-color: #fff;
   `
 
   S.PaymentTitle = styled.div`
@@ -129,8 +129,8 @@ const flexStyle = css`
     & input {
       width: 1055px;
       height: 35px;
-      background-color: #000;
-      border: 0.5px solid #fff;
+      background-color: #fff;
+      border: 1px solid rgba(0, 0, 0, 0.3);
       border-radius: 5px;
       padding-left: 10px;
       font-size: 15px;
@@ -146,8 +146,8 @@ const flexStyle = css`
     .email-input{
       width: 500px; 
       height: 35px; 
-      background-color: #000;
-      border: 0.5px solid #fff;
+      background-color: #fff;
+      border: 0.5px solid rgba(0, 0, 0, 0.3);
       border-radius: 5px; 
       padding-left: 10px;
       font-size: 15px;
@@ -157,8 +157,8 @@ const flexStyle = css`
     .email-domain-input{
       width: 500px; 
       height: 35px; 
-      background-color: #000;
-      border: 0.5px solid #fff;
+      background-color: #fff;
+      border: 0.5px solid rgba(0, 0, 0, 0.3);
       border-radius: 5px; 
       padding-left: 10px;
       font-size: 15px;
@@ -168,7 +168,7 @@ const flexStyle = css`
     & span {
       font-size: 18px;
       margin: 0 10px;
-      color: #fff; 
+      color: #000; 
     }
   `
 
@@ -188,8 +188,8 @@ const flexStyle = css`
       width: 333px; 
       height: 35px; 
       text-align: center; 
-      background-color: #000;
-      border: 0.5px solid #fff;
+      background-color: #fff;
+      border: 0.5px solid rgba(0, 0, 0, 0.3);
       border-radius: 5px; 
       ${inputHover}
     }
@@ -197,7 +197,7 @@ const flexStyle = css`
     & span {
       font-size: 18px;
       margin: 0 10px;
-      color: #fff; 
+      color: #000; 
     }
   `
 
@@ -211,8 +211,8 @@ const flexStyle = css`
     & input {
       width: 1055px;
       height: 35px;
-      background-color: #000;
-      border: 0.5px solid #fff;
+      background-color: #fff;
+      border: 0.5px solid rgba(0, 0, 0, 0.3);
       border-radius: 5px;
       padding-left: 10px;
       font-size: 15px;
@@ -225,8 +225,8 @@ const flexStyle = css`
     display: flex;
     width: 200px;
     height: 35px;
-    background-color: #000;
-    border: 0.5px solid #fff;
+    background-color: #fff;
+    border: 0.5px solid rgba(0, 0, 0, 0.3);
     border-radius: 5px;
 
     .code {
@@ -448,7 +448,7 @@ S.CloseButton = styled.button`
 
 S.ReserveButton = styled.button`
   border: none;
-  border-radius: 5px;
+  border-radius: 30px;
   background-color: #ffd400;
   color: black;
   width: 250px;
@@ -476,9 +476,9 @@ S.ReserveButton = styled.button`
     width: 520px;
     height: 35px;
     border-radius: 5px;
-    background-color: #000;
+    background-color: #fff;
     /* padding: 10px 20px; */
-    border: 0.5px solid white;
+    border: 0.5px solid rgba(0, 0, 0, 0.3);
     cursor: pointer;
 
     & p {
@@ -567,8 +567,8 @@ S.ReserveButton = styled.button`
    & input {
      width: 1055px;
      height: 35px;
-     background-color: #000;
-     border: 0.5px solid #fff;
+     background-color: #fff;
+     border: 0.5px solid rgba(0, 0, 0, 0.3);
      border-radius: 5px;
      padding-left: 10px;
      font-size: 15px;
@@ -580,8 +580,8 @@ S.InputName = styled.div`
   & input {
     width: 1055px;
     height: 35px;
-    background-color: #000;
-    border: 0.5px solid #fff;
+    background-color: #fff;
+    border: 0.5px solid rgba(0, 0, 0, 0.3);
     border-radius: 5px;
     padding-left: 10px;
     font-size: 15px;
