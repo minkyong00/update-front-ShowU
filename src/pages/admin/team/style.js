@@ -23,7 +23,7 @@ const S = {};
   `
 
   S.Container = styled.div`
-    background-color: #000;
+    background-color: #fff;
 
     display: flex;
     justify-content: center;
@@ -37,14 +37,14 @@ const S = {};
 
   S.Thead = styled.thead`
     font-size: 18px;
-    background-color: black;
+    background-color: #fff;
     font-weight: 700;
   `
 
   S.Tr = styled.tr`
 
     & th {
-      color: white;
+      color: #000;
       padding: 10px 10px 10px 0;
       text-align: left;
       font-size: 18px;
@@ -89,14 +89,14 @@ const S = {};
     }
 
     & button.exportButton {
-      background-color: #000;
+      background-color: #fff;
       border-radius: 5px;
       font-size: 16px;
       border: 1px solid #ffd400;
     }
 
     & button.rejectButton {
-      background-color: #000;
+      background-color: #fff;
       border-radius: 5px;
       font-size: 16px;
       border: 1px solid #797979;
