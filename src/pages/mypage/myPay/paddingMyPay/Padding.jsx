@@ -10,6 +10,7 @@ const Padding = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
+
   return (
     <>
       <S.Container className='container'>

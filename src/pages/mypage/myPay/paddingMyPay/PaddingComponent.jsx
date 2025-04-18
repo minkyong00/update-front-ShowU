@@ -1,7 +1,7 @@
 import React from 'react';
 import S from '../PayStyle';
 import { useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 
 const PaddingComponent = ({ currentList, handleNavigate }) => {
@@ -22,6 +22,18 @@ const PaddingComponent = ({ currentList, handleNavigate }) => {
       });
     }
   };
+
+  if (currentList.length === 0) {
+    return (
+      <S.NoneItem>
+        <p>아직 md, 경매에 구매한 제품이 없네요!</p>
+        <p>원하는 상품 구매를 진행해보세요.</p>
+        <Link to={"/shop"}>
+          <S.LinkToPath>shop 보러가기</S.LinkToPath>
+        </Link>
+      </S.NoneItem>
+    );
+  }
 
 
   return (

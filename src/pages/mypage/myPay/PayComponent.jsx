@@ -1,8 +1,22 @@
 import React from 'react';
 import S from './PayStyle';
+import { Link } from 'react-router-dom';
 
 
 const PayComponent = ({ currentList, handleNavigate }) => {
+
+  if (currentList.length === 0) {
+    return (
+      <S.NoneItem>
+        <p>아직 경매에 낙찰되지 않았네요!</p>
+        <p>원하는 상품에 대해 경매를 진행해보세요.</p>
+        <Link to={"/shop/auction"}>
+          <S.LinkToPath>경매 보러가기</S.LinkToPath>
+        </Link>
+      </S.NoneItem>
+    );
+  }
+
 
   return (
     <div>
