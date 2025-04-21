@@ -14,11 +14,11 @@ import { backgroundBlack } from "../../../global/common";
     `
 
     S.Wrapper = styled.div`
-    background-color: #444444; 
+    background-color: #fff; 
 `
 
     S.SubWrapper = styled.div` // 전체 배경 black
-        ${backgroundBlack}  
+        /* ${backgroundBlack}   */
         display: flex;
         flex-direction: column;
         gap: 20px;
@@ -86,6 +86,14 @@ import { backgroundBlack } from "../../../global/common";
             text-align: left;
         }
     `
+
+    S.UpdateDeleteBox = styled.div`
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    `
+
+
 
     S.Title = styled.div`
         font-size: 18px;

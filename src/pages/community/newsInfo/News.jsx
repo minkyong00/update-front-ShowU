@@ -34,7 +34,7 @@ const News = () => {
     fetchNewsById();
   }, [id]);
 
-  console.log("news", news)
+  console.log("news", news)///
 
   if (!news) {
     return <S.Error>로딩 중입니다...</S.Error>;
@@ -57,13 +57,14 @@ const News = () => {
 
       <S.section>   
 
-      <S.Title>{news.title}</S.Title>
-
-      <NewEditDeleteButton 
-        currentUser={currentUser}
-        S={S}
-        news={news}
-      />
+      <S.UpdateDeleteBox>
+        <S.Title>{news.title}</S.Title>
+        <NewEditDeleteButton
+          currentUser={currentUser}
+          S={S}
+          news={news}
+        />
+      </S.UpdateDeleteBox>
 
       <S.Line2></S.Line2>  
       <S.Images>

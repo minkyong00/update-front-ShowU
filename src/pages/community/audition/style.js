@@ -69,8 +69,8 @@ import styled  from "styled-components";
         button { // 버튼 스타일
             border-radius: 50px;
             padding: 10px 15px;
-            background-color: black;
-            color: #fff;
+            background-color: #fff;
+            color: #000;
             border: 1px solid #ffd400;
             cursor: pointer;
 

@@ -61,8 +61,8 @@ const S = {};
         button { 
             border-radius: 50px;
             padding: 10px 15px;
-            background-color: black;
-            color: #fff;
+            background-color: #fff;
+            color: #000;
             border: 1px solid #ffd400;
             cursor: pointer;
 

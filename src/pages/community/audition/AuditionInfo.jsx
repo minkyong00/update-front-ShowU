@@ -38,7 +38,7 @@ const AuditionInfo = () => {
 
   console.log("audition", audition)
 
-  console.log(S);
+  // console.log(S);
 
   return (
     <S.Wrapper>

@@ -3,7 +3,7 @@ import styled from "styled-components";
 const S = {};
 
   S.Wrapper = styled.div`
-        background-color: #444444; 
+        background-color: #fff; 
     `;
 
     S.TopTitle = styled.div` 
@@ -56,7 +56,7 @@ const S = {};
     `
 
     S.SubWrapper = styled.div`
-        background-color: #000;
+        background-color: #fff;
         margin-left: 140px;
         margin-right: 140px;
     `;

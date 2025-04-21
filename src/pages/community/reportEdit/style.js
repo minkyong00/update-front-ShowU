@@ -110,8 +110,8 @@ const S = {};
             font-size: ${({ theme }) => theme.FONT_SIZE.h7};
             border: 1px solid #ffd400;
             border-radius: 4px;
-            color: #ffd400;
-            background-color: #000;
+            color: #000;
+            background-color: #fff;
             
         }
 
@@ -127,8 +127,8 @@ const S = {};
             border: 1px solid #ffd400;
             padding: 10px;
             font-size: 16px;
-            color: #fff;
-            background-color: #000; 
+            color: #000;
+            background-color: #fff; 
             resize: none; 
         }
     `;

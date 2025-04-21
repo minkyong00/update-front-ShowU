@@ -8,7 +8,7 @@ import { backgroundBlack } from "../../../global/common";
 const S = {};
 
     S.Wrapper = styled.div`
-        background-color: #444444; 
+        background-color: #fff; 
     `
 
     S.box = styled.div`
@@ -25,7 +25,7 @@ const S = {};
     `
 
     S.SubWrapper = styled.div` // 전체 배경 black
-        ${backgroundBlack}  
+        /* ${backgroundBlack}   */
         display: flex;
         flex-direction: column;
         gap: 20px;
@@ -134,8 +134,8 @@ const S = {};
             font-size: 16px;
             border: 1px solid #ffd400;
             border-radius: 4px;
-            color: #fff;
-            background-color: #000;
+            color: #000;
+            background-color: #fff;
             
         }
 
@@ -152,8 +152,8 @@ const S = {};
             border-radius: 5px;
             padding: 10px;
             font-size: 16px;
-            color: #fff;
-            background-color: #000; 
+            color: #000;
+            background-color: #fff; 
             resize: none; 
         }
     `;
@@ -163,8 +163,8 @@ const S = {};
         width: 100%;
         padding: 10px;
         font-size: 14px;
-        background-color: #000;
-        color: #fff;
+        background-color: #fff;
+        color: #000;
         border: 1px solid #ffd400;
         border-radius: 4px;
     }
