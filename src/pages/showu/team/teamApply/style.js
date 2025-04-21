@@ -15,7 +15,7 @@ const S = {};
       font-weight: bold;
       margin-bottom: 5px;
       margin-top: 50px;
-      color: #ffd400;
+      color: #000;
     }
   `
 
@@ -29,7 +29,7 @@ const S = {};
       margin-bottom: 30px;
 
       & path {
-        color: #ffd400;
+        color: #000;
       }
     }
   `
