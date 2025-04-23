@@ -15,24 +15,30 @@ const Layout = () => {
   const navigate = useNavigate();
   const jwtToken = localStorage.getItem("jwtToken") || searchParams.get("jwtToken");
 
+  // 검색 클릭 시 입력값 쿼리 스트링
   const handleSearchClick = () => {
     const searchInput = document.querySelector('.searchinput').value; // 입력 값 가져오기
     if (!searchInput.trim()) {
       return; // 입력 값이 없으면 함수 종료
     }
     navigate(`/search?query=${encodeURIComponent(searchInput)}`); // 검색어를 쿼리 매개변수로 전달
+    console.log("검색 쿼리", searchInput)
   };
   
+  // 검색 엔터 시 입력값 쿼리 스트링
   const handleSearchKeyPress = (e) => {
     if (e.key === 'Enter') {
       const searchInput = document.querySelector('.searchinput').value; // 입력 값 가져오기
       if (!searchInput.trim()) {
         return; // 입력 값이 없으면 함수 종료
       }
-      handleSearchClick(); // 엔터 키를 누르면 검색 실행
+      navigate(`/search?query=${encodeURIComponent(searchInput)}`); // 검색어를 쿼리 매개변수로 전달
+      // handleSearchClick(); // 엔터 키를 누르면 검색 실행
+      console.log("검색 쿼리", searchInput)
     }
   };
-
+  
+  // 로그아웃 버튼 핸들러
   const handleLogout = () => {
     localStorage.removeItem("jwtToken"); // 토큰 삭제
     dispatch(setUser({})); // 리덕스 초기화

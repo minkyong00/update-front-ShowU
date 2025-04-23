@@ -130,6 +130,7 @@ import AuctionSuccess from "../pages/shop/auction/AuctionPayment/payment/auction
 import AuctionFailed from "../pages/shop/auction/AuctionPayment/payment/auctionTossPayment/AuctionFailed";
 import TeamApplyContainer from '../pages/showu/team/teamApply/TeamApplyContainer';
 import PaddingContainer from '../pages/mypage/myPay/paddingMyPay/PaddingContainer';
+import SearchContainer from '../pages/search/SearchContainer';
 
 const router = createBrowserRouter([
   {
@@ -608,6 +609,10 @@ const router = createBrowserRouter([
           { path: "rental-failed", element: <RentalFailed /> },
         ],
       },
+      {
+        path: "/search",
+        element: <SearchContainer />
+      }
     ],
   },
   {

@@ -6,17 +6,33 @@ const Search = () => {
   const location = useLocation();
   const queryParams = new URLSearchParams(location.search);
   const query = queryParams.get('query');
-  const [shoplist, setShopList] = useState([]);
-  const [filteredShoplist, setFilteredShoplist] = useState([]);
+  const token = localStorage.getItem("jwtToken");
+  const [shoplist, setShopList] = useState([]); //shop md
+  const [filteredShoplist, setFilteredShoplist] = useState([]); //shop md filter
+  const [auctionList, setAuctionList] = useState([]) //shop auction
+  const [filteredAuctionList, setFilteredAuctionList] = useState([]) //shop auctoin filter
   const [filteredReservationlist, setFilteredReservationlist] = useState([]);
   const [ticketEvents, setTicketEvents] = useState([]);
+  const [spaceList, setSpaceList] = useState([]);
+  const [filteredSpaceList, setFilteredSpaceList] = useState([])
   const [videoList, setVideoList] = useState([]);
   const [filteredVodlist, setFilteredVodlist] = useState([]);
   const [auditionData, setAuditionData] = useState([]);
   const [newsData, setNewsData] = useState([]);
   const [commuData, setCommuData] = useState([]);
+  const [teamList, setTeamList] = useState([]);
 
-  // Shop 데이터
+  console.log("md", shoplist)
+  console.log("auction", filteredAuctionList)
+  console.log("ticket", ticketEvents)
+  console.log("space", spaceList)
+  console.log("vod", videoList)
+  console.log("audition", auditionData)
+  console.log("news", newsData)
+  console.log("commu", commuData)
+  console.log("team", teamList)
+
+  // Shop md 데이터
   useEffect(() => {
     const getMdItems = async () => {
       try {
@@ -34,10 +50,27 @@ const Search = () => {
     getMdItems();
   }, [query]);
 
-  // Reservation 데이터
+  // shop auction 데이터
+  useEffect(() => {
+    const getAuctionItems = async () => {
+      try {
+        const response = await fetch("http://localhost:8000/shop/auction");
+        const datas = await response.json();
+        setAuctionList(datas);
+        setFilteredAuctionList(
+          datas.filter(item => item.auctionName.toLowerCase().includes(query.toLowerCase()))
+        );
+      } catch (error) {
+        console.error("검색 쿼리 경매 Error", error);
+      }
+    };
+
+    getAuctionItems();
+  }, [query]);
+
+  // Reservation  티켓 데이터
   useEffect(() => {
     const fetchTicketEvents = async () => {
-      const token = localStorage.getItem("jwtToken");
       try {
         const response = await fetch(
           "http://localhost:8000/reservation/ticketEvents",
@@ -63,6 +96,29 @@ const Search = () => {
 
     fetchTicketEvents();
   }, [query]);
+
+  // reservation space 데이터
+  useEffect(() => {
+    const getSpaceItem = async () => {
+      try {
+        const response = await fetch("http://localhost:8000/reservation/spaces", {
+          headers : {
+            Authorization: `Bearer ${token}`
+          }
+        });
+        const datas = await response.json();
+        setSpaceList(datas)
+        setFilteredSpaceList(
+          datas.filter(item => item.name.toLowerCase().includes(query.toLowerCase()))
+        )
+      } catch (error) {
+        console.error("공간 대여 검색 가져오는 중 error", error)
+      }
+    }
+
+    getSpaceItem();
+
+  }, [query])
 
   // Vod 데이터
   useEffect(() => {
@@ -103,7 +159,7 @@ const Search = () => {
     };
 
     fetchAuditions();
-  }, []);
+  }, [query]);
 
   // News 데이터
   useEffect(() => {
@@ -118,7 +174,7 @@ const Search = () => {
     };
 
     fetchNews();
-  }, []);
+  }, [query]);
 
   // General Community 데이터
   useEffect(() => {
@@ -142,148 +198,173 @@ const Search = () => {
     };
 
     fetchData();
-  }, []);
+  }, [query]);
 
-  console.log('검색어:', query); // 검색어 출력
+  //team 데이터
+  useEffect(() => {
+    const getTeamList = async () => {
+      try {
+        const response = await fetch("http://localhost:8000/showu/team");
+        const data = await response.json();
+        setTeamList(data.teamList);
+      } catch (error) {
+        console.error("검색 팀 데이터 가져오는 중 오류 발생:", error);
+      }
+    };
+
+    getTeamList();
+  }, [query]);
+  
+
+  // console.log('검색어:', query); // 검색어 출력
 
   return (
-    <S.main className='main'>
-    
-      <div className='shop'>
-      <div className="title">
-    <span className="highlight">Shop</span> 검색 결과
-        </div>
-        {filteredShoplist.length > 0 ? (
-          <div className="md-list">
-            {filteredShoplist.map(item => (
-              <S.Md key={item.id}>
-                <Link to={`/shop/md/detail/${item._id}`}>
-                  <img src={item.image} alt={item.mdName} />
-                </Link>
-                <div className="md-category">{item.category}</div>
-                <div className="md-name">{item.mdName}</div>
-                <div className="md-price">
-                {item.price ? item.price.toLocaleString() : "가격 정보 없음"}원
-                </div>
-              </S.Md>
-            ))}
-          </div>
-        ) : (
-          <p>검색 결과가 없습니다...</p>
-        )}
+    <>
+      <div>
+        
       </div>
+    </>
+  )
+
+//   return (
+//     <S.main className='main'>
+    
+//       <div className='shop'>
+//       <div className="title">
+//     <span className="highlight">Shop</span> 검색 결과
+//         </div>
+//         {filteredShoplist.length > 0 ? (
+//           <div className="md-list">
+//             {filteredShoplist.map(item => (
+//               <S.Md key={item.id}>
+//                 <Link to={`/shop/md/detail/${item._id}`}>
+//                   <img src={item.image} alt={item.mdName} />
+//                 </Link>
+//                 <div className="md-category">{item.category}</div>
+//                 <div className="md-name">{item.mdName}</div>
+//                 <div className="md-price">
+//                 {item.price ? item.price.toLocaleString() : "가격 정보 없음"}원
+//                 </div>
+//               </S.Md>
+//             ))}
+//           </div>
+//         ) : (
+//           <p>{`${query}에 대한 검색 결과가 없습니다...`}</p>
+//         )}
+//       </div>
 
     
-      <div className='reservation'>
-      <div className="title">
-    <span className="highlight">예약</span> 검색 결과
-        </div>
-        {filteredReservationlist.length > 0 ? (
-          <div className="md-list">
-            {filteredReservationlist.map(item => (
-              <S.Md key={item.id}>
-                <Link to={`/reservation/ticket-open/openDetail/${item._id}`}>
-                  <img src={item.img} alt={item.name} />
-                </Link>
-                <div className="md-category">{item.category}</div>
-                <div className="md-name">{item.name}</div>
-                <div className="md-price">
-                  {item.type}
-                </div>
-              </S.Md>
-            ))}
-          </div>
-        ) : (
-          <p>검색 결과가 없습니다...</p>
-        )}
-      </div>
+//       <div className='reservation'>
+//       <div className="title">
+//     <span className="highlight">예약</span> 검색 결과
+//         </div>
+//         {filteredReservationlist.length > 0 ? (
+//           <div className="md-list">
+//             {filteredReservationlist.map(item => (
+//               <S.Md key={item.id}>
+//                 <Link to={`/reservation/ticket-open/openDetail/${item._id}`}>
+//                   <img src={item.img} alt={item.name} />
+//                 </Link>
+//                 <div className="md-category">{item.category}</div>
+//                 <div className="md-name">{item.name}</div>
+//                 <div className="md-price">
+//                   {item.type}
+//                 </div>
+//               </S.Md>
+//             ))}
+//           </div>
+//         ) : (
+//           <p>{`${query}에 대한 검색 결과가 없습니다...`}</p>
+//         )}
+//       </div>
 
-      <div className='vod'>
-      <div className="title">
-    <span className="highlight">Vod</span> 검색 결과
-        </div>
-        {filteredVodlist.length > 0 ? (
-          <div className="md-list">
-            {filteredVodlist.map(item => (
-              <S.Md key={item.id}>
-                <Link to={`/vod/play/${item._id}`}>
-                  <img src={item.mainImage} alt={item.title} />
-                </Link>
-                <div className="md-category">{item.category}</div>
-                <div className="md-name">{item.title}</div>
-              </S.Md>
-            ))}
-          </div>
-        ) : (
-          <p>검색 결과가 없습니다...</p>
-        )}
-      </div>
+//       <div className='vod'>
+//       <div className="title">
+//     <span className="highlight">Vod</span> 검색 결과
+//         </div>
+//         {filteredVodlist.length > 0 ? (
+//           <div className="md-list">
+//             {filteredVodlist.map(item => (
+//               <S.Md key={item.id}>
+//                 <Link to={`/vod/play/${item._id}`}>
+//                   <img src={item.mainImage} alt={item.title} />
+//                 </Link>
+//                 <div className="md-category">{item.category}</div>
+//                 <div className="md-name">{item.title}</div>
+//               </S.Md>
+//             ))}
+//           </div>
+//         ) : (
+//           <p>{`${query}에 대한 검색 결과가 없습니다...`}</p>
+//         )}
+//       </div>
 
    
-      <div className='community'>
-      <div className="title">
-    <span className="highlight">커뮤니티</span> 검색 결과
-        </div>
-<div className='audition'>
-  <p className='title'>오디션</p>
-  {auditionData.filter(item => item.title.toLowerCase().includes(query.toLowerCase())).length > 0 ? (
-    <div className="md-list">
-      {auditionData.filter(item => item.title.toLowerCase().includes(query.toLowerCase())).map(item => (
-        <S.Md key={item.id}>
-          <Link to={`/community/audition/${item._id}`}>
-            <img src={item.imageUrl} alt={item.title} />
-          </Link>
-          <div className="md-category">{item.category || '오디션'}</div>
-          <div className="md-name">{item.title}</div>
-        </S.Md>
-      ))}
-    </div>
-  ) : (
-    <p>검색 결과가 없습니다...</p>
-  )}
-</div>
+//       <div className='community'>
+//       <div className="title">
+//     <span className="highlight">커뮤니티</span> 검색 결과
+//         </div>
+// <div className='audition'>
+//   <p className='title'>오디션</p>
+//   {auditionData.filter(item => item.title.toLowerCase().includes(query.toLowerCase())).length > 0 ? (
+//     <div className="md-list">
+//       {auditionData.filter(item => item.title.toLowerCase().includes(query.toLowerCase())).map(item => (
+//         <S.Md key={item.id}>
+//           <Link to={`/community/audition/${item._id}`}>
+//             <img src={item.imageUrl} alt={item.title} />
+//           </Link>
+//           <div className="md-category">{item.category || '오디션'}</div>
+//           <div className="md-name">{item.title}</div>
+//         </S.Md>
+//       ))}
+//     </div>
+//   ) : (
+//     <p>{`${query}에 대한 검색 결과가 없습니다...`}</p>
+//   )}
+// </div>
 
 
-<div className='news'>
-  <p className='title'>뉴스</p>
-  {newsData.filter(item => item.title.toLowerCase().includes(query.toLowerCase())).length > 0 ? (
-    <div className="md-list">
-      {newsData.filter(item => item.title.toLowerCase().includes(query.toLowerCase())).map(item => (
-        <S.Md key={item.id}>
-          <Link to={`/community/newsMain/news/${item._id}`}>
-            <img src={item.imageUrl} alt={item.title} />
-          </Link>
-          <div className="md-category">{item.category || '뉴스'}</div>
-          <div className="md-name">{item.title}</div>
-        </S.Md>
-      ))}
-    </div>
-  ) : (
-    <p>검색 결과가 없습니다...</p>
-  )}
-</div>
-<div className='general-community'>
-  <p className='title'>일반 커뮤니티</p>
-  {commuData.filter(item => item.title.toLowerCase().includes(query.toLowerCase())).length > 0 ? (
-    <div className="md-list">
-      {commuData.filter(item => item.title.toLowerCase().includes(query.toLowerCase())).map(item => (
-        <S.Md key={item.id}>
-          <Link to={`/community/communityInfo/${item._id}`}>
-            <img src={item.imageUrl} alt={item.title} />
-          </Link>
-          <div className="md-category">{item.category || '일반'}</div>
-          <div className="md-name">{item.title}</div>
-        </S.Md>
-      ))}
-    </div>
-  ) : (
-    <p>검색 결과가 없습니다...</p>
-  )}
-</div>
+// <div className='news'>
+//   <p className='title'>뉴스</p>
+//   {newsData.filter(item => item.title.toLowerCase().includes(query.toLowerCase())).length > 0 ? (
+//     <div className="md-list">
+//       {newsData.filter(item => item.title.toLowerCase().includes(query.toLowerCase())).map(item => (
+//         <S.Md key={item.id}>
+//           <Link to={`/community/newsMain/news/${item._id}`}>
+//             <img src={item.imageUrl} alt={item.title} />
+//           </Link>
+//           <div className="md-category">{item.category || '뉴스'}</div>
+//           <div className="md-name">{item.title}</div>
+//         </S.Md>
+//       ))}
+//     </div>
+//   ) : (
+//     <p>{`${query}에 대한 검색 결과가 없습니다...`}</p>
+//   )}
+// </div>
 
-      </div>
-    </S.main>
-  );
+//         <div className='general-community'>
+//           <p className='title'>일반 커뮤니티</p>
+//           {commuData.filter(item => item.title.toLowerCase().includes(query.toLowerCase())).length > 0 ? (
+//             <div className="md-list">
+//               {commuData.filter(item => item.title.toLowerCase().includes(query.toLowerCase())).map(item => (
+//                 <S.Md key={item.id}>
+//                   <Link to={`/community/communityInfo/${item._id}`}>
+//                     <img src={item.imageUrl} alt={item.title} />
+//                   </Link>
+//                   <div className="md-category">{item.category || '일반'}</div>
+//                   <div className="md-name">{item.title}</div>
+//                 </S.Md>
+//               ))}
+//             </div>
+//           ) : (
+//             <p>{`${query}에 대한 검색 결과가 없습니다...`}</p>
+//           )}
+//         </div>
+        
+//       </div>
+//     </S.main>
+//   );
 };
 
 export default Search;
