@@ -1,36 +1,32 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import S from './style'; // 스타일 가져오기
+import S from './style'; 
 
 const Search = () => {
   const location = useLocation();
   const queryParams = new URLSearchParams(location.search);
   const query = queryParams.get('query');
   const token = localStorage.getItem("jwtToken");
-  const [shoplist, setShopList] = useState([]); //shop md
   const [filteredShoplist, setFilteredShoplist] = useState([]); //shop md filter
-  const [auctionList, setAuctionList] = useState([]) //shop auction
   const [filteredAuctionList, setFilteredAuctionList] = useState([]) //shop auctoin filter
   const [filteredReservationlist, setFilteredReservationlist] = useState([]);
-  const [ticketEvents, setTicketEvents] = useState([]);
-  const [spaceList, setSpaceList] = useState([]);
   const [filteredSpaceList, setFilteredSpaceList] = useState([])
-  const [videoList, setVideoList] = useState([]);
   const [filteredVodlist, setFilteredVodlist] = useState([]);
   const [auditionData, setAuditionData] = useState([]);
   const [newsData, setNewsData] = useState([]);
   const [commuData, setCommuData] = useState([]);
   const [teamList, setTeamList] = useState([]);
+  const [searchList, setSearchList] = useState([]);
 
-  console.log("md", shoplist)
-  console.log("auction", filteredAuctionList)
-  console.log("ticket", ticketEvents)
-  console.log("space", spaceList)
-  console.log("vod", videoList)
-  console.log("audition", auditionData)
-  console.log("news", newsData)
-  console.log("commu", commuData)
-  console.log("team", teamList)
+  // console.log("md", shoplist)
+  // console.log("auction", filteredAuctionList)
+  // console.log("ticket", ticketEvents)
+  // console.log("space", spaceList)
+  // console.log("vod", videoList)
+  // console.log("audition", auditionData)
+  // console.log("news", newsData)
+  // console.log("commu", commuData)
+  // console.log("team", teamList)
 
   // Shop md 데이터
   useEffect(() => {
@@ -38,7 +34,6 @@ const Search = () => {
       try {
         const response = await fetch("http://localhost:8000/shop/md");
         const datas = await response.json();
-        setShopList(datas);
         setFilteredShoplist(
           datas.filter(item => item.mdName.toLowerCase().includes(query.toLowerCase()))
         );
@@ -56,7 +51,6 @@ const Search = () => {
       try {
         const response = await fetch("http://localhost:8000/shop/auction");
         const datas = await response.json();
-        setAuctionList(datas);
         setFilteredAuctionList(
           datas.filter(item => item.auctionName.toLowerCase().includes(query.toLowerCase()))
         );
@@ -84,13 +78,11 @@ const Search = () => {
           throw new Error("네트워크 응답이 실패했습니다.");
         }
         const fetchedData = await response.json();
-        setTicketEvents(fetchedData);
         setFilteredReservationlist(
           fetchedData.filter(item => item.name.toLowerCase().includes(query.toLowerCase()))
         );
       } catch (error) {
         console.error("티켓 이벤트를 가져오는 중 오류 발생:", error);
-        setTicketEvents([]);
       }
     };
 
@@ -107,7 +99,6 @@ const Search = () => {
           }
         });
         const datas = await response.json();
-        setSpaceList(datas)
         setFilteredSpaceList(
           datas.filter(item => item.name.toLowerCase().includes(query.toLowerCase()))
         )
@@ -127,7 +118,6 @@ const Search = () => {
         const response = await fetch("http://localhost:8000/vod");
         const data = await response.json();
         if (response.ok) {
-          setVideoList(data);
           setFilteredVodlist(
             data.filter(item => item.title.toLowerCase().includes(query.toLowerCase()))
           );
@@ -151,7 +141,7 @@ const Search = () => {
           throw new Error("오디션 데이터를 불러오는 데 실패했습니다.");
         }
         const data = await response.json();
-        setAuditionData(data); 
+        setAuditionData(data.filter(audition => audition.description.toLowerCase().includes(query.toLowerCase()))); 
       } catch (error) {
         console.error("오디션 데이터 로드 오류:", error);
         setAuditionData([]);
@@ -167,7 +157,7 @@ const Search = () => {
       try {
         const response = await fetch("http://localhost:8000/community/newsMain");
         const data = await response.json();
-        setNewsData(data);
+        setNewsData(data.filter(news => news.title.toLowerCase().includes(query.toLowerCase())));
       } catch (error) {
         console.error("뉴스 데이터 오류 발생:", error);
       }
@@ -190,7 +180,7 @@ const Search = () => {
           throw new Error('데이터를 불러오는 데 실패했습니다.');
         }
         const fetchedData = await response.json(); 
-        setCommuData(fetchedData); 
+        setCommuData(fetchedData.filter(commu => commu.title.toLowerCase().includes(query.toLowerCase()))); 
       } catch (error) {
         console.error("커뮤니티 데이터를 불러오는 데 실패했습니다.", error);
         setCommuData([]);
@@ -206,7 +196,7 @@ const Search = () => {
       try {
         const response = await fetch("http://localhost:8000/showu/team");
         const data = await response.json();
-        setTeamList(data.teamList);
+        setTeamList(data.teamList.filter(team => team.teamName.toLowerCase().includes(query.toLowerCase())));
       } catch (error) {
         console.error("검색 팀 데이터 가져오는 중 오류 발생:", error);
       }
@@ -215,13 +205,185 @@ const Search = () => {
     getTeamList();
   }, [query]);
   
+  // useEffect(() => {
+  //   const getAllSearchList = async () => {
+  //     try {
+  //       const response = await fetch(`http://localhost:8000/search`);
+  //       const data = response.json();
+  //       setSearchList(data.allFoundSearch)
+  //     } catch (error) {
+  //       console.error("모든 검색 결과 데이터 가져오는 중 오류 발생:", error);
+  //     }
+  //   }
 
-  // console.log('검색어:', query); // 검색어 출력
+  //   getAllSearchList()
+  // }, [query])
+
+  // console.log("searchList", searchList)
+  // console.log('검색어:', query); 
+  
 
   return (
     <>
-      <div>
-        
+      <div className='wrapper'>
+        <div className='search-result'>
+          <div>
+            <p>{`${query}에 대한 검색결과`}</p>
+          </div>
+
+          {/* shop md 검색 결과 */}
+          { filteredShoplist.length > 0 ? (
+            <div>
+              {filteredShoplist.map((md) => (
+                <div key={md._id}>
+                  <Link to={`/shop/md/detail/${md._id}`}>
+                    <img src={md.image} alt="md 이미지" />
+                  </Link>
+                  <p>{md.mdName}</p>
+                  <p>{md.price}원</p>
+                </div>
+              ))}
+            </div>
+          ) : (
+            <p>{`${query}에 대한 검색 결과가 없습니다.`}</p>
+          )}
+
+          {/* shop 경매 검색 결과 */}
+          { filteredAuctionList.length > 0 ? (
+            <div>
+              {filteredAuctionList.map((auction) => (
+                <div key={auction._id}>
+                  <Link to={`/shop/auction/detail/${auction._id}`}>
+                    <img src={auction.image} alt="경매 이미지" />
+                  </Link>
+                  <p>{auction.auctionName}</p>
+                  <p>{auction.price}원</p>
+                </div>
+              ))}
+            </div>
+          ) : (
+            <p>{`${query}에 대한 검색 결과가 없습니다.`}</p>
+          )}
+
+          {/* 티켓 예매 검색 결과 */}
+          { filteredReservationlist.length > 0 ? (
+            <div>
+              {filteredReservationlist.map((ticket) => (
+                <div key={ticket._id}>
+                  <Link to={`/reservation/ticket-open/openDetail/${ticket._id}`}>
+                    <img src={ticket.image} alt="티켓 이미지" />
+                  </Link>
+                  {/* <p>{ticket.mdName}</p>
+                  <p>{ticket.price}원</p> */}
+                </div>
+              ))}
+            </div>
+          ) : (
+            <p>{`${query}에 대한 검색 결과가 없습니다.`}</p>
+          )}
+
+          {/* 공간 대여 검색 결과 */}
+          { filteredSpaceList.length > 0 ? (
+            <div>
+              {filteredSpaceList.map((space) => (
+                <div key={space._id}>
+                  <Link to={`/reservation/space/rentalDetail/${space._id}`}>
+                    <img src={space.image} alt="공간 이미지" />
+                  </Link>
+                  {/* <p>{space.mdName}</p>
+                  <p>{space.price}원</p> */}
+                </div>
+              ))}
+            </div>
+          ) : (
+            <p>{`${query}에 대한 검색 결과가 없습니다.`}</p>
+          )}
+
+          {/* vod 검색 결과 */}
+          { filteredVodlist.length > 0 ? (
+            <div>
+              {filteredVodlist.map((vod) => (
+                <div key={vod._id}>
+                  <Link to={`/vod/play/${vod._id}`}>
+                    <img src={vod.image} alt="vod 이미지" />
+                  </Link>
+                  {/* <p>{vod.mdName}</p>
+                  <p>{vod.price}원</p> */}
+                </div>
+              ))}
+            </div>
+          ) : (
+            <p>{`${query}에 대한 검색 결과가 없습니다.`}</p>
+          )}
+
+          {/* 팀 매칭 검색 결과 */}
+          { teamList.length > 0 ? (
+            <div>
+              {teamList.map((team) => (
+                <div key={team._id}>
+                  <Link to={`/showu/team/${team._id}`}>
+                    <img src={`http://localhost:8000${team.teamProfile}`} alt="팀 이미지" />
+                  </Link>
+                  {/* <p>{vod.mdName}</p>
+                  <p>{vod.price}원</p> */}
+                </div>
+              ))}
+            </div>
+          ) : (
+            <p>{`${query}에 대한 검색 결과가 없습니다.`}</p>
+          )}
+
+          {/* 커뮤니티 오디션 검색 결과 */}
+          { auditionData.length > 0 ? (
+            <div>
+              {auditionData.map((audition) => (
+                <div key={audition._id}>
+                  <Link to={`/vod/play/${audition._id}`}>
+                    <img src={audition.imageUrl} alt="오디션 공고 이미지" />
+                  </Link>
+                  {/* <p>{vod.mdName}</p>
+                  <p>{vod.price}원</p> */}
+                </div>
+              ))}
+            </div>
+          ) : (
+            <p>{`${query}에 대한 검색 결과가 없습니다.`}</p>
+          )}
+
+          {/* 커뮤니티 뉴스 검색 결과 */}
+          { newsData.length > 0 ? (
+            <div>
+              {newsData.map((news) => (
+                <div key={news._id}>
+                  <Link to={`/vod/play/${news._id}`}>
+                    <img src={`http://localhost:8000/${news.imageUrl}`} alt="오디션 공고 이미지" />
+                  </Link>
+                  {/* <p>{vod.mdName}</p>
+                  <p>{vod.price}원</p> */}
+                </div>
+              ))}
+            </div>
+          ) : (
+            <p>{`${query}에 대한 검색 결과가 없습니다.`}</p>
+          )}
+
+          {/* 커뮤니티 검색 결과 */}
+          { commuData.length > 0 ? (
+            <div>
+              {commuData.map((commu) => (
+                <div key={commu._id}>
+                  <Link to={`/vod/play/${commu._id}`}>
+                    <img src={`http://localhost:8000/${commu.imageUrl}`} alt="오디션 공고 이미지" />
+                  </Link>
+                  {/* <p>{vod.mdName}</p>
+                  <p>{vod.price}원</p> */}
+                </div>
+              ))}
+            </div>
+          ) : (
+            <p>{`${query}에 대한 검색 결과가 없습니다.`}</p>
+          )}
+        </div>
       </div>
     </>
   )
