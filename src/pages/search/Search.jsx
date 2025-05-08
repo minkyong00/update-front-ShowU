@@ -231,158 +231,178 @@ const Search = () => {
             <p>{`${query}에 대한 검색결과`}</p>
           </div>
 
-          {/* shop md 검색 결과 */}
-          { filteredShoplist.length > 0 ? (
-            <div>
-              {filteredShoplist.map((md) => (
-                <div key={md._id}>
-                  <Link to={`/shop/md/detail/${md._id}`}>
-                    <img src={md.image} alt="md 이미지" />
-                  </Link>
-                  <p>{md.mdName}</p>
-                  <p>{md.price}원</p>
-                </div>
-              ))}
-            </div>
-          ) : (
-            <p>{`${query}에 대한 검색 결과가 없습니다.`}</p>
-          )}
-
-          {/* shop 경매 검색 결과 */}
-          { filteredAuctionList.length > 0 ? (
-            <div>
-              {filteredAuctionList.map((auction) => (
-                <div key={auction._id}>
-                  <Link to={`/shop/auction/detail/${auction._id}`}>
-                    <img src={auction.image} alt="경매 이미지" />
-                  </Link>
-                  <p>{auction.auctionName}</p>
-                  <p>{auction.price}원</p>
-                </div>
-              ))}
-            </div>
-          ) : (
-            <p>{`${query}에 대한 검색 결과가 없습니다.`}</p>
-          )}
-
-          {/* 티켓 예매 검색 결과 */}
-          { filteredReservationlist.length > 0 ? (
-            <div>
-              {filteredReservationlist.map((ticket) => (
-                <div key={ticket._id}>
-                  <Link to={`/reservation/ticket-open/openDetail/${ticket._id}`}>
-                    <img src={ticket.image} alt="티켓 이미지" />
-                  </Link>
-                  {/* <p>{ticket.mdName}</p>
-                  <p>{ticket.price}원</p> */}
-                </div>
-              ))}
-            </div>
-          ) : (
-            <p>{`${query}에 대한 검색 결과가 없습니다.`}</p>
-          )}
-
-          {/* 공간 대여 검색 결과 */}
-          { filteredSpaceList.length > 0 ? (
-            <div>
-              {filteredSpaceList.map((space) => (
-                <div key={space._id}>
-                  <Link to={`/reservation/space/rentalDetail/${space._id}`}>
-                    <img src={space.image} alt="공간 이미지" />
-                  </Link>
-                  {/* <p>{space.mdName}</p>
-                  <p>{space.price}원</p> */}
-                </div>
-              ))}
-            </div>
-          ) : (
-            <p>{`${query}에 대한 검색 결과가 없습니다.`}</p>
-          )}
-
-          {/* vod 검색 결과 */}
-          { filteredVodlist.length > 0 ? (
-            <div>
-              {filteredVodlist.map((vod) => (
-                <div key={vod._id}>
-                  <Link to={`/vod/play/${vod._id}`}>
-                    <img src={vod.image} alt="vod 이미지" />
-                  </Link>
-                  {/* <p>{vod.mdName}</p>
-                  <p>{vod.price}원</p> */}
-                </div>
-              ))}
-            </div>
-          ) : (
-            <p>{`${query}에 대한 검색 결과가 없습니다.`}</p>
-          )}
-
-          {/* 팀 매칭 검색 결과 */}
-          { teamList.length > 0 ? (
-            <div>
-              {teamList.map((team) => (
-                <div key={team._id}>
-                  <Link to={`/showu/team/${team._id}`}>
-                    <img src={`http://localhost:8000${team.teamProfile}`} alt="팀 이미지" />
-                  </Link>
-                  {/* <p>{vod.mdName}</p>
-                  <p>{vod.price}원</p> */}
-                </div>
-              ))}
-            </div>
-          ) : (
-            <p>{`${query}에 대한 검색 결과가 없습니다.`}</p>
-          )}
-
-          {/* 커뮤니티 오디션 검색 결과 */}
-          { auditionData.length > 0 ? (
-            <div>
-              {auditionData.map((audition) => (
-                <div key={audition._id}>
-                  <Link to={`/vod/play/${audition._id}`}>
-                    <img src={audition.imageUrl} alt="오디션 공고 이미지" />
-                  </Link>
-                  {/* <p>{vod.mdName}</p>
-                  <p>{vod.price}원</p> */}
-                </div>
-              ))}
-            </div>
-          ) : (
-            <p>{`${query}에 대한 검색 결과가 없습니다.`}</p>
-          )}
-
-          {/* 커뮤니티 뉴스 검색 결과 */}
-          { newsData.length > 0 ? (
-            <div>
-              {newsData.map((news) => (
-                <div key={news._id}>
-                  <Link to={`/vod/play/${news._id}`}>
-                    <img src={`http://localhost:8000/${news.imageUrl}`} alt="오디션 공고 이미지" />
-                  </Link>
-                  {/* <p>{vod.mdName}</p>
-                  <p>{vod.price}원</p> */}
-                </div>
-              ))}
-            </div>
-          ) : (
-            <p>{`${query}에 대한 검색 결과가 없습니다.`}</p>
-          )}
-
-          {/* 커뮤니티 검색 결과 */}
-          { commuData.length > 0 ? (
-            <div>
-              {commuData.map((commu) => (
-                <div key={commu._id}>
-                  <Link to={`/vod/play/${commu._id}`}>
-                    <img src={`http://localhost:8000/${commu.imageUrl}`} alt="오디션 공고 이미지" />
-                  </Link>
-                  {/* <p>{vod.mdName}</p>
-                  <p>{vod.price}원</p> */}
-                </div>
-              ))}
-            </div>
-          ) : (
-            <p>{`${query}에 대한 검색 결과가 없습니다.`}</p>
-          )}
+          {/* 검색 쿼리가 데이터에 모두 없을 경우 검색 결과가 없는 메시지 출력 */}
+          { filteredShoplist.length === 0 && filteredAuctionList.length === 0 && 
+            filteredReservationlist.length === 0 && filteredSpaceList.length === 0 &&
+            filteredVodlist.length === 0 && teamList.length === 0 && auditionData.length === 0 &&
+            commuData.length === 0 && newsData.length === 0 ? (
+              <p>{`${query}에 대한 검색 결과가 없습니다.`}</p>
+            ) : (
+              <>
+                {/* shop md 검색 결과 */}
+                { filteredShoplist.length > 0 && (
+                  <div>
+                    {filteredShoplist.map((md) => (
+                      <div key={md._id}>
+                        <Link to={`/shop/md/detail/${md._id}`}>
+                          <img src={md.image} alt="md 이미지" />
+                        </Link>
+                        <p>{md.mdName}</p>
+                        <p>{md.price}원</p>
+                      </div>
+                    ))}
+                  </div>
+                )
+                  //  : (
+                  //   <p>{`${query}에 대한 검색 결과가 없습니다.`}</p>
+                  // )
+                }
+                {/* shop 경매 검색 결과 */}
+                { filteredAuctionList.length > 0 && (
+                  <div>
+                    {filteredAuctionList.map((auction) => (
+                      <div key={auction._id}>
+                        <Link to={`/shop/auction/detail/${auction._id}`}>
+                          <img src={auction.image} alt="경매 이미지" />
+                        </Link>
+                        <p>{auction.auctionName}</p>
+                        <p>{auction.price}원</p>
+                      </div>
+                    ))}
+                  </div>
+                )
+            //  : (
+            //   <p>{`${query}에 대한 검색 결과가 없습니다.`}</p>
+            // )
+                }
+                {/* 티켓 예매 검색 결과 */}
+                { filteredReservationlist.length > 0 && (
+                  <div>
+                    {filteredReservationlist.map((ticket) => (
+                      <div key={ticket._id}>
+                        <Link to={`/reservation/ticket-open/openDetail/${ticket._id}`}>
+                          <img src={ticket.image} alt="티켓 이미지" />
+                        </Link>
+                        {/* <p>{ticket.mdName}</p>
+                        <p>{ticket.price}원</p> */}
+                      </div>
+                    ))}
+                  </div>
+                )
+                //  : (
+                //   <p>{`${query}에 대한 검색 결과가 없습니다.`}</p>
+                // )
+                }
+                {/* 공간 대여 검색 결과 */}
+                { filteredSpaceList.length > 0 && (
+                  <div>
+                    {filteredSpaceList.map((space) => (
+                      <div key={space._id}>
+                        <Link to={`/reservation/space/rentalDetail/${space._id}`}>
+                          <img src={space.image} alt="공간 이미지" />
+                        </Link>
+                        {/* <p>{space.mdName}</p>
+                        <p>{space.price}원</p> */}
+                      </div>
+                    ))}
+                  </div>
+                )
+                //  : (
+                //   <p>{`${query}에 대한 검색 결과가 없습니다.`}</p>
+                // )
+                }
+                {/* vod 검색 결과 */}
+                { filteredVodlist.length > 0 && (
+                  <div>
+                    {filteredVodlist.map((vod) => (
+                      <div key={vod._id}>
+                        <Link to={`/vod/play/${vod._id}`}>
+                          <img src={vod.image} alt="vod 이미지" />
+                        </Link>
+                        {/* <p>{vod.mdName}</p>
+                        <p>{vod.price}원</p> */}
+                      </div>
+                    ))}
+                  </div>
+                )
+                //  : (
+                //   <p>{`${query}에 대한 검색 결과가 없습니다.`}</p>
+                // )
+                }
+                {/* 팀 매칭 검색 결과 */}
+                { teamList.length > 0 && (
+                  <div>
+                    {teamList.map((team) => (
+                      <div key={team._id}>
+                        <Link to={`/showu/team/${team._id}`}>
+                          <img src={`http://localhost:8000${team.teamProfile}`} alt="팀 이미지" />
+                        </Link>
+                        {/* <p>{vod.mdName}</p>
+                        <p>{vod.price}원</p> */}
+                      </div>
+                    ))}
+                  </div>
+                )
+                //  : (
+                //   <p>{`${query}에 대한 검색 결과가 없습니다.`}</p>
+                // )
+                }
+                {/* 커뮤니티 오디션 검색 결과 */}
+                { auditionData.length > 0 && (
+                  <div>
+                    {auditionData.map((audition) => (
+                      <div key={audition._id}>
+                        <Link to={`/vod/play/${audition._id}`}>
+                          <img src={audition.imageUrl} alt="오디션 공고 이미지" />
+                        </Link>
+                        {/* <p>{vod.mdName}</p>
+                        <p>{vod.price}원</p> */}
+                      </div>
+                    ))}
+                  </div>
+                )
+                //  : (
+                //   <p>{`${query}에 대한 검색 결과가 없습니다.`}</p>
+                // )
+                }
+                {/* 커뮤니티 뉴스 검색 결과 */}
+                { newsData.length > 0 && (
+                  <div>
+                    {newsData.map((news) => (
+                      <div key={news._id}>
+                        <Link to={`/vod/play/${news._id}`}>
+                          <img src={`http://localhost:8000/${news.imageUrl}`} alt="오디션 공고 이미지" />
+                        </Link>
+                        {/* <p>{vod.mdName}</p>
+                        <p>{vod.price}원</p> */}
+                      </div>
+                    ))}
+                  </div>
+                )
+                //  : (
+                //   <p>{`${query}에 대한 검색 결과가 없습니다.`}</p>
+                // )
+                }
+                {/* 커뮤니티 검색 결과 */}
+                { commuData.length > 0 && (
+                  <div>
+                    {commuData.map((commu) => (
+                      <div key={commu._id}>
+                        <Link to={`/vod/play/${commu._id}`}>
+                          <img src={`http://localhost:8000/${commu.imageUrl}`} alt="오디션 공고 이미지" />
+                        </Link>
+                        {/* <p>{vod.mdName}</p>
+                        <p>{vod.price}원</p> */}
+                      </div>
+                    ))}
+                  </div>
+                )
+                //  : (
+                //   <p>{`${query}에 대한 검색 결과가 없습니다.`}</p>
+                // )
+                }
+          </>
+            )}
         </div>
       </div>
     </>
