@@ -249,17 +249,19 @@ const Search = () => {
 
                 {/* 티켓 예매 검색 결과 */}
                 { filteredReservationlist.length > 0 && (
-                  <div>
+                  <S.TicketContainer>
                     {filteredReservationlist.map((ticket) => (
-                      <div key={ticket._id}>
+                      <S.Ticket key={ticket._id}>
                         <Link to={`/reservation/ticket-open/openDetail/${ticket._id}`}>
-                          <img src={ticket.image} alt="티켓 이미지" />
+                          <img src={ticket.img} alt="티켓 이미지" />
+                          <p>{ticket.name}</p>
+                          <p>{ticket.date}</p>
                         </Link>
                         {/* <p>{ticket.mdName}</p>
                         <p>{ticket.price}원</p> */}
-                      </div>
+                      </S.Ticket>
                     ))}
-                  </div>
+                  </S.TicketContainer>
                 )}
 
                 {/* 공간 대여 검색 결과 */}

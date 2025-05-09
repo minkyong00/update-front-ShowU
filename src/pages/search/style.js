@@ -35,4 +35,27 @@ S.AuctionBidBox = styled.div`
   gap: 10px;
 `
 
+S.TicketContainer = styled.div`
+  width: 980px;
+  margin: 0 auto;
+
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center
+`
+
+S.Ticket = styled.div`
+  width: 300px;
+  height: 250px;
+  margin-bottom: 60px;
+
+  display: flex;
+  flex-direction: column;
+
+  img {
+    width: 180px;
+    height: 250px;
+  }
+`
+
 export default S;
