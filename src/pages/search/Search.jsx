@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import S from './style'; 
+import Timer from '../shop/auction/AuctionDetail/_component/Timer';
 
 const Search = () => {
   const location = useLocation();
@@ -16,17 +17,7 @@ const Search = () => {
   const [newsData, setNewsData] = useState([]);
   const [commuData, setCommuData] = useState([]);
   const [teamList, setTeamList] = useState([]);
-  const [searchList, setSearchList] = useState([]);
 
-  // console.log("md", shoplist)
-  // console.log("auction", filteredAuctionList)
-  // console.log("ticket", ticketEvents)
-  // console.log("space", spaceList)
-  // console.log("vod", videoList)
-  // console.log("audition", auditionData)
-  // console.log("news", newsData)
-  // console.log("commu", commuData)
-  // console.log("team", teamList)
 
   // Shop md 데이터
   useEffect(() => {
@@ -203,32 +194,15 @@ const Search = () => {
     };
 
     getTeamList();
-  }, [query]);
-  
-  // useEffect(() => {
-  //   const getAllSearchList = async () => {
-  //     try {
-  //       const response = await fetch(`http://localhost:8000/search`);
-  //       const data = response.json();
-  //       setSearchList(data.allFoundSearch)
-  //     } catch (error) {
-  //       console.error("모든 검색 결과 데이터 가져오는 중 오류 발생:", error);
-  //     }
-  //   }
-
-  //   getAllSearchList()
-  // }, [query])
-
-  // console.log("searchList", searchList)
-  // console.log('검색어:', query); 
+  }, [query]); 
   
 
   return (
     <>
-      <div className='wrapper'>
-        <div className='search-result'>
+      <S.Wrapper>
+        <div>
           <div>
-            <p>{`${query}에 대한 검색결과`}</p>
+            <p id='search-title'>{`${query}에 대한 검색결과`}</p>
           </div>
 
           {/* 검색 쿼리가 데이터에 모두 없을 경우 검색 결과가 없는 메시지 출력 */}
@@ -241,40 +215,38 @@ const Search = () => {
               <>
                 {/* shop md 검색 결과 */}
                 { filteredShoplist.length > 0 && (
-                  <div>
+                  <S.ShopContainer>
                     {filteredShoplist.map((md) => (
-                      <div key={md._id}>
+                      <S.Shop key={md._id}>
                         <Link to={`/shop/md/detail/${md._id}`}>
                           <img src={md.image} alt="md 이미지" />
                         </Link>
                         <p>{md.mdName}</p>
                         <p>{md.price}원</p>
-                      </div>
+                      </S.Shop>
                     ))}
-                  </div>
-                )
-                  //  : (
-                  //   <p>{`${query}에 대한 검색 결과가 없습니다.`}</p>
-                  // )
-                }
+                  </S.ShopContainer>
+                )}
+
                 {/* shop 경매 검색 결과 */}
                 { filteredAuctionList.length > 0 && (
-                  <div>
+                  <S.ShopContainer>
                     {filteredAuctionList.map((auction) => (
-                      <div key={auction._id}>
+                      <S.Shop key={auction._id}>
                         <Link to={`/shop/auction/detail/${auction._id}`}>
                           <img src={auction.image} alt="경매 이미지" />
                         </Link>
                         <p>{auction.auctionName}</p>
-                        <p>{auction.price}원</p>
-                      </div>
+                        <Timer endTime={auction.endTime} />
+                        <S.AuctionBidBox>
+                          <p>{auction.currentHighestBid}원</p>
+                          <p>{auction.count}회</p>
+                        </S.AuctionBidBox>
+                      </S.Shop>
                     ))}
-                  </div>
-                )
-            //  : (
-            //   <p>{`${query}에 대한 검색 결과가 없습니다.`}</p>
-            // )
-                }
+                  </S.ShopContainer>
+                )}
+
                 {/* 티켓 예매 검색 결과 */}
                 { filteredReservationlist.length > 0 && (
                   <div>
@@ -288,11 +260,8 @@ const Search = () => {
                       </div>
                     ))}
                   </div>
-                )
-                //  : (
-                //   <p>{`${query}에 대한 검색 결과가 없습니다.`}</p>
-                // )
-                }
+                )}
+
                 {/* 공간 대여 검색 결과 */}
                 { filteredSpaceList.length > 0 && (
                   <div>
@@ -306,11 +275,8 @@ const Search = () => {
                       </div>
                     ))}
                   </div>
-                )
-                //  : (
-                //   <p>{`${query}에 대한 검색 결과가 없습니다.`}</p>
-                // )
-                }
+                )}
+
                 {/* vod 검색 결과 */}
                 { filteredVodlist.length > 0 && (
                   <div>
@@ -324,11 +290,8 @@ const Search = () => {
                       </div>
                     ))}
                   </div>
-                )
-                //  : (
-                //   <p>{`${query}에 대한 검색 결과가 없습니다.`}</p>
-                // )
-                }
+                )}
+
                 {/* 팀 매칭 검색 결과 */}
                 { teamList.length > 0 && (
                   <div>
@@ -342,11 +305,8 @@ const Search = () => {
                       </div>
                     ))}
                   </div>
-                )
-                //  : (
-                //   <p>{`${query}에 대한 검색 결과가 없습니다.`}</p>
-                // )
-                }
+                )}
+                
                 {/* 커뮤니티 오디션 검색 결과 */}
                 { auditionData.length > 0 && (
                   <div>
@@ -360,11 +320,8 @@ const Search = () => {
                       </div>
                     ))}
                   </div>
-                )
-                //  : (
-                //   <p>{`${query}에 대한 검색 결과가 없습니다.`}</p>
-                // )
-                }
+                )}
+
                 {/* 커뮤니티 뉴스 검색 결과 */}
                 { newsData.length > 0 && (
                   <div>
@@ -378,11 +335,8 @@ const Search = () => {
                       </div>
                     ))}
                   </div>
-                )
-                //  : (
-                //   <p>{`${query}에 대한 검색 결과가 없습니다.`}</p>
-                // )
-                }
+                )}
+
                 {/* 커뮤니티 검색 결과 */}
                 { commuData.length > 0 && (
                   <div>
@@ -396,157 +350,13 @@ const Search = () => {
                       </div>
                     ))}
                   </div>
-                )
-                //  : (
-                //   <p>{`${query}에 대한 검색 결과가 없습니다.`}</p>
-                // )
-                }
+                )}
           </>
             )}
         </div>
-      </div>
+      </S.Wrapper>
     </>
   )
-
-//   return (
-//     <S.main className='main'>
-    
-//       <div className='shop'>
-//       <div className="title">
-//     <span className="highlight">Shop</span> 검색 결과
-//         </div>
-//         {filteredShoplist.length > 0 ? (
-//           <div className="md-list">
-//             {filteredShoplist.map(item => (
-//               <S.Md key={item.id}>
-//                 <Link to={`/shop/md/detail/${item._id}`}>
-//                   <img src={item.image} alt={item.mdName} />
-//                 </Link>
-//                 <div className="md-category">{item.category}</div>
-//                 <div className="md-name">{item.mdName}</div>
-//                 <div className="md-price">
-//                 {item.price ? item.price.toLocaleString() : "가격 정보 없음"}원
-//                 </div>
-//               </S.Md>
-//             ))}
-//           </div>
-//         ) : (
-//           <p>{`${query}에 대한 검색 결과가 없습니다...`}</p>
-//         )}
-//       </div>
-
-    
-//       <div className='reservation'>
-//       <div className="title">
-//     <span className="highlight">예약</span> 검색 결과
-//         </div>
-//         {filteredReservationlist.length > 0 ? (
-//           <div className="md-list">
-//             {filteredReservationlist.map(item => (
-//               <S.Md key={item.id}>
-//                 <Link to={`/reservation/ticket-open/openDetail/${item._id}`}>
-//                   <img src={item.img} alt={item.name} />
-//                 </Link>
-//                 <div className="md-category">{item.category}</div>
-//                 <div className="md-name">{item.name}</div>
-//                 <div className="md-price">
-//                   {item.type}
-//                 </div>
-//               </S.Md>
-//             ))}
-//           </div>
-//         ) : (
-//           <p>{`${query}에 대한 검색 결과가 없습니다...`}</p>
-//         )}
-//       </div>
-
-//       <div className='vod'>
-//       <div className="title">
-//     <span className="highlight">Vod</span> 검색 결과
-//         </div>
-//         {filteredVodlist.length > 0 ? (
-//           <div className="md-list">
-//             {filteredVodlist.map(item => (
-//               <S.Md key={item.id}>
-//                 <Link to={`/vod/play/${item._id}`}>
-//                   <img src={item.mainImage} alt={item.title} />
-//                 </Link>
-//                 <div className="md-category">{item.category}</div>
-//                 <div className="md-name">{item.title}</div>
-//               </S.Md>
-//             ))}
-//           </div>
-//         ) : (
-//           <p>{`${query}에 대한 검색 결과가 없습니다...`}</p>
-//         )}
-//       </div>
-
-   
-//       <div className='community'>
-//       <div className="title">
-//     <span className="highlight">커뮤니티</span> 검색 결과
-//         </div>
-// <div className='audition'>
-//   <p className='title'>오디션</p>
-//   {auditionData.filter(item => item.title.toLowerCase().includes(query.toLowerCase())).length > 0 ? (
-//     <div className="md-list">
-//       {auditionData.filter(item => item.title.toLowerCase().includes(query.toLowerCase())).map(item => (
-//         <S.Md key={item.id}>
-//           <Link to={`/community/audition/${item._id}`}>
-//             <img src={item.imageUrl} alt={item.title} />
-//           </Link>
-//           <div className="md-category">{item.category || '오디션'}</div>
-//           <div className="md-name">{item.title}</div>
-//         </S.Md>
-//       ))}
-//     </div>
-//   ) : (
-//     <p>{`${query}에 대한 검색 결과가 없습니다...`}</p>
-//   )}
-// </div>
-
-
-// <div className='news'>
-//   <p className='title'>뉴스</p>
-//   {newsData.filter(item => item.title.toLowerCase().includes(query.toLowerCase())).length > 0 ? (
-//     <div className="md-list">
-//       {newsData.filter(item => item.title.toLowerCase().includes(query.toLowerCase())).map(item => (
-//         <S.Md key={item.id}>
-//           <Link to={`/community/newsMain/news/${item._id}`}>
-//             <img src={item.imageUrl} alt={item.title} />
-//           </Link>
-//           <div className="md-category">{item.category || '뉴스'}</div>
-//           <div className="md-name">{item.title}</div>
-//         </S.Md>
-//       ))}
-//     </div>
-//   ) : (
-//     <p>{`${query}에 대한 검색 결과가 없습니다...`}</p>
-//   )}
-// </div>
-
-//         <div className='general-community'>
-//           <p className='title'>일반 커뮤니티</p>
-//           {commuData.filter(item => item.title.toLowerCase().includes(query.toLowerCase())).length > 0 ? (
-//             <div className="md-list">
-//               {commuData.filter(item => item.title.toLowerCase().includes(query.toLowerCase())).map(item => (
-//                 <S.Md key={item.id}>
-//                   <Link to={`/community/communityInfo/${item._id}`}>
-//                     <img src={item.imageUrl} alt={item.title} />
-//                   </Link>
-//                   <div className="md-category">{item.category || '일반'}</div>
-//                   <div className="md-name">{item.title}</div>
-//                 </S.Md>
-//               ))}
-//             </div>
-//           ) : (
-//             <p>{`${query}에 대한 검색 결과가 없습니다...`}</p>
-//           )}
-//         </div>
-        
-//       </div>
-//     </S.main>
-//   );
 };
 
 export default Search;
