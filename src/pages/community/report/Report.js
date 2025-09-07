@@ -5,6 +5,7 @@ import S from './styleReport';
 import { useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useForm } from 'react-hook-form';
+import { API_URL } from '../../../config.js';
 // import { faCircleCheck } from '@fortawesome/free-solid-svg-icons';
 // import { faCircleCheck as solidCircleCheck } from '@fortawesome/free-solid-svg-icons';
 // import { faCircleCheck as regularCircle } from '@fortawesome/free-regular-svg-icons';
@@ -101,7 +102,7 @@ const Report = () => {
           formData.append("title", data.title);
           formData.append("content", data.content);
 
-          await fetch(`http://localhost:8000/community/newsMain/create`, {
+          await fetch(`${API_URL}/community/newsMain/create`, {
             method : "POST",
             headers : {
               'Authorization': `Bearer ${jwtToken}`
@@ -115,7 +116,7 @@ const Report = () => {
               navigate('/community/newsMain')
               return;
             }
-            const newFilesPath = `http://localhost:8000${res.filePath}`;
+            const newFilesPath = `${API_URL}${res.filePath}`;
             setFilesPath(newFilesPath);
             alert(res.message);
             navigate('/community/newsMain')

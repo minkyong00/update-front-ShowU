@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
 import { useForm } from "react-hook-form";
+import { API_URL } from "../../../config.js";
 
 const Write = () => {
   const navigate = useNavigate();
@@ -80,7 +81,7 @@ const Write = () => {
           formData.append("content", data.content);
           formData.append("category", data.category);
 
-          await fetch(`http://localhost:8000/community/write/create`, {
+          await fetch(`${API_URL}/community/write/create`, {
             method : "POST",
             headers : {
               'Authorization': `Bearer ${jwtToken}`
@@ -94,7 +95,7 @@ const Write = () => {
               navigate('/community')
               return;
             }
-            const newFilesPath = `http://localhost:8000${res.filePath}`;
+            const newFilesPath = `${API_URL}${res.filePath}`;
             setFilesPath(newFilesPath);
             alert(res.message);
             navigate('/community')

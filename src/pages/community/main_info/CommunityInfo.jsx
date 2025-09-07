@@ -7,6 +7,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronDown, faEdit, faTrashAlt, faSave, faHeart, faHeartBroken } from "@fortawesome/free-solid-svg-icons";
 import { useSelector } from "react-redux";
 import UpdateAndDeleteButton from "./_component/UpdateAndDeleteButton";
+import { API_URL } from "../../../config.js";
 
 const CommunityInfo = () => {
   const { id } = useParams();
@@ -28,7 +29,7 @@ const CommunityInfo = () => {
     const fetchCommunityInfo = async () => {
       try {
         const token = localStorage.getItem("jwtToken");
-        const response = await fetch(`http://localhost:8000/community/${id}/details`, {
+        const response = await fetch(`${API_URL}/community/${id}/details`, {
           headers: { Authorization: `Bearer ${token}` },
         });
         if (!response.ok) throw new Error("데이터를 가져오는 데 실패했습니다.");
@@ -60,7 +61,7 @@ const CommunityInfo = () => {
     const token = localStorage.getItem("jwtToken");
 
     try {
-      const response = await fetch(`http://localhost:8000/community/${id}/comments`, {
+      const response = await fetch(`${API_URL}/community/${id}/comments`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -94,7 +95,7 @@ const CommunityInfo = () => {
     const token = localStorage.getItem("jwtToken");
   
     try {
-      const response = await fetch(`http://localhost:8000/community/comments/${commentId}`, { 
+      const response = await fetch(`${API_URL}/community/comments/${commentId}`, { 
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
@@ -127,7 +128,7 @@ const CommunityInfo = () => {
     const token = localStorage.getItem("jwtToken");
 
     try {
-      const response = await fetch(`http://localhost:8000/community/comments/${commentId}`, {
+      const response = await fetch(`${API_URL}/community/comments/${commentId}`, {
         method: "DELETE",
         headers: { Authorization: `Bearer ${token}` },
       });
@@ -151,7 +152,7 @@ const CommunityInfo = () => {
     }
   
     try {
-      const response = await fetch(`http://localhost:8000/community/${id}/likes`, {
+      const response = await fetch(`${API_URL}/community/${id}/likes`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -204,7 +205,7 @@ const CommunityInfo = () => {
         <S.Line1 />
 
         <S.Img>
-          <img src={`http://localhost:8000/${data.imageUrl}`} alt={data.title} />
+          <img src={`${API_URL}/${data.imageUrl}`} alt={data.title} />
           <p>{data.description}</p>
           <p>{data.content}</p>
         </S.Img>

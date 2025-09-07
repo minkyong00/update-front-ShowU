@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
+import { API_URL } from '../../../config.js';
 
 const NewEditDeleteButton = ({ currentUser, news, S }) => {
   const navigate = useNavigate();
@@ -9,7 +10,7 @@ const NewEditDeleteButton = ({ currentUser, news, S }) => {
     const confirmDelete = window.confirm("정말로 글을 삭제하시겠습니까?");
     if (confirmDelete) {
       try {
-        const response = await fetch(`http://localhost:8000/community/newsMain/remove/${id}`, {
+        const response = await fetch(`${API_URL}/community/newsMain/remove/${id}`, {
           method: "DELETE",
           headers: {
             "Authorization": `Bearer ${jwtToken}`,

@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowUp, faChevronDown } from '@fortawesome/free-solid-svg-icons';
 import S from './styleCommunity';
 import { Link } from 'react-router-dom';
+import { API_URL } from '../../../config.js';
 
 const Community = () => {
   const [filterDrop, setFilterDrop] = useState(false); 
@@ -15,7 +16,7 @@ const Community = () => {
     const fetchData = async () => {
       const token = localStorage.getItem('jwtToken'); // JWT 토큰 
       try {
-        const response = await fetch('http://localhost:8000/community', {
+        const response = await fetch(`${API_URL}/community`, {
           headers: {
             'Authorization': `Bearer ${token}`,
           },
@@ -38,7 +39,7 @@ const Community = () => {
   useEffect(() => {
     const fetchAuditionData = async () => {
       try {
-        const response = await fetch("http://localhost:8000/community/audition");
+        const response = await fetch(`${API_URL}/community/audition`);
         const fetchedData = await response.json();
         setAuditionData(fetchedData);
       } catch (error) {
@@ -99,7 +100,7 @@ const Community = () => {
             <S.Img key={item._id}>
               
               <Link to={`/community/communityInfo/${item._id}`}>
-                <img src={`http://localhost:8000/${item.imageUrl}`} alt={item.title} />
+                <img src={`${API_URL}/${item.imageUrl}`} alt={item.title} />
               </Link>
               <div>
                 <h3>{item.title}</h3>

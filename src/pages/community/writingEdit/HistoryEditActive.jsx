@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
+import { API_URL } from '../../../config.js';
 
 const HistoryEditActive = () => {
   const { id } = useParams();
@@ -17,7 +18,7 @@ const HistoryEditActive = () => {
       }
 
       try {
-        const response = await fetch(`http://localhost:8000/community/post/${id}`, {
+        const response = await fetch(`${API_URL}/community/post/${id}`, {
           headers: {
             Authorization: `Bearer ${token}`,
           },
@@ -48,7 +49,7 @@ const HistoryEditActive = () => {
     }
 
     try {
-      const response = await fetch(`http://localhost:8000/community/update/${id}`, {
+      const response = await fetch(`${API_URL}/community/update/${id}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',

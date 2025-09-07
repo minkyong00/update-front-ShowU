@@ -4,6 +4,7 @@ import { useForm } from 'react-hook-form';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronDown } from '@fortawesome/free-solid-svg-icons';
 import { useNavigate, useParams } from 'react-router-dom';
+import { API_URL } from '../../../config.js';
 
 const WriteUpdateContainer = () => {
   const navigate = useNavigate();
@@ -41,7 +42,7 @@ const WriteUpdateContainer = () => {
   useEffect(() => {
     const getCommuPost = async () => {
       try {
-        const response = await fetch(`http://localhost:8000/community/write/update/detail/${id}`, {
+        const response = await fetch(`${API_URL}/community/write/update/detail/${id}`, {
           method : "GET",
           headers : {
             'Authorization': `Bearer ${jwtToken}`
@@ -104,7 +105,7 @@ const WriteUpdateContainer = () => {
           formData.append("content", data.content);
           formData.append("category", data.category);
 
-          await fetch(`http://localhost:8000/community/write/update/${id}`, {
+          await fetch(`${API_URL}/community/write/update/${id}`, {
             method : "PUT",
             headers : {
               'Authorization': `Bearer ${jwtToken}`
@@ -118,7 +119,7 @@ const WriteUpdateContainer = () => {
               navigate(`/community/communityInfo/${id}`)
               return;
             }
-            const newFilesPath = `http://localhost:8000${res.filePath}`;
+            const newFilesPath = `${API_URL}${res.filePath}`;
             setFilesPath(newFilesPath);
             alert(res.message);
             navigate(`/community/communityInfo/${id}`)

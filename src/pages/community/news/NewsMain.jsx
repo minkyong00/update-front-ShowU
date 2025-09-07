@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import S from "./style";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowUp, faChevronDown } from "@fortawesome/free-solid-svg-icons";
+import { API_URL } from "../../../config.js";
 
 const NewsMain = () => {
   const [newsData, setNewsData] = useState([]);
@@ -14,7 +15,7 @@ const NewsMain = () => {
   useEffect(() => {
     const fetchNews = async () => {
       try {
-        const response = await fetch("http://localhost:8000/community/newsMain");
+        const response = await fetch(`${API_URL}/community/newsMain`);
         const data = await response.json();
         setNewsData(data);
       } catch (error) {
@@ -88,7 +89,7 @@ const NewsMain = () => {
                 <Link to={`/community/newsMain/news/${news._id}`}>
               <S.ImageWrapper>
                 {/* <Link to={`/community/news/${news.id}`}> */}
-                  <img src={`http://localhost:8000/${news.imageUrl}`} alt={news.title} />
+                  <img src={`${API_URL}/${news.imageUrl}`} alt={news.title} />
               </S.ImageWrapper>
                 </Link>
               <S.NewsContent>

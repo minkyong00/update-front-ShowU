@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import S from "./HistoryEditStyle";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
+import { API_URL } from "../../../config.js";
 
 const HistoryEdit = () => {
   const [posts, setPosts] = useState([]); 
@@ -16,7 +17,7 @@ const HistoryEdit = () => {
     }
 
     try {
-      const response = await fetch("http://localhost:8000/community/posts?page=1&limit=10", {
+      const response = await fetch(`${API_URL}/community/posts?page=1&limit=10`, {
         method: "GET",
         headers: {
           Authorization: `Bearer ${token}`,
@@ -54,7 +55,7 @@ const HistoryEdit = () => {
       }
 
       try {
-        const response = await fetch(`http://localhost:8000/community/posts/${postId}`, {
+        const response = await fetch(`${API_URL}/community/posts/${postId}`, {
           method: "DELETE",
           headers: {
             Authorization: `Bearer ${token}`,
@@ -82,7 +83,7 @@ const HistoryEdit = () => {
     }
 
     try {
-      const response = await fetch(`http://localhost:8000/community/posts/${editingPost}`, {
+      const response = await fetch(`${API_URL}/community/posts/${editingPost}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",

@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
 import S from "./auditionInfoStyle";
+import { API_URL } from "../../../config.js";
 
 const AuditionInfo = () => {
   const { id } = useParams(); 
@@ -13,7 +14,7 @@ const AuditionInfo = () => {
     console.log("Received ID:", id);
     const fetchAuditionById = async () => {
       try {
-        const response = await fetch(`http://localhost:8000/community/audition/${id}`);
+        const response = await fetch(`${API_URL}/community/audition/${id}`);
         if (!response.ok) {
           throw new Error("오디션 데이터를 가져오는 데 실패했습니다.");
         }

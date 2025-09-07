@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import S from './styleEditCommentsMain';
 import { faChevronDown } from '@fortawesome/free-solid-svg-icons';
 import { useNavigate, useParams } from 'react-router-dom';
+import { API_URL } from "../../../config.js";
 
 const EditCommentsMain = () => {
   const { id } = useParams();
@@ -39,7 +40,7 @@ const EditCommentsMain = () => {
   // 댓글 추가 (예시 추가)
   const handleAddComment = async (newComment) => {
     try {
-      const response = await fetch(`http://localhost:8000/community/comments/${id}`, {
+      const response = await fetch(`${API_URL}/community/comments/${id}`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(newComment),
@@ -66,7 +67,7 @@ const EditCommentsMain = () => {
     if (!complete) return;
 
     try {
-      const response = await fetch(`http://localhost:8000/community/comments/${commentId}`, {
+      const response = await fetch(`${API_URL}/community/comments/${commentId}`, {
         method: "DELETE",
       });
 

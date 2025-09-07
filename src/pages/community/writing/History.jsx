@@ -5,6 +5,7 @@ import S from './styleHistory';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronDown } from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';
+import { API_URL } from '../../../config.js';
 
 const History = () => {
   const [historysData, setHistorysData] = useState([]);
@@ -14,7 +15,7 @@ const History = () => {
       const token = localStorage.getItem("jwtToken");
 
       try {
-        const response = await fetch("http://localhost:8000/community/write", {
+        const response = await fetch(`${API_URL}/community/write`, {
           method: "GET",
           headers: {
             Authorization: `Bearer ${token}`,

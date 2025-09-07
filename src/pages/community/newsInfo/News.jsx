@@ -7,6 +7,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
 import NewEditDeleteButton from "../reportEdit/NewEditDeleteButton";
 import { useSelector } from "react-redux";
+import { API_URL } from "../../../config.js";
 
 const News = () => {
   const { id } = useParams();
@@ -17,7 +18,7 @@ const News = () => {
   useEffect(() => {
     const fetchNewsById = async () => {
       try {
-        const response = await fetch(`http://localhost:8000/community/newsMain/${id}`, {
+        const response = await fetch(`${API_URL}/community/newsMain/${id}`, {
           method : "GET",
           headers : {
             "Authorization": `Bearer ${jwtToken}`
@@ -68,7 +69,7 @@ const News = () => {
 
       <S.Line2></S.Line2>  
       <S.Images>
-      <img src={`http://localhost:8000/${news.imageUrl}`} alt={news.title} />
+      <img src={`${API_URL}/${news.imageUrl}`} alt={news.title} />
       </S.Images>
 
       <S.content>{news.content}</S.content> 

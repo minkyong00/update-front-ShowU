@@ -3,6 +3,7 @@ import S from "./style";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowUp, faChevronDown } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
+import { API_URL } from "../../../config.js"
 
 const Audition = () => {
   const [auditionData, setAuditionData] = useState([]);
@@ -11,7 +12,7 @@ const Audition = () => {
   useEffect(() => {
     const fetchAuditions = async () => {
       try {
-        const response = await fetch("http://localhost:8000/community/audition"); 
+        const response = await fetch(`${API_URL}/community/audition`); 
         if (!response.ok) {
           throw new Error("오디션 데이터를 불러오는 데 실패했습니다.");
         }
