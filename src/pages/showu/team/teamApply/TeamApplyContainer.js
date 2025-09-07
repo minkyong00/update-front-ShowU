@@ -5,6 +5,7 @@ import { faChevronDown } from '@fortawesome/free-solid-svg-icons';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { useSelector } from 'react-redux';
+import { API_URL } from '../../../../config.js';
 
 const TeamApplyContainer = () => {
   const navigate = useNavigate();
@@ -58,7 +59,7 @@ const TeamApplyContainer = () => {
 
             formData.append("intro", data.intro)
 
-            await fetch(`http://localhost:8000/showu/team/apply/create/${id}`, {
+            await fetch(`${API_URL}/showu/team/apply/create/${id}`, {
               method: "POST",
               headers: {
                 'Authorization': `Bearer ${jwtToken}`
@@ -70,7 +71,7 @@ const TeamApplyContainer = () => {
               if(!res.createApplySuccess){
                 console.log("팀 지원 중 오류가 발생했습니다")
               }
-              const newFilesPath = `http://localhost:8000${res.filePath}`;
+              const newFilesPath = `${API_URL}${res.filePath}`;
               setFilesPath(newFilesPath);
               alert(res.message);
               console.log("팀 지원 완료")

@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCalendarDays, faThumbtack } from '@fortawesome/free-solid-svg-icons';
 import Paging from '../../mypage/_component/Paging';
 import Timer from '../../shop/auction/AuctionDetail/_component/Timer';
+import { API_URL } from '../../../config.js';
 
 const TeamComponent = ({ navigate, filteredProducts, page, setPage, totalPost, PAGINATION }) => {
 
@@ -30,7 +31,7 @@ const TeamComponent = ({ navigate, filteredProducts, page, setPage, totalPost, P
             <S.LessonBox key={i}>
               <ul>
                 <S.UserInfo>  
-                  <img src={`http://localhost:8000${team.teamProfile}`} alt="team profile"></img>
+                  <img src={`${API_URL}${team.teamProfile}`} alt="team profile"></img>
                   <div>
                     <li className='teamName'>{team.teamName}</li>
                     <li className='category'>{team.category}</li>

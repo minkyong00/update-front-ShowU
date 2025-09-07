@@ -6,6 +6,7 @@ import S from './style';
 import usePagination from '../../../hooks/usePagination';
 import TeamComponent from './TeamComponent';
 import { useSelector } from 'react-redux';
+import { API_URL } from '../../../config.js';
 
 const PAGINATION = {
   pageRange: 6,
@@ -26,7 +27,7 @@ const TeamContainer = () => {
   useEffect(() => {
     const getTeamList = async () => {
       try {
-        const response = await fetch(`http://localhost:8000/showu/team/`, {
+        const response = await fetch(`${API_URL}/showu/team/`, {
           method : "GET",
           headers: {
             "Content-Type": "application/json",

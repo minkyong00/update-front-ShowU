@@ -3,6 +3,7 @@ import S from './style';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faDownload, faHeart } from '@fortawesome/free-solid-svg-icons';
 import { useNavigate, useParams } from 'react-router-dom';
+import { API_URL } from '../../../../config.js';
 
 const TeamDetailContainer = () => {
   const [ teams, setTeams ] = useState([]);
@@ -16,7 +17,7 @@ const TeamDetailContainer = () => {
   useEffect(() => {
     const getLiked = async () => {
       try {
-        const response = await fetch(`http://localhost:8000/showu/team/like/${id}`, {
+        const response = await fetch(`${API_URL}/showu/team/like/${id}`, {
           method : "GET",
           headers : {
             "Content-Type": "application/json",
@@ -48,7 +49,7 @@ const TeamDetailContainer = () => {
     setLiked(newLiked);
 
     try {
-      const response = await fetch(`http://localhost:8000/showu/team/add-like/${id}`, {
+      const response = await fetch(`${API_URL}/showu/team/add-like/${id}`, {
         method : "POST",
         headers : {
           "Content-Type": "application/json",
@@ -75,7 +76,7 @@ const TeamDetailContainer = () => {
 
   const getTeamDetails = async () => {
     try {
-      await fetch(`http://localhost:8000/showu/team/detail/${id}`, {
+      await fetch(`${API_URL}/showu/team/detail/${id}`, {
         method : "GET",
         headers : {
           "Content-Type": "application/json",
@@ -114,7 +115,7 @@ const TeamDetailContainer = () => {
                 className='banner'
               ></img>
               <img
-                src={`http://localhost:8000${item.teamProfile}`}
+                src={`${API_URL}${item.teamProfile}`}
                 className='profilo'
               ></img>
             </S.Banner>
@@ -129,7 +130,7 @@ const TeamDetailContainer = () => {
                   {item.file && (
                     <S.FileDown>
                       <a 
-                        href={`http://localhost:8000/showu/team/down-file/${item.file.split('/').pop()}`}
+                        href={`${API_URL}/showu/team/down-file/${item.file.split('/').pop()}`}
                         target='_blank'
                         rel='noopener noreferrer'
                       >
@@ -202,7 +203,7 @@ const TeamDetailContainer = () => {
               <p className='rightTitle'>팀 소개</p>
               <S.TeamIntro>
                 <img
-                  src={`http://localhost:8000${item.teamProfile}`}
+                  src={`${API_URL}${item.teamProfile}`}
                   className='profilo'
                 >
                 </img>
