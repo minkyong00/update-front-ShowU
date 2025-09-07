@@ -3,6 +3,7 @@ import S from './style';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart } from '@fortawesome/free-solid-svg-icons';
+import { API_URL } from '../../../../config.js';
 
 const VideoDetail = () => {
   const [activePage, setActivePage] = useState('rec');
@@ -32,7 +33,7 @@ const VideoDetail = () => {
     }
   
     try {
-      const response = await fetch(`http://localhost:8000/vod/info/${id}/likes`, {
+      const response = await fetch(`${API_URL}/vod/info/${id}/likes`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -57,7 +58,7 @@ const VideoDetail = () => {
   useEffect(() => {
     const fetchVideoList = async () => {
       try {
-        const response = await fetch("http://localhost:8000/vod");
+        const response = await fetch(`${API_URL}/vod`);
         const data = await response.json();
         if (response.ok) {
           setVideoList(data);
@@ -73,7 +74,7 @@ const VideoDetail = () => {
   useEffect(() => {
     const fetchLikeStatus = async () => {
       try {
-        const response = await fetch(`http://localhost:8000/vod/info/${id}/like/status`, {
+        const response = await fetch(`${API_URL}/vod/info/${id}/like/status`, {
           method: "GET",
           headers: {
             "Content-Type": "application/json",
@@ -100,7 +101,7 @@ const VideoDetail = () => {
     const fetchVodInfo = async () => {
       setLoading(true);
       try {
-        const response = await fetch(`http://localhost:8000/vod/info/${id}`);
+        const response = await fetch(`${API_URL}/vod/info/${id}`);
         if (!response.ok) {
           throw new Error("VOD 정보를 가져오는데 실패했습니다.");
         }

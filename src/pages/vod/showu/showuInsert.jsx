@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faVideo } from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';
 import axios from 'axios'
+import { API_URL } from '../../../config.js';
 
 const ShowuInsert = () => {
   const [showuvideolist, setShowuVideoList] = useState([]);
@@ -39,7 +40,7 @@ const ShowuInsert = () => {
   useEffect(() => {
     const vodVideo = async () => {
       try {
-        const response = await fetch("http://localhost:8000/vod/showuvideo");
+        const response = await fetch(`${API_URL}/vod/showuvideo`);
         const data = await response.json();
         console.log(data);
         if (response.ok) {
@@ -155,7 +156,7 @@ const ShowuInsert = () => {
   
         // 업로드 요청
         try {
-            const response=  await axios.post('http://localhost:8000/vod/video', formData, {
+            const response=  await axios.post(`${API_URL}/vod/video`, formData, {
             headers: {
               'Authorization': `Bearer ${jwtToken}`, // 인증 토큰 추가
             },
@@ -211,7 +212,7 @@ const ShowuInsert = () => {
               <S.Card>
                 <Link to={`/vod/my-ShowU/video/${video._id}`} role="button">
                   {video.thumbnail ? (
-                    <img src={`http://localhost:8000${video.thumbnail}`} alt={`Video ${video._id}`} />
+                    <img src={`${API_URL}${video.thumbnail}`} alt={`Video ${video._id}`} />
                   ) : (
                     <div>이미지를 불러올 수 없습니다.</div>
                   )}

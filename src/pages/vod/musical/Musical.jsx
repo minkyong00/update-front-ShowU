@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom'; 
 import S from './style';
+import { API_URL } from '../../../config.js';
 
 const Musical = ({ plays }) => {
   const [selectedCategory, setSelectedCategory] = useState("인기순");
@@ -19,7 +20,7 @@ const Musical = ({ plays }) => {
   useEffect(()=>{
       const vodVideo=async()=>{
         try{
-          const response = await fetch("http://localhost:8000/vod")
+          const response = await fetch(`${API_URL}/vod`)
           const data = await response.json();
           console.log(data)
           if(response.ok){

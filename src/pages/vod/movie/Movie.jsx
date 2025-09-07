@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom'; 
 import S from './style';
+import { API_URL } from '../../../config.js';
 
 const Movie = ({ plays }) => {
   const [selectedCategory, setSelectedCategory] = useState("영화전체");
@@ -13,7 +14,7 @@ const Movie = ({ plays }) => {
   useEffect(() => {
     const vodVideo = async () => {
       try {
-        const response = await fetch("http://localhost:8000/vod");
+        const response = await fetch(`${API_URL}/vod`);
         const data = await response.json();
         if (response.ok) {
           setVideoList(data);  // 전체 비디오 목록을 상태로 설정

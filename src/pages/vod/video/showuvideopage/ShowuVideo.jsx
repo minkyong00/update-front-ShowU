@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import S from './style';
 import { Link, useNavigate, useParams } from 'react-router-dom';
+import { API_URL } from '../../../../config.js';
 
 const ShowuVideo = () => {
   const jwtToken = localStorage.getItem("jwtToken");
@@ -44,7 +45,7 @@ const ShowuVideo = () => {
     const fetchUserData = async () => {
       setLoading(true);
       try {
-        const response = await fetch(`http://localhost:8000/vod/user`, {
+        const response = await fetch(`${API_URL}/vod/user`, {
           method: "GET",
           headers: {
             'Authorization': `Bearer ${jwtToken}`
@@ -68,7 +69,7 @@ const ShowuVideo = () => {
   //댓글 조회
   const fetchComments = async () => {
     try {
-      const response = await fetch(`http://localhost:8000/vod/comment/video/${id}`);
+      const response = await fetch(`${API_URL}/vod/comment/video/${id}`);
       if (!response.ok) {
         throw new Error('댓글을 가져오는 데 실패했습니다.');
       }
@@ -89,7 +90,7 @@ const ShowuVideo = () => {
     const fetchuploaduser = async () => {
       setLoading(true);
       try {
-        const response = await fetch(`http://localhost:8000/vod/upload/${id}/name`, {
+        const response = await fetch(`${API_URL}/vod/upload/${id}/name`, {
           method: "GET",
           headers: {
             'Authorization': `Bearer ${jwtToken}`
@@ -116,7 +117,7 @@ const ShowuVideo = () => {
   useEffect(() => {
     const vodVideo = async () => {
       try {
-        const response = await fetch("http://localhost:8000/vod/showuvideo");
+        const response = await fetch(`${API_URL}/vod/showuvideo`);
         const data = await response.json();
         if (response.ok) {
           setShowuVideoList(data);
@@ -138,7 +139,7 @@ const ShowuVideo = () => {
 const fetchVodInfo = async () => {
   setLoading(true);
   try {
-    const response = await fetch(`http://localhost:8000/vod/showuinfo/${id}/showu`);
+    const response = await fetch(`${API_URL}/vod/showuinfo/${id}/showu`);
     if (!response.ok) {
       throw new Error("VOD 정보를 가져오는데 실패했습니다.");
     }
@@ -181,7 +182,7 @@ useEffect(() => {
     if (comment.trim()) {
       try {
         setLoading(true); // 로딩 상태를 true로 설정하여 추가 작업이 완료되기 전까지 리렌더링을 방지
-        const response = await fetch(`http://localhost:8000/vod/add/${id}/comments`, {
+        const response = await fetch(`${API_URL}/vod/add/${id}/comments`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -219,7 +220,7 @@ useEffect(() => {
       return;
     }
     try {
-      const response = await fetch(`http://localhost:8000/vod/delete/comments/${id}`, {
+      const response = await fetch(`${API_URL}/vod/delete/comments/${id}`, {
         method: "DELETE",
         headers: { Authorization: `Bearer ${jwtToken}` },
       });
@@ -253,7 +254,7 @@ useEffect(() => {
     // 수정할 댓글 처리
     try {
       const token = localStorage.getItem("jwtToken");
-      const response = await fetch(`http://localhost:8000/vod/update/comments/${comment._id}`, {
+      const response = await fetch(`${API_URL}/vod/update/comments/${comment._id}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
@@ -392,7 +393,7 @@ useEffect(() => {
             <S.videoPlaceholder className="video-placeholder">
               {showuvideoinfo.videoUrl ? (
                 <video controls width="100%" height="100%">
-                  <source src={`http://localhost:8000${showuvideoinfo.videoUrl}`} type="video/mp4" />
+                  <source src={`${API_URL}${showuvideoinfo.videoUrl}`} type="video/mp4" />
                   동영상을 재생할 수 없습니다.
                 </video>
               ) : (
@@ -543,7 +544,7 @@ useEffect(() => {
               <div className="poster-placeholder">
               {item.thumbnail ? (
                 <img
-                  src={`http://localhost:8000${item.thumbnail}`}
+                  src={`${API_URL}${item.thumbnail}`}
                   alt={`Poster ${index + 1}`}
                   style={{ width: '100%', height: '200px' }}
                   onClick={() => handleClick(item._id)}  

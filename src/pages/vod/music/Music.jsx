@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom'; 
 import S from './style';
+import { API_URL } from '../../../config.js';
 
 const Music = () => {
   const [videolist, setVideoList] = useState([]);
@@ -10,7 +11,7 @@ const Music = () => {
   useEffect(() => {
     const vodVideo = async () => {
       try {
-        const response = await fetch("http://localhost:8000/vod");
+        const response = await fetch(`${API_URL}/vod`);
         const data = await response.json();
         if (response.ok) {
           setVideoList(data);

@@ -1,6 +1,7 @@
 import React, { useState,useEffect } from 'react';
 import S from '../VOD/style';
 import { Link, NavLink, useLocation } from 'react-router-dom';
+import { API_URL } from '../../../config.js';
 
 const Vod = () => {
 
@@ -19,7 +20,7 @@ const Vod = () => {
   useEffect(()=>{
     const vodVideo=async()=>{
       try{
-        const response = await fetch("http://localhost:8000/vod")
+        const response = await fetch(`${API_URL}/vod`)
         const data = await response.json();
         console.log(data)
         if(response.ok){
