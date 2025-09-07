@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import S from './style'; 
 import Timer from '../shop/auction/AuctionDetail/_component/Timer';
+import { API_URL } from '../../config.js';
 
 const Search = () => {
   const location = useLocation();
@@ -23,7 +24,7 @@ const Search = () => {
   useEffect(() => {
     const getMdItems = async () => {
       try {
-        const response = await fetch("http://localhost:8000/shop/md");
+        const response = await fetch(`${API_URL}/shop/md`);
         const datas = await response.json();
         setFilteredShoplist(
           datas.filter(item => item.mdName.toLowerCase().includes(query.toLowerCase()))
@@ -40,7 +41,7 @@ const Search = () => {
   useEffect(() => {
     const getAuctionItems = async () => {
       try {
-        const response = await fetch("http://localhost:8000/shop/auction");
+        const response = await fetch(`${API_URL}/shop/auction`);
         const datas = await response.json();
         setFilteredAuctionList(
           datas.filter(item => item.auctionName.toLowerCase().includes(query.toLowerCase()))
@@ -58,7 +59,7 @@ const Search = () => {
     const fetchTicketEvents = async () => {
       try {
         const response = await fetch(
-          "http://localhost:8000/reservation/ticketEvents",
+          `${API_URL}/reservation/ticketEvents`,
           {
             headers: {
               Authorization: `Bearer ${token}`,
@@ -84,7 +85,7 @@ const Search = () => {
   useEffect(() => {
     const getSpaceItem = async () => {
       try {
-        const response = await fetch("http://localhost:8000/reservation/spaces", {
+        const response = await fetch(`${API_URL}/reservation/spaces`, {
           headers : {
             Authorization: `Bearer ${token}`
           }
@@ -106,7 +107,7 @@ const Search = () => {
   useEffect(() => {
     const vodVideo = async () => {
       try {
-        const response = await fetch("http://localhost:8000/vod");
+        const response = await fetch(`${API_URL}/vod`);
         const data = await response.json();
         if (response.ok) {
           setFilteredVodlist(
@@ -127,7 +128,7 @@ const Search = () => {
   useEffect(() => {
     const fetchAuditions = async () => {
       try {
-        const response = await fetch("http://localhost:8000/community/audition"); 
+        const response = await fetch(`${API_URL}/community/audition`); 
         if (!response.ok) {
           throw new Error("오디션 데이터를 불러오는 데 실패했습니다.");
         }
@@ -146,7 +147,7 @@ const Search = () => {
   useEffect(() => {
     const fetchNews = async () => {
       try {
-        const response = await fetch("http://localhost:8000/community/newsMain");
+        const response = await fetch(`${API_URL}/community/newsMain`);
         const data = await response.json();
         setNewsData(data.filter(news => news.title.toLowerCase().includes(query.toLowerCase())));
       } catch (error) {
@@ -162,7 +163,7 @@ const Search = () => {
     const fetchData = async () => {
       const token = localStorage.getItem('jwtToken');
       try {
-        const response = await fetch('http://localhost:8000/community', {
+        const response = await fetch(`${API_URL}/community`, {
           headers: {
             'Authorization': `Bearer ${token}`,
           },
@@ -185,7 +186,7 @@ const Search = () => {
   useEffect(() => {
     const getTeamList = async () => {
       try {
-        const response = await fetch("http://localhost:8000/showu/team");
+        const response = await fetch(`${API_URL}/showu/team`);
         const data = await response.json();
         setTeamList(data.teamList.filter(team => team.teamName.toLowerCase().includes(query.toLowerCase())));
       } catch (error) {
@@ -300,7 +301,7 @@ const Search = () => {
                     {teamList.map((team) => (
                       <div key={team._id}>
                         <Link to={`/showu/team/${team._id}`}>
-                          <img src={`http://localhost:8000${team.teamProfile}`} alt="팀 이미지" />
+                          <img src={`${API_URL}${team.teamProfile}`} alt="팀 이미지" />
                         </Link>
                         {/* <p>{vod.mdName}</p>
                         <p>{vod.price}원</p> */}
@@ -330,7 +331,7 @@ const Search = () => {
                     {newsData.map((news) => (
                       <div key={news._id}>
                         <Link to={`/vod/play/${news._id}`}>
-                          <img src={`http://localhost:8000/${news.imageUrl}`} alt="오디션 공고 이미지" />
+                          <img src={`${API_URL}/${news.imageUrl}`} alt="오디션 공고 이미지" />
                         </Link>
                         {/* <p>{vod.mdName}</p>
                         <p>{vod.price}원</p> */}
@@ -345,7 +346,7 @@ const Search = () => {
                     {commuData.map((commu) => (
                       <div key={commu._id}>
                         <Link to={`/vod/play/${commu._id}`}>
-                          <img src={`http://localhost:8000/${commu.imageUrl}`} alt="오디션 공고 이미지" />
+                          <img src={`${API_URL}/${commu.imageUrl}`} alt="오디션 공고 이미지" />
                         </Link>
                         {/* <p>{vod.mdName}</p>
                         <p>{vod.price}원</p> */}
