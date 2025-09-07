@@ -7,6 +7,7 @@ import S from './style';
 import Footer from './footer/Footer';
 import { setUser, setUserStatus } from '../../modules/user';
 import HoverMenu from './_component/HoverMenu';
+import { API_URL } from '../../config.js';
 
 const Layout = () => {
   const { isLogin, currentUser } = useSelector((state) => state.user);
@@ -60,7 +61,7 @@ const Layout = () => {
 
     if (jwtToken) {
       const isAuthenticate = async () => {
-        const response = await fetch(`http://localhost:8000/auth/jwt`, {
+        const response = await fetch(`${API_URL}/auth/jwt`, {
           method: "POST",
           headers: {
             "Authorization": `Bearer ${jwtToken}`,

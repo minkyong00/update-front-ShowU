@@ -5,6 +5,7 @@ import LoginHeader from './_component/LoginHeader';
 import { useForm } from 'react-hook-form';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faLock, faLockOpen } from '@fortawesome/free-solid-svg-icons';
+import { API_URL } from "../../config.js";
 
 const LoginContainer = () => {
   const navigate = useNavigate();
@@ -53,7 +54,7 @@ const LoginContainer = () => {
   const onSubmit = async (data) => {
     const { email, password } = data;
 
-    const response = await fetch("http://localhost:8000/auth/local", {
+    const response = await fetch(`${API_URL}/auth/local`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ email, password }),
@@ -79,13 +80,13 @@ const LoginContainer = () => {
   console.log("loginID", loginID)
 
   const locationGoogle = () => {
-    window.location.href = "http://localhost:8000/auth/google";
+    window.location.href = `${API_URL}/auth/google`;
   }
   const locationKakao = () => {
-    window.location.href = "http://localhost:8000/auth/kakao";
+    window.location.href = `${API_URL}/auth/kakao`;
   }
   const locationNaver = () => {
-    window.location.href = "http://localhost:8000/auth/naver";
+    window.location.href = `${API_URL}/auth/naver`;
   }
 
   return (

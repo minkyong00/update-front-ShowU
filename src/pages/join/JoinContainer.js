@@ -6,6 +6,7 @@ import { useForm } from 'react-hook-form'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faLock, faLockOpen } from '@fortawesome/free-solid-svg-icons';
 import Checkbox from '../login/_component/Checkbox';
+import { API_URL } from '../../config.js';
 
 const JoinContainer = () => {
   const [ buttonColor, setButtonColor ] = useState(false);
@@ -52,7 +53,7 @@ const JoinContainer = () => {
 
               const { email, password, phone, name } = data;
 
-              await fetch(`http://localhost:8000/users/register`, {
+              await fetch(`${API_URL}/users/register`, {
                 method : "POST",
                 headers : {
                   "Content-Type" : "application/json"

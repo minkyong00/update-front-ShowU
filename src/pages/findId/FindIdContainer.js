@@ -3,6 +3,7 @@ import S from './style';
 import LoginHeader from '../login/_component/LoginHeader';
 import { Link } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
+import { API_URL } from '../../config.js';
 
 const FindIdContainer = () => {
   const [ step, setStep ] = useState(1);
@@ -26,7 +27,7 @@ const FindIdContainer = () => {
 
               const { name, phone } = data;
 
-              await fetch(`http://localhost:8000/users/find-id`, {
+              await fetch(`${API_URL}/users/find-id`, {
                 method : "POST",
                 headers : {
                   "Content-Type": "application/json"

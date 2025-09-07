@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import S from './EmailButtonStyle';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faLock, faLockOpen } from '@fortawesome/free-solid-svg-icons';
+import { API_URL } from '../../config.js';
 
 const EmailButton = () => {
   const [ step, setStep ] = useState(1); 
@@ -68,7 +69,7 @@ const EmailButton = () => {
       return;
     }
 
-    fetch(`http://localhost:8000/auth/api/change-password`, {
+    fetch(`${API_URL}/auth/api/change-password`, {
       method: 'POST',
       headers: { 
         'Content-Type': 'application/json' 
