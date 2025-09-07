@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { loadTossPayments, ANONYMOUS } from "@tosspayments/tosspayments-sdk";
 import S from "./style";
 import { useNavigate } from "react-router-dom";
+import { API_URL } from "../../../../config.js";
 
 const generateRandomString = () => window.btoa(Math.random()).slice(0, 20);
 const clientKey = "test_gck_docs_Ovk5rk1EwkEbP0W43n07xlzm";
@@ -61,7 +62,7 @@ const RentalTossPayment = ({
 
     try {
       const response = await fetch(
-        "http://localhost:8000/reservation/rentalToss",
+        `${API_URL}/reservation/rentalToss`,
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import S from "./style";
 import { useNavigate } from "react-router-dom";
+import { API_URL } from "../../../../config.js";
 
 const OpenDetail = () => {
   const { id } = useParams();
@@ -14,7 +15,7 @@ const OpenDetail = () => {
       const token = localStorage.getItem("jwtToken");
       try {
         const response = await fetch(
-          `http://localhost:8000/reservation/ticketEvents/${id}`,
+          `${API_URL}/reservation/ticketEvents/${id}`,
           {
             headers: {
               Authorization: `Bearer ${token}`,

@@ -3,6 +3,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import Modal from "react-modal";
 import { useSelector } from "react-redux";
 import { S, modalStyles } from "./style";
+import { API_URL } from "../../../../config.js";
 
 Modal.setAppElement("#root");
 
@@ -25,7 +26,7 @@ const RentalDetail = () => {
       const token = localStorage.getItem("jwtToken");
       try {
         const response = await fetch(
-          `http://localhost:8000/reservation/spaces/${id}`,
+          `${API_URL}/reservation/spaces/${id}`,
           {
             headers: {
               Authorization: `Bearer ${token}`,
@@ -39,7 +40,7 @@ const RentalDetail = () => {
         setRental(data);
 
         const likeStatusResponse = await fetch(
-          `http://localhost:8000/reservation/spaces/${id}/likeStatus?userId=${currentUser._id}&type=space`,
+          `${API_URL}/reservation/spaces/${id}/likeStatus?userId=${currentUser._id}&type=space`,
           {
             headers: {
               Authorization: `Bearer ${token}`,
@@ -83,7 +84,7 @@ const RentalDetail = () => {
     const token = localStorage.getItem("jwtToken");
     try {
       const response = await fetch(
-        `http://localhost:8000/reservation/spaces/${id}/likes`,
+        `${API_URL}/reservation/spaces/${id}/likes`,
         {
           method: "POST",
           headers: {

@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useSearchParams, useNavigate } from "react-router-dom";
+import { API_URL } from "../../../../config.js";
 
 const Success = () => {
   const [searchParams] = useSearchParams();
@@ -18,7 +19,7 @@ const Success = () => {
 
   async function confirmPayment() {
     try {
-      const response = await fetch("http://localhost:8000/reservation/toss", {
+      const response = await fetch(`${API_URL}/reservation/toss`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({

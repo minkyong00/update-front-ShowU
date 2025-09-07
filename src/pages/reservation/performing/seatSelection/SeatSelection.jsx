@@ -3,6 +3,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import format from "date-fns/format";
 import S from "./style";
+import { API_URL } from "../../../../config.js";
 
 
 const SeatSelection = () => {
@@ -35,7 +36,7 @@ const SeatSelection = () => {
           new Date(selectedDate).toISOString()
         );
         const response = await fetch(
-          `http://localhost:8000/reservation/reservedSeats?showId=${showId}&date=${formattedDate}&time=${selectedTime}`
+          `${API_URL}/reservation/reservedSeats?showId=${showId}&date=${formattedDate}&time=${selectedTime}`
         );
         if (!response.ok) {
           throw new Error("예약된 좌석을 가져오는 중 오류 발생");
@@ -53,7 +54,7 @@ const SeatSelection = () => {
           new Date(selectedDate).toISOString()
         );
         const response = await fetch(
-          `http://localhost:8000/reservation/availableSeats?showId=${showId}&date=${formattedDate}&time=${selectedTime}`
+          `${API_URL}/reservation/availableSeats?showId=${showId}&date=${formattedDate}&time=${selectedTime}`
         );
         if (!response.ok) {
           throw new Error("잔여 좌석을 가져오는 중 오류 발생");
@@ -106,7 +107,7 @@ const SeatSelection = () => {
       const formattedDate = dateObj.toISOString(); // 전체 ISO 형식 유지
 
       const response = await fetch(
-        "http://localhost:8000/reservation/reserve",
+        `${API_URL}/reservation/reserve`,
         {
           method: "POST",
           headers: {

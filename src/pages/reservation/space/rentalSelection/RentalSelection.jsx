@@ -22,6 +22,7 @@ import {
   isAfter,
 } from "date-fns";
 import { S } from "./style";
+import { API_URL } from "../../../../config.js";
 
 const RentalSelection = () => {
   const { state } = useLocation();
@@ -167,7 +168,7 @@ const RentalSelection = () => {
 
    try {
      const response = await fetch(
-       "http://localhost:8000/reservation/reservations",
+       `${API_URL}/reservation/reservations`,
        {
          method: "POST",
          headers: {
@@ -200,7 +201,7 @@ const RentalSelection = () => {
     const formattedDate = encodeURIComponent(date.toISOString());
     try {
       const response = await fetch(
-        `http://localhost:8000/reservation/reservedTimes?spaceId=${spaceId}&date=${formattedDate}`,
+        `${API_URL}/reservation/reservedTimes?spaceId=${spaceId}&date=${formattedDate}`,
         {
           headers: {
             Authorization: `Bearer ${token}`,

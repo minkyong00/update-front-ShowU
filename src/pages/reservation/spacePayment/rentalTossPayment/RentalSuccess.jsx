@@ -1,5 +1,6 @@
 import { useEffect, useState, useCallback } from "react";
 import { useSearchParams, useNavigate } from "react-router-dom";
+import { API_URL } from "../../../../config.js";
 
 const RentalSuccess = () => {
   const [searchParams] = useSearchParams();
@@ -20,7 +21,7 @@ const RentalSuccess = () => {
   const confirmPayment = useCallback(async () => {
     try {
       const response = await fetch(
-        "http://localhost:8000/reservation/rentalToss",
+        `${API_URL}/reservation/rentalToss`,
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },

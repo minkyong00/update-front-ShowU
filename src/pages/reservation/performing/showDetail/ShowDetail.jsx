@@ -12,6 +12,7 @@ import {
 } from "date-fns";
 import { useSelector } from "react-redux";
 import S from "./style";
+import { API_URL } from "../../../../config.js";
 
 const ShowDetail = () => {
   const { id } = useParams();
@@ -38,7 +39,7 @@ const ShowDetail = () => {
      }
      try {
        const response = await fetch(
-         `http://localhost:8000/reservation/performingShows/${id}`,
+         `${API_URL}/reservation/performingShows/${id}`,
          { headers: { Authorization: `Bearer ${token}` } }
        );
        if (!response.ok) {
@@ -50,7 +51,7 @@ const ShowDetail = () => {
 
        // 좋아요 상태 확인
        const likeStatusResponse = await fetch(
-         `http://localhost:8000/reservation/performingShows/${id}/likeStatus?userId=${currentUser._id}&type=show`,
+         `${API_URL}/reservation/performingShows/${id}/likeStatus?userId=${currentUser._id}&type=show`,
          { headers: { Authorization: `Bearer ${token}` } }
        );
        if (!likeStatusResponse.ok) {
@@ -73,7 +74,7 @@ const ShowDetail = () => {
     const token = localStorage.getItem("jwtToken");
     try {
       const response = await fetch(
-        `http://localhost:8000/reservation/performingShows/${id}/likes`,
+        `${API_URL}/reservation/performingShows/${id}/likes`,
         {
           method: "POST",
           headers: {
@@ -105,7 +106,7 @@ const ShowDetail = () => {
     if (newComment.trim() && newComment.length <= 1000) {
       try {
         const response = await fetch(
-          `http://localhost:8000/reservation/performingShows/${id}/comments`,
+          `${API_URL}/reservation/performingShows/${id}/comments`,
           {
             method: "POST",
             headers: {
@@ -131,7 +132,7 @@ const ShowDetail = () => {
     const token = localStorage.getItem("jwtToken");
     try {
       const response = await fetch(
-        `http://localhost:8000/reservation/performingShows/${id}/comments/${comments[editingIndex]._id}`,
+        `${API_URL}/reservation/performingShows/${id}/comments/${comments[editingIndex]._id}`,
         {
           method: "PUT",
           headers: {
@@ -157,7 +158,7 @@ const ShowDetail = () => {
     const token = localStorage.getItem("jwtToken");
     try {
       const response = await fetch(
-        `http://localhost:8000/reservation/performingShows/${id}/comments/${commentId}`,
+        `${API_URL}/reservation/performingShows/${id}/comments/${commentId}`,
         {
           method: "DELETE",
           headers: {
@@ -194,7 +195,7 @@ const ShowDetail = () => {
         new Date(selectedDate).toISOString()
       ); // 날짜 형식 변환 후 URL 인코딩
       const response = await fetch(
-        `http://localhost:8000/reservation/availableSeats?showId=${show._id}&date=${formattedDate}&time=${time}`
+        `${API_URL}/reservation/availableSeats?showId=${show._id}&date=${formattedDate}&time=${time}`
       );
       if (!response.ok) {
         throw new Error("잔여 좌석 조회 중 오류 발생");

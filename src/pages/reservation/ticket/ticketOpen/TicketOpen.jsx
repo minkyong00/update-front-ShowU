@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import S from "./style";
 import { useNavigate } from "react-router";
+import { API_URL } from "../../../../config.js";
 
 const TicketOpen = () => {
   const navigate = useNavigate();
@@ -11,7 +12,7 @@ const TicketOpen = () => {
       const token = localStorage.getItem("jwtToken");
       try {
         const response = await fetch(
-          "http://localhost:8000/reservation/ticketEvents",
+          `${API_URL}/reservation/ticketEvents`,
           {
             headers: {
               Authorization: `Bearer ${token}`,

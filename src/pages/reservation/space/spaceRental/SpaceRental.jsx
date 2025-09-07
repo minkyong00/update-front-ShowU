@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import S from "./style";
 import { useNavigate } from "react-router-dom";
+import { API_URL } from "../../../../config.js";
 
 const SpaceRental = () => {
   const navigate = useNavigate();
@@ -11,7 +12,7 @@ const SpaceRental = () => {
       const token = localStorage.getItem("jwtToken"); // 토큰 가져오기
       try {
         const response = await fetch(
-          "http://localhost:8000/reservation/spaces",
+          `${API_URL}/reservation/spaces`,
           {
             headers: {
               Authorization: `Bearer ${token}`,
