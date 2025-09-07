@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import S from './CommentComponentStyle';
 import { useSelector } from 'react-redux';
+import { API_URL } from '../../../../../config.js';
 
 const CommentComponent = () => {
   const [ comments, setComments ] = useState([]);
@@ -15,7 +16,7 @@ const CommentComponent = () => {
       }
 
       try {
-        const response = await fetch(`http://localhost:8000/community/comments/user`, {
+        const response = await fetch(`${API_URL}/community/comments/user`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',

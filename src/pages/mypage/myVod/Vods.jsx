@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import MyVodComponent from './MyVodComponent.jsx';
 import usePagination from '../../../hooks/usePagination.js';
+import { API_URL } from '../../../config.js';
 
 const PAGINATION = {
   pageRange: 6,
@@ -20,7 +21,7 @@ const Vods = () => {
     const getVod = async () => {
 
       try {
-        const response = await fetch(`http://localhost:8000/my/vod`, {
+        const response = await fetch(`${API_URL}/my/vod`, {
           method : "GET",
           headers : {
             "Authorization": `Bearer ${jwtToken}`

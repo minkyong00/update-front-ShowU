@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowDownWideShort } from '@fortawesome/free-solid-svg-icons';
 import State from './State';
 import useDropdown from '../../../../../hooks/useDropdown';
+import { API_URL } from '../../../../../config.js';
 
 const FilterContainer = ({ stateValue, setStateValue }) => {
   const dropdownRef = useRef(null);
@@ -14,7 +15,7 @@ const FilterContainer = ({ stateValue, setStateValue }) => {
   useEffect(() => {
     const getState = async () => {
       try {
-        const response = await fetch(`http://localhost:4000/myResProps`);
+        const response = await fetch(`${API_URL}/myResProps`);
         const datas = await response.json();
         setAllData(datas)
       }catch (error){

@@ -5,6 +5,7 @@ import ManagmentModal from './_component/ManagmentModal';
 import usePagination from '../../../../hooks/usePagination';
 import TeamManagmentDetail from './TeamManagmentDetail';
 import Paging from '../../_component/Paging';
+import { API_URL } from '../../../../config.js';
 
 const TeamManagment = ({ PAGINATION }) => {
   const navigate = useNavigate();
@@ -21,7 +22,7 @@ const TeamManagment = ({ PAGINATION }) => {
   const getTeamManagment = async () => {
 
     try {
-      await fetch(`http://localhost:8000/my/showu/managment`, {
+      await fetch(`${API_URL}/my/showu/managment`, {
         method : "GET",
         headers : {
           Authorization: `Bearer ${jwtToken}`
@@ -67,7 +68,7 @@ const TeamManagment = ({ PAGINATION }) => {
     // console.log("data", data)
 
     try {
-      const response = await fetch(`http://localhost:8000/my/showu/request-status/${status === '승인' ? 'approve' : 'reject'}`, {
+      const response = await fetch(`${API_URL}/my/showu/request-status/${status === '승인' ? 'approve' : 'reject'}`, {
         method : 'PUT',
         headers : {
           'Content-Type': 'application/json'
@@ -100,7 +101,7 @@ const TeamManagment = ({ PAGINATION }) => {
   const handleRowClick = async (applyId, e) => {
     if(e.target.tegName !== 'BUTTON'){
       try {
-        const response = await fetch(`http://localhost:8000/my/showu/managment/${applyId}`, {
+        const response = await fetch(`${API_URL}/my/showu/managment/${applyId}`, {
           method : 'GET',
           headers : {
             Authorization: `Bearer ${jwtToken}`,

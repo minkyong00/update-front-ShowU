@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import CreatedComponent from './CreatedComponent';
 import usePagination from '../../../../hooks/usePagination';
+import { API_URL } from '../../../../config.js';
 
 const PAGINATION = {
   pageRange: 8,
@@ -20,7 +21,7 @@ const Created = () => {
   useEffect(() => {
     const getLesson = async () => {
       try {
-        const response = await fetch(`http://localhost:8000/my/showu/lesson`, {
+        const response = await fetch(`${API_URL}/my/showu/lesson`, {
           method : "GET",
           headers : {
             "Authorization": `Bearer ${jwtToken}`,

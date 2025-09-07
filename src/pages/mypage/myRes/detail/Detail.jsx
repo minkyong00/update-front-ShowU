@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import S from './DetailStyle';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useSelector } from 'react-redux'
+import { API_URL } from '../../../../config.js';
 
 const Detail = () => {
   const { id } = useParams();
@@ -15,7 +16,7 @@ const Detail = () => {
   useEffect(() => {
     const getTicket = async () => {
      try {
-      const response = await fetch(`http://localhost:8000/my/reservation/ticket/${id}`, {
+      const response = await fetch(`${API_URL}/my/reservation/ticket/${id}`, {
         method : "GET",
         headers : {
           "Authorization": `Bearer ${jwtToken}`
@@ -51,7 +52,7 @@ const Detail = () => {
     
     if (window.confirm("티켓을 취소하시겠습니까?")) {
       try {
-        const response = await fetch(`http://localhost:8000/my/reservation/ticket/delete`, {
+        const response = await fetch(`${API_URL}/my/reservation/ticket/delete`, {
           method: "DELETE",
           headers: {
             "Content-Type": "application/json",

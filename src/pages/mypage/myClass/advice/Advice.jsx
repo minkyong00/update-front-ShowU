@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import usePagination from '../../../../hooks/usePagination';
 import Advicecomponent from './Advicecomponent';
+import { API_URL } from '../../../../config.js';
 
 const PAGINATION = {
   pageRange: 8,
@@ -19,7 +20,7 @@ const Advice = () => {
   useEffect(() => {
     const getAdvice = async () => {
       try {
-        const response = await fetch('http://localhost:8000/my/showu/reservation', {
+        const response = await fetch(`${API_URL}/my/showu/reservation`, {
           method : "GET",
           headers : {
             "Authorization": `Bearer ${jwtToken}`

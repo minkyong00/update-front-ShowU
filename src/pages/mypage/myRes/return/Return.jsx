@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart } from '@fortawesome/free-solid-svg-icons';
 import S from './RetrunStyle';
+import { API_URL } from '../../../../config.js';
 
 const Return = ({ stateValue }) => {
   const [turn, setTurn] = useState([]);
@@ -9,7 +10,7 @@ const Return = ({ stateValue }) => {
   useEffect(() => {
     const getReturn = async () => {
       try {
-        const response = await fetch(`http://localhost:4000/myResProps`);
+        const response = await fetch(`${API_URL}/myResProps`);
         const datas = await response.json();
         setTurn(datas);
       } catch (error) {

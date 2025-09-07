@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import S from './ReportStyle';
+import { API_URL } from '../../../../config.js';
 
 
 const Report = () => {
@@ -8,7 +9,7 @@ const Report = () => {
   useEffect(() => {
     const getReports = async () => {
       try {
-        const response = await fetch(`http://localhost:4000/reports`);
+        const response = await fetch(`${API_URL}/reports`);
         const datas = await response.json();
         setReports(datas)
       } catch (error) {

@@ -6,6 +6,7 @@ import { useSelector } from 'react-redux';
 import { useForm } from 'react-hook-form';
 import S from '../../../showu/team/teamCreate/style';
 import Dropdown from '../../../showu/team/teamCreate/_component/Dropdown';
+import { API_URL } from '../../../../config.js';
 
 const TeamUpdate = ({ handleFileChange, handleFileChange2, fileName, fileName2, setFilesPath, setFilesPath2 }) => {
   const navigate = useNavigate();
@@ -37,7 +38,7 @@ const TeamUpdate = ({ handleFileChange, handleFileChange2, fileName, fileName2, 
   useEffect(() => {
     const getTeamDatas = async () => {
       try {
-        const response = await fetch(`http://localhost:8000/showu/team/create/${id}`, {
+        const response = await fetch(`${API_URL}/showu/team/create/${id}`, {
           method : "GET",
           headers : {
             "Authorization": `Bearer ${jwtToken}`,
@@ -116,7 +117,7 @@ const TeamUpdate = ({ handleFileChange, handleFileChange2, fileName, fileName2, 
             formData.append("careerHistory", data.careerHistory);
             formData.append("recruit", data.recruit);
 
-            await fetch(`http://localhost:8000/showu/team/modify/${id}`, {
+            await fetch(`${API_URL}/showu/team/modify/${id}`, {
               method: "PUT",
               headers: {
                 'Authorization': `Bearer ${jwtToken}`
@@ -137,7 +138,7 @@ const TeamUpdate = ({ handleFileChange, handleFileChange2, fileName, fileName2, 
                 // 포트폴리오 파일 경로 처리
                 if (res.filePath) {
                   console.log('filepath', res.filePath);
-                  const newFilePath = `http://localhost:8000${res.filePath}`;
+                  const newFilePath = `${API_URL}${res.filePath}`;
                   setFilesPath(newFilePath);
                   console.log('newFilePath', newFilePath);
                 }
@@ -145,7 +146,7 @@ const TeamUpdate = ({ handleFileChange, handleFileChange2, fileName, fileName2, 
                 // 프로필 이미지 파일 경로 처리
                 if (res.profileFilePath) {
                   console.log('profileFilePath', res.profileFilePath);
-                  const newFilePath2 = `http://localhost:8000${res.profileFilePath}`;
+                  const newFilePath2 = `${API_URL}${res.profileFilePath}`;
                   setFilesPath2(newFilePath2);
                   console.log('newProfileFilePath', newFilePath2);
                 }

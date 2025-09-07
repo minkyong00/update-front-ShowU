@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import usePagination from '../../../../hooks/usePagination';
 import TicketComponent from './TicketComponent';
+import { API_URL } from '../../../../config.js';
 
 const PAGINATION = {
   pageRange: 6,
@@ -26,7 +27,7 @@ const Ticket = () => {
   useEffect(() => {
     const getTicket = async () => {
      try {
-      const response = await fetch(`http://localhost:8000/my/reservation/ticket`, {
+      const response = await fetch(`${API_URL}/my/reservation/ticket`, {
         method : "GET",
         headers : {
           "Authorization": `Bearer ${jwtToken}`

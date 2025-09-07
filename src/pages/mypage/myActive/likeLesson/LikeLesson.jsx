@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import LikeLessonComponent from './LikeLessonComponent';
 import usePagination from '../../../../hooks/usePagination';
+import { API_URL } from '../../../../config.js';
 
 const PAGINATION = {
   pageRange: 6,
@@ -19,7 +20,7 @@ const LikeLesson = () => {
   useEffect(() => {
     const getLesson = async () => {
       try {
-        const response = await fetch(`http://localhost:8000/my/like/lesson`, {
+        const response = await fetch(`${API_URL}/my/like/lesson`, {
           method : "GET",
           headers : {
             "Authorization": `Bearer ${jwtToken}`

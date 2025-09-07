@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart } from '@fortawesome/free-solid-svg-icons'
 import S from './LessonStyle';
+import { API_URL } from '../../../../config.js';
 
 const Lesson = () => {
   const [ lesson, setLesson ] = useState([]);
@@ -9,7 +10,7 @@ const Lesson = () => {
   useEffect(() => {
     const getLesson = async () => {
       try {
-        const response = await fetch(`http://localhost:4000/myClass`);
+        const response = await fetch(`${API_URL}/myClass`);
         const datas = await response.json();
         setLesson(datas);
       } catch (error) {

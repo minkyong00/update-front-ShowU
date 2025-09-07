@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import S from './WatchStyle';
+import { API_URL } from '../../../../config.js';
 
 const Watch = () => {
   const [ vod, setVod ] = useState([]);
@@ -8,7 +9,7 @@ const Watch = () => {
     const getVod = async () => {
 
       try {
-        const response = await fetch(`http://localhost:4000/myVod`);
+        const response = await fetch(`${API_URL}/myVod`);
         const datas = await response.json();
         return datas;
       }

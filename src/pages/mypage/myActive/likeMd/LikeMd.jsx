@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import usePagination from '../../../../hooks/usePagination';
 import LikeMdComponent from './LikeMdComponent';
+import { API_URL } from '../../../../config.js';
 
 const PAGINATION = {
   pageRange: 4,
@@ -23,7 +24,7 @@ const LikeMd = () => {
       if(!userId || !jwtToken) return;
 
       try {
-        const response = await fetch(`http://localhost:8000/my/like/md`, {
+        const response = await fetch(`${API_URL}/my/like/md`, {
           method : "GET",
           headers : {
             "Authorization": `Bearer ${jwtToken}`,

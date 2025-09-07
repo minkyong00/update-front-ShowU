@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import PostComponent from './_component/PostComponent';
 import usePagination from '../../../../hooks/usePagination';
 import { useSelector } from 'react-redux';
+import { API_URL } from '../../../../config.js';
 
 const PAGINATION = {
   pageRange: 6,
@@ -24,7 +25,7 @@ const Post = () => {
       if(!userId || !jwtToken) return; 
 
       try {
-        await fetch(`http://localhost:8000/my/my-active/post`, {
+        await fetch(`${API_URL}/my/my-active/post`, {
           method: "GET",
           headers : {
             "Authorization": `Bearer ${jwtToken}`,

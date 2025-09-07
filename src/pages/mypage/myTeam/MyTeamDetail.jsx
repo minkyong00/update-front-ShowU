@@ -4,6 +4,7 @@ import { Link, useNavigate, useParams } from 'react-router-dom';
 import Paging from '../_component/Paging';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowUp, faCalendarDays, faPen, faThumbtack, faXmark } from '@fortawesome/free-solid-svg-icons';
+import { API_URL } from '../../../config.js';
 
 
 const MyTeamDetail = ({ page, currentList, setPage, totalPost, PAGINATION, jwtToken, getTeams }) => {
@@ -35,7 +36,7 @@ const MyTeamDetail = ({ page, currentList, setPage, totalPost, PAGINATION, jwtTo
     const confirmDelete = window.confirm("정말로 팀 매칭을 삭제하시겠습니까?");
     if (confirmDelete) {
       try {
-        const response = await fetch(`http://localhost:8000/showu/team/remove/${teamId}`, {
+        const response = await fetch(`${API_URL}/showu/team/remove/${teamId}`, {
           method: "DELETE",
           headers: {
             "Authorization": `Bearer ${jwtToken}`,
@@ -97,7 +98,7 @@ const MyTeamDetail = ({ page, currentList, setPage, totalPost, PAGINATION, jwtTo
 
               <ul>
                 <S.UserInfo>  
-                  <img src={`http://localhost:8000${team.teamProfile}`} alt="team profile"></img>
+                  <img src={`${API_URL}${team.teamProfile}`} alt="team profile"></img>
                   <div>
                     <li className='teamName'>{team.teamName}</li>
                     <li className='category'>{team.category}</li>

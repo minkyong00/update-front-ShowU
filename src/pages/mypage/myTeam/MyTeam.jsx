@@ -4,6 +4,7 @@ import MyTeamDetail from './MyTeamDetail';
 import FilterContainer from './_component/FilterContainer';
 import usePagination from '../../../hooks/usePagination';
 import { useNavigate, useLocation } from 'react-router-dom';
+import { API_URL } from '../../../config.js';
 
 const PAGINATION = {
   pageRange: 4,
@@ -37,7 +38,7 @@ const MyTeam = () => {
 
   const getTeams = async () => {
     try {
-      const response = await fetch(`http://localhost:8000/my/showu/matching`, {
+      const response = await fetch(`${API_URL}/my/showu/matching`, {
         method: "GET",
         headers: {
           Authorization: `Bearer ${jwtToken}`,

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import usePagination from '../../../../hooks/usePagination';
 import LikeAuctionComponent from './LikeAuctionComponent';
+import { API_URL } from "../../../../config.js";
 
 const PAGINATION = {
   pageRange: 4,
@@ -19,7 +20,7 @@ const LikeAction = () => {
   useEffect(() => {
     const getAuctions = async () => {
       try {
-        const response = await fetch(`http://localhost:8000/my/like/auction`, {
+        const response = await fetch(`${API_URL}/my/like/auction`, {
           method : "GET",
           headers : {
             "Authorization": `Bearer ${jwtToken}`,

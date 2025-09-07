@@ -3,6 +3,7 @@ import S from './LikeTicketStyle';
 import { useNavigate } from 'react-router-dom';
 import usePagination from '../../../../hooks/usePagination';
 import LikeTicketComponent from './LikeTicketComponent';
+import { API_URL } from '../../../../config.js';
 
 const PAGINATION = {
   pageRange: 6,
@@ -28,7 +29,7 @@ const LikeTicket = () => {
   useEffect(() => {
     const getTicket = async () => {
      try {
-      const response = await fetch(`http://localhost:8000/my/like/ticket`, {
+      const response = await fetch(`${API_URL}/my/like/ticket`, {
         method : "GET",
           headers : {
             "Authorization": `Bearer ${jwtToken}`

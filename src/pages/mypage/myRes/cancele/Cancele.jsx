@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import S from './CanceleStyle';
 import { useNavigate } from 'react-router-dom';
+import { API_URL } from '../../../../config.js';
 
 const Cancele = () => {
   const [ cancele, setCancele ] = useState([]);
@@ -8,7 +9,7 @@ const Cancele = () => {
   useEffect(() => {
     const getCanceleTicket = async () => {
      try {
-      const response = await fetch(`http://localhost:4000/ticket`);
+      const response = await fetch(`${API_URL}/ticket`);
       const datas = await response.json();
       setCancele(datas);
      } catch (error) {

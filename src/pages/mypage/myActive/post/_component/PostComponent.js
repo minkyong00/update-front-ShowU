@@ -2,6 +2,7 @@ import React from 'react';
 import S from './PostComponentStyle';
 import { Link, useNavigate } from 'react-router-dom';
 import Paging from '../../../_component/Paging';
+import { API_URL } from '../../../../../config.js';
 
 
 const PostComponent = ({ page, currentList, setPage, totalPost, PAGINATION }) => {
@@ -26,7 +27,7 @@ const PostComponent = ({ page, currentList, setPage, totalPost, PAGINATION }) =>
           key={item._id} 
           onClick={() => navigate(`/community/communityInfo/${item._id}`)}>
           <S.Wrap className='wrap'>
-            <img src={`http://localhost:8000/${item.imageUrl}`} alt='post 이미지' />
+            <img src={`${API_URL}/${item.imageUrl}`} alt='post 이미지' />
             <S.Right className='right'>
               <p className='title'>{item.title}</p>
               <p className='content'>{item.content}</p>

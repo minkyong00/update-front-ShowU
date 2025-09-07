@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import S from './PropsStyle';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart } from '@fortawesome/free-solid-svg-icons';
+import { API_URL } from '../../../../config.js';
 
 const Props = () => {
   const [ props, setProps ] = useState([]);
@@ -9,7 +10,7 @@ const Props = () => {
   useEffect(() => {
     const getProps = async () => {
       try {
-        const response = await fetch(`http://localhost:4000/myResProps`);
+        const response = await fetch(`${API_URL}/myResProps`);
         const datas = await response.json();
         setProps(datas);
       } catch (error) {

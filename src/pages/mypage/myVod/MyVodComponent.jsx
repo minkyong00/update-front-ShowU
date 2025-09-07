@@ -2,6 +2,7 @@ import React from 'react';
 import S from './VodStyle';
 import Paging from '../_component/Paging';
 import { Link } from 'react-router-dom';
+import { API_URL } from '../../../config.js';
 
 
 const MyVodComponent = ({ page, currentList, setPage, totalPost, PAGINATION }) => {
@@ -24,7 +25,7 @@ const MyVodComponent = ({ page, currentList, setPage, totalPost, PAGINATION }) =
         { currentList && currentList.map((item, i) => (
           <S.Wrapper key={i} className='Wrapper'>
             <S.Image className='Image'>
-              <img src={`http://localhost:8000${item.themnail}`} alt="vod 포스터" />
+              <img src={`${API_URL}${item.themnail}`} alt="vod 포스터" />
             </S.Image>
             <S.Content className='content'>
               <p>{item.title}</p>

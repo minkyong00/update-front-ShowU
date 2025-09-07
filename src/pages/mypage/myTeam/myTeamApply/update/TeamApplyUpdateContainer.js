@@ -5,6 +5,7 @@ import { useForm } from 'react-hook-form';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronDown } from '@fortawesome/free-solid-svg-icons';
 import { useSelector } from 'react-redux';
+import { API_URL } from '../../../../../config.js';
 
 const TeamApplyUpdateContainer = () => {
   const navigate = useNavigate();
@@ -41,7 +42,7 @@ const TeamApplyUpdateContainer = () => {
   useEffect(() => {
     const getApplyDatas = async () => {
       try {
-        const response = await fetch(`http://localhost:8000/showu/team/apply/${id}`, {
+        const response = await fetch(`${API_URL}/showu/team/apply/${id}`, {
           method : "GET",
           headers : {
             "Authorization": `Bearer ${jwtToken}`,
@@ -106,7 +107,7 @@ const TeamApplyUpdateContainer = () => {
             
             formData.append("intro", data.intro)
 
-            await fetch(`http://localhost:8000/showu/team/apply/modify/${id}`, {
+            await fetch(`${API_URL}/showu/team/apply/modify/${id}`, {
               method: "PUT",
               headers: {
                 'Authorization': `Bearer ${jwtToken}`
@@ -118,7 +119,7 @@ const TeamApplyUpdateContainer = () => {
               if(!res.modifySuccess){
                 console.log("팀 지원 수정 중 오류가 발생했습니다")
               }
-              const newFilesPath = `http://localhost:8000${res.filePath}`;
+              const newFilesPath = `${API_URL}${res.filePath}`;
               setFilesPath(newFilesPath);
               console.log("newFilesPath", newFilesPath)
               alert(res.message);

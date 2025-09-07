@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import S from './ReviewStyle';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar } from '@fortawesome/free-solid-svg-icons'
+import { API_URL } from '../../../../config.js';
 
 const Review = () => {
   const [ reviews, setReviews ] = useState([]);
@@ -9,7 +10,7 @@ const Review = () => {
   useEffect(() => {
     const getReviews = async () => {
       try {
-        const response = await fetch(`http://localhost:4000/review`);
+        const response = await fetch(`${API_URL}/review`);
         const datas = await response.json();
         setReviews(datas)
       } catch (error) {

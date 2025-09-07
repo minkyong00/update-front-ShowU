@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import PaddingComponent from './PaddingComponent';
 import Paging from '../../_component/Paging';
 import usePagination from '../../../../hooks/usePagination';
+import { API_URL } from '../../../../config.js';
 
 const PAGINATION = {
   pageRange: 2,
@@ -21,7 +22,7 @@ const PaddingList = () => {
   useEffect(() => {
     const getPay = async () => {
       try {
-        const response = await fetch(`http://localhost:8000/my/payment/padding`, {
+        const response = await fetch(`${API_URL}/my/payment/padding`, {
           method : "GET",
           headers : {
             'Authorization': `Bearer ${jwtToken}`

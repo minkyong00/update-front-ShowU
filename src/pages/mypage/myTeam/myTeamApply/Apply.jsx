@@ -5,6 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPen, faXmark } from '@fortawesome/free-solid-svg-icons';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { API_URL } from '../../../../config.js';
 
 const Apply = ({ PAGINATION, currentList, page, setPage, totalPost, jwtToken, getTeamManagment, navigate }) => {
   const { currentUser } = useSelector((state) => state.user)
@@ -13,7 +14,7 @@ const Apply = ({ PAGINATION, currentList, page, setPage, totalPost, jwtToken, ge
     const confirmDelete = window.confirm("정말로 팀 지원을 삭제하시겠습니까?");
     if (confirmDelete) {
       try {
-        const response = await fetch(`http://localhost:8000/showu/team/apply/remove/${applyId}`, {
+        const response = await fetch(`${API_URL}/showu/team/apply/remove/${applyId}`, {
           method: "DELETE",
           headers: {
             "Authorization": `Bearer ${jwtToken}`,
@@ -75,7 +76,7 @@ const Apply = ({ PAGINATION, currentList, page, setPage, totalPost, jwtToken, ge
 
               <ul>
                 <S.UserInfo>  
-                  <img src={`http://localhost:8000${item.teamId.teamProfile}`} alt="team profile"></img>
+                  <img src={`${API_URL}${item.teamId.teamProfile}`} alt="team profile"></img>
                   <div>
                     <li>{item.teamId.teamName}</li>
                     <li className='teamName'>{item.applyId.name}</li>

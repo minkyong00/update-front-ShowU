@@ -2,6 +2,7 @@ import React from 'react';
 import S from '../styleTeamManagment';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faXmark } from '@fortawesome/free-solid-svg-icons';
+import { API_URL } from '../../../../../config.js';
 
 const ManagmentModal = ({ showModal, selectedTeamManagment, closeModal }) => {
 
@@ -55,7 +56,7 @@ const ManagmentModal = ({ showModal, selectedTeamManagment, closeModal }) => {
                   <div>{selectedTeamManagment.file.split("/").pop()}</div>
                 </div>{' '}
                 <a
-                  href={`http://localhost:8000/my/showu/download-file/${selectedTeamManagment.file.split('/').pop()}`}
+                  href={`${API_URL}/my/showu/download-file/${selectedTeamManagment.file.split('/').pop()}`}
                   target="_blank"
                   rel="noopener noreferrer"
                 >

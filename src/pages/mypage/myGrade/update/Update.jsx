@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import Dropdown from '../_component/Dropdown';
 import S from '../GradeStyle';
+import { API_URL } from '../../../../config.js';
 
 const Update = () => {
   const navigate = useNavigate();
@@ -44,7 +45,7 @@ const Update = () => {
     //사용자 등급업 정보 가져오기
     const fetchUserInfo = async () => {
       try {
-        const response = await fetch(`http://localhost:8000/my/up-grade/create/${userId}`, {
+        const response = await fetch(`${API_URL}/my/up-grade/create/${userId}`, {
           headers: {
             "Authorization": `Bearer ${jwtToken}`,
           },
@@ -92,7 +93,7 @@ const Update = () => {
     formData.append("exportName", userId);
 
     try {
-      const response = await fetch(`http://localhost:8000/my/up-grade/modify/${userId}`, {
+      const response = await fetch(`${API_URL}/my/up-grade/modify/${userId}`, {
         method: "PUT",
         headers: {
           'Authorization': `Bearer ${jwtToken}`,
@@ -106,7 +107,7 @@ const Update = () => {
         return alert(result.message);
       }
       
-      const updateFilesPath = `http://localhost:8000${result.filePath}`;
+      const updateFilesPath = `${API_URL}${result.filePath}`;
       setFilesPath(updateFilesPath);
       alert(result.message);
       console.log("등급업 수정 완료");

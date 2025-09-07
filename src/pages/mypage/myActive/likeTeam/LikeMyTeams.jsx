@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import LikeTeamComponent from './LikeTeamComponent.jsx';
 import usePagination from '../../../../hooks/usePagination.js';
 import { useNavigate } from 'react-router-dom';
+import { API_URL } from '../../../../config.js';
 
 const PAGINATION = {
   pageRange: 4,
@@ -21,7 +22,7 @@ const LikeMyTeams = () => {
   useEffect(() => {
     const getTeams = async () => {
       try {
-        const response = await fetch(`http://localhost:8000/my/like/team`, {
+        const response = await fetch(`${API_URL}/my/like/team`, {
           method : "GET",
           headers : {
             "Authorization": `Bearer ${jwtToken}`

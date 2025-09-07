@@ -4,6 +4,7 @@ import Dropdown from './_component/Dropdown';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
+import { API_URL } from '../../../config.js';
 
 const Grade = () => {
   const navigate = useNavigate();
@@ -58,7 +59,7 @@ const Grade = () => {
           formData.append("career", data.career);
           formData.append("exportName", userId);
           
-          await fetch(`http://localhost:8000/my/up-grade/create`, {
+          await fetch(`${API_URL}/my/up-grade/create`, {
             method: "POST",
             headers: {
               'Authorization': `Bearer ${jwtToken}`
@@ -74,7 +75,7 @@ const Grade = () => {
             }
             // console.log("res", res)
             // console.log("res.createUpgrade", res.createUpgrade)
-            const newFilesPath = `http://localhost:8000${res.filePath}`;
+            const newFilesPath = `${API_URL}${res.filePath}`;
             setFilesPath(newFilesPath);
             alert(res.message);
             navigate('/mypage/up-grade/update');

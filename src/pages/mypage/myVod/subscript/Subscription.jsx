@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import SubsciptComponent from './SubsciptComponent';
 import usePagination from '../../../../hooks/usePagination';
 import { useSelector } from 'react-redux';
+import { API_URL } from '../../../../config.js';
 
 const PAGINATION = {
   pageRange: 6,
@@ -21,7 +22,7 @@ const Subscription = () => {
   useEffect(() => {
     const getVod = async () => {
       try {
-        const response = await fetch(`http://localhost:8000/my/vod/subscript`, {
+        const response = await fetch(`${API_URL}/my/vod/subscript`, {
           method : "GET",
           headers : {
             "Authorization": `Bearer ${jwtToken}`,

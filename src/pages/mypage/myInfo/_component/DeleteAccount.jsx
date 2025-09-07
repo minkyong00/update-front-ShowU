@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import S from '../style';
 import { useDispatch } from 'react-redux';
 import { setUser, setUserStatus } from '../../../../modules/user';
+import { API_URL } from '../../../../config.js';
 
 const DeleteAccount = () => {
   const dispatch = useDispatch();
@@ -13,7 +14,7 @@ const DeleteAccount = () => {
       const { email } = data;
 
       if(window.confirm("회원탈퇴를 하시겠습니까?")){
-        await fetch(`http://localhost:8000/users/remove`, {
+        await fetch(`${API_URL}/users/remove`, {
           method : 'DELETE',
           headers : {
             'Content-Type': 'application/json',

@@ -1,5 +1,6 @@
 import React from 'react';
 import S from './DetailStyle';
+import { API_URL } from '../../../../config.js';
 
 const DetailComponent = () => {
   const jwtToken = localStorage.getItem("jwtToken");
@@ -8,7 +9,7 @@ const DetailComponent = () => {
     const { userId } = data;
 
     if(window.confirm("티켓을 취소하시겠습니까?")){
-      await fetch(`http://localhost:8000/my/reservation/ticket/delete`, {
+      await fetch(`${API_URL}/my/reservation/ticket/delete`, {
         method : "DELETE",
         headers : {
           'Content-Type': 'application/json',

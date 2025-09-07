@@ -7,6 +7,7 @@ import DeleteAccount from './_component/DeleteAccount';
 import { setProfilePicture } from '../../../modules/user';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowUp, faLock, faLockOpen } from '@fortawesome/free-solid-svg-icons';
+import { API_URL } from '../../../config.js';
 
 const MyInfo = () => {
 
@@ -61,12 +62,12 @@ const MyInfo = () => {
     if (currentUser.picture) {
       // currentUser.picture 앞 확인, http 추가
       const pictureUrl = currentUser.picture.startsWith('uploads/profiles')
-        ? `http://localhost:8000/${currentUser.picture}`
+        ? `${API_URL}/${currentUser.picture}`
         : currentUser.picture;
   
       setPicturePath(pictureUrl);
     } else {
-      setPicturePath('http://localhost:8000/uploads/profiles/user.png'); // 기본 프로필 이미지
+      setPicturePath(`${API_URL}/uploads/profiles/user.png`); // 기본 프로필 이미지
     }
   }, [currentUser.picture]);
   
@@ -92,10 +93,10 @@ const MyInfo = () => {
       body: formData
     }
 
-    await fetch("http://localhost:8000/users/picture", config)
+    await fetch(`${API_URL}/users/picture`, config)
       .then((res) => res.json())
       .then((res) => {
-        const newPicturePath = `http://localhost:8000${res.filePath}`;
+        const newPicturePath = `${API_URL}${res.filePath}`;
         dispatch(setProfilePicture(newPicturePath))
         setPicturePath(newPicturePath)
         alert(res.message)
@@ -142,7 +143,7 @@ const MyInfo = () => {
         <S.Form 
           onSubmit={handleSubmit( async (data) => {
             const { email , password, phone } = data;
-            await fetch("http://localhost:8000/users/modify", {
+            await fetch(`${API_URL}/users/modify`, {
               method : "PUT",
               headers : {
                 'Content-Type': 'application/json',
