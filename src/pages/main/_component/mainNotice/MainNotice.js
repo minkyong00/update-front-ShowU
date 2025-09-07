@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import S from './style';
 import { Link } from 'react-router-dom';
+import { API_URL } from '../../../../config.js';
 
 const MainNotice = () => {
   const [newsList, setNewsList] = useState([]); //뉴스목록
@@ -9,7 +10,7 @@ const MainNotice = () => {
   useEffect(() => {
     const getNewsList = async () => {
       try {
-        const response = await fetch(`http://localhost:8000/community/newsMain/`);
+        const response = await fetch(`${API_URL}/community/newsMain/`);
         const data = await response.json();
         setNewsList(data)
       } catch (error) {

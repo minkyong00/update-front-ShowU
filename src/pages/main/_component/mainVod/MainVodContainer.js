@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import S from './style';
 import MainVod from './MainVod';
 import { useNavigate } from 'react-router-dom';
+import { API_URL } from '../../../../config.js';
 
 const MainVodContainer = () => {
   const [ mainVod, setMainVod ] = useState([]);
@@ -10,7 +11,7 @@ const MainVodContainer = () => {
   useEffect(() => {
     const getMainVod = async () => {
       try {
-        const response = await fetch('http://localhost:8000/my/main/vod', {
+        const response = await fetch(`${API_URL}/my/main/vod`, {
           method: "GET",
           headers: {
             "Content-Type": "application/json",

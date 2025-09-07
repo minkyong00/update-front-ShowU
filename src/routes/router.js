@@ -80,7 +80,6 @@ import MusicContainer from '../pages/vod/music/MusicContainer'
 import MyShowuContainer from '../pages/vod/showu/MyShowuContainer';
 import ShowuVideoConatiner from '../pages/vod/video/showuvideopage/ShowuVideoContainer';
 import ManagementContainer from '../pages/shop/auction/AuctionManagement/ManagementContainer';
-// import PaymentContainer2 from '../pages/shop/auction/AuctionPayment/PaymentContainer2';
 import RefundContainer from '../pages/shop/md/MdRefund/RefundContainer';
 import RefundInfoContainer from '../pages/shop/md/MdRefundInfo/RefundInfoContainer';
 import StateContainer from '../pages/shop/auction/AuctionState/StateContainer';
@@ -95,9 +94,6 @@ import OpenDetail from '../pages/reservation/ticket/openDetail/OpenDetail';
 import SpaceRental from '../pages/reservation/space/spaceRental/SpaceRental';
 import RentalDetail from '../pages/reservation/space/rentaldetail/RentalDetail';
 import RentalSelection from '../pages/reservation/space/rentalSelection/RentalSelection';
-// import Detail from '../pages/reservation/payment/Detail';
-// import Failed from '../pages/reservation/payment/Failed';
-// import Success from '../pages/reservation/payment/Success';
 import Failed from "../pages/reservation/payment/tossPayment/Failed";
 import Success from "../pages/reservation/payment/tossPayment/Success";
 import AdminUpgradContainer from '../pages/admin/AdminUpgradContainer';
@@ -111,7 +107,6 @@ import TeamApplyUpdateContainer from '../pages/mypage/myTeam/myTeamApply/update/
 import WriteUpdateContainer from '../pages/community/writingEdit/WriteUpdateContainer';
 import ReportEditContainer from '../pages/community/reportEdit/ReportEditContainer';
 import AdminTeamContainer from '../pages/admin/AdminTeamContainer';
-
 import TicketPaymentDetail from "../pages/reservation/payment/ticketPayment/TicketPaymentDetail";
 import TossPaymentContianer from "../pages/reservation/payment/tossPayment/TossPaymentContianer";
 import RentalPaymentDetail from "../pages/reservation/spacePayment/rentalPayment/RentalPaymentDetail";

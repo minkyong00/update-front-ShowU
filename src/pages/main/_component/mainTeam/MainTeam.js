@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCalendarDays, faLocationDot, faThumbtack } from '@fortawesome/free-solid-svg-icons';
 import Aos from 'aos';
+import { API_URL } from '../../../../config.js';
 
 const MainTeam = () => {
   const [teams, setTeams] = useState([]);
@@ -12,7 +13,7 @@ const MainTeam = () => {
   useEffect(() => {
     const getTeam = async () => {
       try {
-        const response = await fetch(`http://localhost:8000/my/main/team`, {
+        const response = await fetch(`${API_URL}/my/main/team`, {
           method: "GET",
           headers: {
             "Content-Type": "application/json",
@@ -73,7 +74,7 @@ const MainTeam = () => {
             <S.LessonBox key={i} data-aos="fade-up">
               <ul>
                 <S.UserInfo>
-                  <img src={`http://localhost:8000${team.teamProfile}`}></img>
+                  <img src={`${API_URL}${team.teamProfile}`}></img>
                   <div>
                     <li className='teamName'>{team.teamName}</li>
                     <li className='category'>{team.category}</li>
