@@ -3,6 +3,7 @@ import S from './styleInquiryList';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faLock } from '@fortawesome/free-solid-svg-icons';
 import { Link, useNavigate } from 'react-router-dom';
+import { API_URL } from '../../../../../config.js';
 
 const MdInquiryList = () => {
   const [inquiryList, setInquiryList] = useState([]);
@@ -11,7 +12,7 @@ const MdInquiryList = () => {
   useEffect(() => {
     const getList = async () => {
       try {
-        const response = await fetch('http://localhost:8000/shop/md/inquiry/list');
+        const response = await fetch(`${API_URL}/shop/md/inquiry/list`);
         if (!response.ok) {
           throw new Error("문의 내역 목록을 가져오는데 실패했습니다.");
         }

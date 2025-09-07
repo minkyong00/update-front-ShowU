@@ -4,6 +4,7 @@ import S from './styleCart';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircleExclamation, faCheckCircle, faXmark } from '@fortawesome/free-solid-svg-icons';
 import { useLocation, useNavigate } from 'react-router-dom';
+import { API_URL } from '../../../../../config.js';
 
 const MdCart = () => {
   const { state } = useLocation(); 
@@ -80,7 +81,7 @@ const increase = async (index) => {
   // 장바구니 수량 업데이트
   const updateCartQuantity = async (productId, quantity) => {
     try {
-      const response = await fetch('http://localhost:8000/shop/md/cart', {
+      const response = await fetch(`${API_URL}/shop/md/cart`, {
         method: "PUT",
         headers: {
           'Content-Type': 'application/json',
@@ -107,7 +108,7 @@ const increase = async (index) => {
     if (isConfirmed) {
       const productId = selectedOptions[index]._id; 
       try {
-        const response = await fetch(`http://localhost:8000/shop/md/cart`, {
+        const response = await fetch(`${API_URL}/shop/md/cart`, {
           method: "DELETE",
           headers: {
             'Content-Type': 'application/json',

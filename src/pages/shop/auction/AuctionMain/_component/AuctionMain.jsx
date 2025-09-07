@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronDown, faChevronRight, faCircleChevronLeft, faCircleChevronRight, faClock, faHeart } from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';
 import Timer from '../../AuctionDetail/_component/Timer';
+import { API_URL } from '../../../../../config.js';
 
 const AuctionMain = () => {
   const [auctionProducts, setAuctionProducts] = useState([]);
@@ -22,7 +23,7 @@ const AuctionMain = () => {
   useEffect(() => {
     const getAuctionProducts = async () => {
       try {
-        const response = await fetch("http://localhost:8000/shop/auction");
+        const response = await fetch(`${API_URL}/shop/auction`);
 
         if (!response.ok) {
           throw new Error(`서버 응답 오류: ${response.status}`);
@@ -120,7 +121,7 @@ const AuctionMain = () => {
     useEffect(() => {
       const getTodayEndProducts = async () => {
         try {
-          const response = await fetch("http://localhost:8000/shop/auction/today-end");
+          const response = await fetch(`${API_URL}/shop/auction/today-end`);
   
           if (!response.ok) {
             throw new Error(`서버 응답 오류: ${response.status}`);

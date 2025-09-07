@@ -5,6 +5,7 @@ import EmailCode from './EmailCode';
 import CreateBidCount from './CreateBidCount';
 import { useParams } from 'react-router-dom';
 import { useSelector } from 'react-redux';
+import { API_URL } from '../../../../config.js';
 
 
 const AuctionBidContaienr = ({ onClose, getAuctionDetail, bidCount }) => {
@@ -61,7 +62,7 @@ const AuctionBidContaienr = ({ onClose, getAuctionDetail, bidCount }) => {
 
   // 최종 입찰하기 핸들러
   const handleUpdateBid = () => {
-    fetch(`http://localhost:8000/shop/auction/bid/${id}`, {
+    fetch(`${API_URL}/shop/auction/bid/${id}`, {
       method : "PUT",
       headers : {
         'Content-Type': 'application/json',

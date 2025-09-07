@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import S from './styleInquiryDetail';
 import { Link, useNavigate, useParams } from 'react-router-dom';
+import { API_URL } from '../../../../../config.js';
 
 const AuctionInquiryDetail = () => {
   const [isEditing, setIsEditing] = useState(false);
@@ -14,7 +15,7 @@ const AuctionInquiryDetail = () => {
   useEffect(() => {
     const getInquiryDetail = async () => {
       try {
-        const response = await fetch(`http://localhost:8000/shop/auction/inquiry/${id}`);
+        const response = await fetch(`${API_URL}/shop/auction/inquiry/${id}`);
         const data = await response.json();
 
         if (response.ok) {

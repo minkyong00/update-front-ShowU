@@ -3,6 +3,7 @@ import { useSelector } from "react-redux";
 import S from "./stylePayment";
 import { useLocation, useNavigate } from "react-router-dom";
 import Postcode from "./PostCode";
+import { API_URL } from "../../../../../config.js";
 
 const AuctionPayment = () => {
   const { state } = useLocation();
@@ -103,7 +104,7 @@ const AuctionPayment = () => {
 
     try {
       const response = await fetch(
-        "http://localhost:8000/shop/auction/payment/confirm-payment",
+        `${API_URL}/shop/auction/payment/confirm-payment`,
         {
           method: "POST",
           headers: {

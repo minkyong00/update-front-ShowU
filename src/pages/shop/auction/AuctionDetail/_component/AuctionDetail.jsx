@@ -19,6 +19,7 @@ import BidPopup from "./BidPopup";
 import { useSelector } from "react-redux"; // Redux에서 currentUser 가져오기
 import Timer from "./Timer";
 import BidHistoryComponent from "./BidHistoryComponent";
+import { API_URL } from "../../../../../config.js";
 
 const AuctionDetail = () => {
   const { id } = useParams();
@@ -49,7 +50,7 @@ const AuctionDetail = () => {
   useEffect(() => {
     const getAuctionProducts = async () => {
       try {
-        const response = await fetch(`http://localhost:8000/shop/auction`);
+        const response = await fetch(`${API_URL}/shop/auction`);
         const datas = await response.json();
         console.log("Auction products data:", datas); // 콘솔 로그 추가
         setAuctionProducts(datas);
@@ -64,7 +65,7 @@ const AuctionDetail = () => {
   const getAuctionDetail = async () => {
     try {
       const response = await fetch(
-        `http://localhost:8000/shop/auction/detail/${id}`
+        `${API_URL}/shop/auction/detail/${id}`
       );
       const datas = await response.json();
       console.log("Auction detail data:", datas); // 콘솔 로그 추가

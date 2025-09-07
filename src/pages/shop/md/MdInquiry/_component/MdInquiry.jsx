@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import S from './styleInquiry';
 import { faCheckCircle } from '@fortawesome/free-solid-svg-icons';
 import { useLocation, useNavigate } from 'react-router-dom';
+import { API_URL } from '../../../../../config.js';
 
 const MdInquiry = () => {
   const navigate = useNavigate();
@@ -49,7 +50,7 @@ const MdInquiry = () => {
     }
 
     try {
-      const response = await fetch("http://localhost:8000/shop/md/inquiry", {
+      const response = await fetch(`${API_URL}/shop/md/inquiry`, {
         method: "POST",
         headers: {
           'Content-Type': 'application/json',

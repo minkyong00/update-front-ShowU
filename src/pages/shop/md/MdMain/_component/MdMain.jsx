@@ -10,6 +10,7 @@ import {
   faCircleChevronRight,
   faHeart,
 } from "@fortawesome/free-solid-svg-icons";
+import { API_URL } from "../../../../../config.js";
 
 const MdMain = () => {
   const [mdProducts, setMdProducts] = useState([]);
@@ -26,7 +27,7 @@ const MdMain = () => {
   useEffect(() => {
     const getMdProducts = async () => {
       try {
-        const response = await fetch("http://localhost:8000/shop/md");
+        const response = await fetch(`${API_URL}/shop/md`);
 
         if (!response.ok) {
           throw new Error(`서버 응답 오류: ${response.status}`);

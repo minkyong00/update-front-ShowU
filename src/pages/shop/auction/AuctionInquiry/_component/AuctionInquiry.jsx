@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import S from './styleInquiry';
 import { faCheckCircle } from '@fortawesome/free-solid-svg-icons';
 import { useLocation, useNavigate } from 'react-router-dom';
+import { API_URL } from '../../../../../config.js';
 
 const AuctionInquiry = () => {
   const navigate = useNavigate();
@@ -48,7 +49,7 @@ const AuctionInquiry = () => {
     }
 
     try {
-      const response = await fetch("http://localhost:8000/shop/auction/inquiry", {
+      const response = await fetch(`${API_URL}/shop/auction/inquiry`, {
         method: "POST",
         headers: {
           'Content-Type': 'application/json',

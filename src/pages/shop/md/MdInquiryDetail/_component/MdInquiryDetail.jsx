@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import S from './styleInquiryDetail';
 import { Link, useParams, useNavigate } from 'react-router-dom';
+import { API_URL } from '../../../../../config.js';
 
 const MdInquiryDetail = () => {
   const [isEditing, setIsEditing] = useState(false);
@@ -14,7 +15,7 @@ const MdInquiryDetail = () => {
   useEffect(() => {
     const getInquiryDetail = async () => {
       try {
-        const response = await fetch(`http://localhost:8000/shop/md/inquiry/${id}`);
+        const response = await fetch(`${API_URL}/shop/md/inquiry/${id}`);
         const data = await response.json();
 
         if (response.ok) {
@@ -48,7 +49,7 @@ const MdInquiryDetail = () => {
   // 수정 내용 저장
   const handleSave = async () => {
     try {
-      const response = await fetch(`http://localhost:8000/shop/md/inquiry/${inquiryDetail._id}`, {
+      const response = await fetch(`${API_URL}/shop/md/inquiry/${inquiryDetail._id}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -76,7 +77,7 @@ const MdInquiryDetail = () => {
 
     if (confirmDelete) {
       try {
-        const response = await fetch(`http://localhost:8000/shop/md/inquiry/${inquiryDetail._id}`, {
+        const response = await fetch(`${API_URL}/shop/md/inquiry/${inquiryDetail._id}`, {
           method: 'DELETE',
           headers: {
             'Content-Type': 'application/json',

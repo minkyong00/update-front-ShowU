@@ -3,6 +3,7 @@ import S from './styleShop';
 import { faChevronDown, faChevronRight, faClock } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Link } from 'react-router-dom';
+import { API_URL } from '../../../config.js';
 
 const Shop = () => {
   
@@ -13,8 +14,7 @@ const Shop = () => {
     
     const getMdItems = async () => {
       try {
-        // const response = await fetch("http://localhost:4000/md");
-        const response = await fetch("http://localhost:8000/shop/md");
+        const response = await fetch(`${API_URL}/shop/md`);
         const datas = await response.json();
         setMdItems(datas);
       } catch (error) {
@@ -30,8 +30,7 @@ const Shop = () => {
 
     const getAuction = async () => {
       try {
-        // const response = await fetch('http://localhost:4000/auction');
-        const response = await fetch('http://localhost:8000/shop/auction');
+        const response = await fetch(`${API_URL}/shop/auction`);
         const datas = await response.json();
         setAuctionItems(datas);
       } catch (error) {

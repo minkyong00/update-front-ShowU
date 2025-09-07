@@ -8,6 +8,7 @@ import {
   faChevronUp,
 } from "@fortawesome/free-solid-svg-icons";
 import DeliveryPopup from "../../../auction/AuctionDetail/_component/DeliveryPopup";
+import { API_URL } from "../../../../../config.js";
 
 const MdDetail = () => {
   const { id } = useParams();
@@ -24,7 +25,7 @@ const MdDetail = () => {
     const getMdDetail = async () => {
       try {
         const response = await fetch(
-          `http://localhost:8000/shop/md/detail/${id}`
+          `${API_URL}/shop/md/detail/${id}`
         );
         const datas = await response.json();
         setProduct(datas);
@@ -55,7 +56,7 @@ const MdDetail = () => {
   // 카트 추가
   const addToCart = async (e) => {
     try {
-      const response = await fetch("http://localhost:8000/shop/md/cart", {
+      const response = await fetch(`${API_URL}/shop/md/cart`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

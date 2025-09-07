@@ -3,6 +3,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import S from "./stylePayment";
 import Postcode from "./PostCode";
+import { API_URL } from "../../../../../config.js";
 
 const MdPayment = () => {
   const { state } = useLocation();
@@ -76,7 +77,7 @@ const MdPayment = () => {
     console.log("Payment Data:", paymentData);
 
     try {
-      const response = await fetch("http://localhost:8000/shop/md/payment/confirm-payment", {
+      const response = await fetch(`${API_URL}/shop/md/payment/confirm-payment`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
