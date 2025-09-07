@@ -2,6 +2,7 @@ import React from 'react';
 import S from './style';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faXmark } from '@fortawesome/free-solid-svg-icons'
+import { API_URL } from '../../../config.js';
 
 const TeamDetailModal = ({ showModal, selectedTeam, closeModal }) => {
   console.log("selectedTeam", selectedTeam)
@@ -56,7 +57,7 @@ const TeamDetailModal = ({ showModal, selectedTeam, closeModal }) => {
                     <div>{selectedTeam.file.split("/").pop()}</div>
                   </div>{' '}
                   <a
-                    href={`http://localhost:8000/admin/team/download-file/${selectedTeam.file.split('/').pop()}`}
+                    href={`${API_URL}/admin/team/download-file/${selectedTeam.file.split('/').pop()}`}
                     target="_blank"
                     rel="noopener noreferrer"
                   >

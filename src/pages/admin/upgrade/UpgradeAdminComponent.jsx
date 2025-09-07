@@ -6,6 +6,7 @@ import UpgradeDetailModal from './UpgradeDetailModal';
 import usePagination from '../../../hooks/usePagination';
 import Paging from '../../mypage/_component/Paging';
 import UpgradeList from './UpgradeList';
+import { API_URL } from '../../../config.js';
 
 const PAGINATION = {
   pageRange: 10,
@@ -35,7 +36,7 @@ const UpgradeAdminComponent = () => {
  // 등급업 신청 내역 불러오기
   const getAdmin = async () => {
     try {
-      const response = await fetch(`http://localhost:8000/admin/upgrade/all-data`, {
+      const response = await fetch(`${API_URL}/admin/upgrade/all-data`, {
         method: 'GET',
         headers: {
           Authorization: `Bearer ${jwtToken}`,

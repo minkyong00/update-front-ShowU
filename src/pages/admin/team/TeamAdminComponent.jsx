@@ -8,6 +8,7 @@ import Paging from '../../mypage/_component/Paging';
 import S from './style';
 import TeamList from './TeamList';
 import TeamDetailModal from './TeamDetailModal';
+import { API_URL } from '../../../config.js';
 
 const PAGINATION = {
   pageRange: 10,
@@ -37,7 +38,7 @@ const TeamAdminComponent = () => {
  // 등급업 신청 내역 불러오기
   const getAdmin = async () => {
     try {
-      const response = await fetch(`http://localhost:8000/admin/team/all-data`, {
+      const response = await fetch(`${API_URL}/admin/team/all-data`, {
         method: 'GET',
         headers: {
           Authorization: `Bearer ${jwtToken}`,
@@ -74,7 +75,7 @@ const TeamAdminComponent = () => {
     };
   
     try {
-      const response = await fetch(`http://localhost:8000/admin/team/request-status/${status === '승인' ? 'complete' : 'reject'}`, {
+      const response = await fetch(`${API_URL}/admin/team/request-status/${status === '승인' ? 'complete' : 'reject'}`, {
         method: "PUT",
         headers: {
           'Content-Type': 'application/json'
@@ -109,7 +110,7 @@ const TeamAdminComponent = () => {
     // 버튼 클릭이 아닌 경우에만 모달을 열도록 처리
     if (e.target.tagName !== 'BUTTON') {
       try {
-        const response = await fetch(`http://localhost:8000/admin/team/${teamId}`, {
+        const response = await fetch(`${API_URL}/admin/team/${teamId}`, {
           method: 'GET',
           headers: {
             Authorization: `Bearer ${jwtToken}`,

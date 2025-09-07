@@ -2,6 +2,7 @@ import React from 'react';
 import S from './style';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faXmark } from '@fortawesome/free-solid-svg-icons'
+import { API_URL } from '../../../config.js';
 
 const UpgradeDetailModal = ({ showModal, selectedUpgrade, closeModal }) => {
 
@@ -55,7 +56,7 @@ const UpgradeDetailModal = ({ showModal, selectedUpgrade, closeModal }) => {
                     <div>{selectedUpgrade.file.split("/").pop()}</div>
                   </div>{' '}
                   <a
-                    href={`http://localhost:8000/admin/upgrade/download-file/${selectedUpgrade.file.split('/').pop()}`}
+                    href={`${API_URL}/admin/upgrade/download-file/${selectedUpgrade.file.split('/').pop()}`}
                     target="_blank"
                     rel="noopener noreferrer"
                   >

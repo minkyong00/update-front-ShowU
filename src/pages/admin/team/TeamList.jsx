@@ -2,7 +2,7 @@ import React from 'react';
 import S from './style';
 
 const TeamList = ({ currentList, handleRowClick, handleUserRoleChange }) => {
-  console.log("currentList", currentList)
+  //console.log("currentList", currentList)
 
   return (
     <div>
