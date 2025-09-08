@@ -55,7 +55,7 @@ const PayComponent = ({ currentList, handleNavigate }) => {
                           `/shop/md/detail/${item.productId._id}` : 
                           `/shop/auction/detail/${item.productId._id}`
                           )}
-                        src={item.productId.image}
+                        src={`${process.env.PUBLIC_URL}${item.productId.image}`}
                         alt={`상품 이미지`}
                       />
                   </S.Image>

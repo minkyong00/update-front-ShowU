@@ -141,7 +141,7 @@ const router = createBrowserRouter([
       //   element: <IndexContainer />,
       // },
       {
-        path: "/main",
+        path: "/update-front-ShowU",
         element: <Main />,
       },
       {

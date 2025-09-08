@@ -28,7 +28,7 @@ const LikeProp = () => {
       { props && props.map((item, i) => (
         <S.Warpper key={i} className='warpper'>
         <S.Image className='image'>
-          <img src={item.propsImageUrl} alt="소품대여" />
+          <img src={`${process.env.PUBLIC_URL}${item.propsImageUrl}`} alt="소품대여" />
         </S.Image>
         <S.Content className='content'>
           <S.Title className='title'>

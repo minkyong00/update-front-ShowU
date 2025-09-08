@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Paging from '../../_component/Paging';
 import S from './LikeTeamStyle';
 import { Link } from 'react-router-dom';
+import { API_URL } from '../../../../config.js';
 
 const LikeTeamComponent = ({ page, currentList, setPage, totalPost, PAGINATION, navigate }) => {
 
@@ -42,7 +43,7 @@ const LikeTeamComponent = ({ page, currentList, setPage, totalPost, PAGINATION, 
             <S.LessonBox key={i}>
               <ul>
                 <S.UserInfo>  
-                  <img src={`http://localhost:8000${team.teamProfile}`} alt="team profile"></img>
+                  <img src={`${API_URL}${team.teamProfile}`} alt="team profile"></img>
                   <div>
                     <li className='teamName'>{team.teamName}</li>
                     <li className='category'>{team.category}</li>

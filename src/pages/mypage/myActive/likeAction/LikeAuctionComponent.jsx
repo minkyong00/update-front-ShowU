@@ -26,7 +26,7 @@ const LikeAuctionComponent = ({ page, currentList, setPage, totalPost, PAGINATIO
         (currentList.map((item, i) => (
           <S.Wrapper key={i}>
             <S.Image>
-              <img src={item.image} alt="md 이미지" />
+              <img src={`${process.env.PUBLIC_URL}${item.image}`} alt="md 이미지" />
             </S.Image>
             <S.Content>
               <p className='title'>{item.auctionName}</p>

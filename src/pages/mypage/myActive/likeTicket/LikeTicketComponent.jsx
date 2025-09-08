@@ -32,7 +32,7 @@ const LikeTicketComponent = ({ page, currentList, setPage, totalPost, PAGINATION
               {/* <p className='state'>{item.state}</p> */}
             </S.RightContent>
             <S.Img className='img'>
-              <img src={item.img} alt="티켓 포스터 이미지" />
+              <img src={`${process.env.PUBLIC_URL}${item.img}`} alt="티켓 포스터 이미지" />
               <div className='top'></div>
               <div className='bottom'></div>
             </S.Img>

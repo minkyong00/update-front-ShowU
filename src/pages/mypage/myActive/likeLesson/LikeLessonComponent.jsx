@@ -26,7 +26,7 @@ const LikeLessonComponent = ({ page, currentList, setPage, totalPost, PAGINATION
           <S.Container key={i} className='Container'>
             <S.Wapper className='Wapper'>
               <S.Lesson className='lesson'>
-                <img src={item.lessonThumbnail} alt="레슨1" />
+                <img src={`${process.env.PUBLIC_URL}${item.lessonThumbnail}`} alt="레슨1" />
                 <p className='name'>{item.category}</p>
                 <p className='lessonTitle'>{item.lessonName}</p>
                 <FontAwesomeIcon icon={faHeart} className='heart'/>

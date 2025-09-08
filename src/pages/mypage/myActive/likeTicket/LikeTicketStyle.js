@@ -59,7 +59,7 @@ const S = {};
       height: 12.5px;
 
       border-radius: 0 0 12.5px 12.5px;
-      background-color: black;
+      background-color: white;
 
       position: absolute;
       top: 0;
@@ -71,7 +71,7 @@ const S = {};
       height: 12.5px;
 
       border-radius: 12.5px 12.5px 0 0;
-      background-color: black;
+      background-color: white;
 
       position: absolute;
       bottom: 0;

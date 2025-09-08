@@ -28,7 +28,7 @@ const LikeMdComponent = ({ page, currentList, setPage, totalPost, PAGINATION }) 
         (currentList.map((item, i) => (
           <S.Wrapper key={i} className='Wrapper'>
             <S.Image className='Image'>
-              <img src={item.image} alt='md 이미지' />
+              <img src={`${process.env.PUBLIC_URL}${item.image}`} alt='md 이미지' />
             </S.Image>
             <S.Content className='Content'>
               <p>{item.mdName}</p>

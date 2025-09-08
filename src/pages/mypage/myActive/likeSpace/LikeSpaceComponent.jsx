@@ -25,7 +25,7 @@ const LikeSpaceComponent = ({ page, currentList, setPage, totalPost, PAGINATION 
       { currentList && currentList.map((item, i) => (
         <S.Warpper key={i} className='warpper'>
           <S.Image className='image'>
-            <img src={item.img} alt="공간대여" />
+            <img src={`${process.env.PUBLIC_URL}${item.img}`} alt="공간대여" />
           </S.Image>
           <S.Content className='content'>
             <S.Title className='title'>
