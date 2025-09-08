@@ -116,7 +116,7 @@ const MdDetail = () => {
       <S.Wrapper>
         <S.DetailContainer>
           <S.ImageWrapper>
-            <img src={product.image} alt={product.name} />
+            <img src={`${process.env.PUBLIC_URL}${product.image}`} alt={product.name} />
           </S.ImageWrapper>
 
           <S.DetailWrapper>
@@ -187,7 +187,7 @@ const MdDetail = () => {
           <S.ImageWrapper2>
             <img
               className="imagewrapper"
-              src={product.imageDetail}
+              src={`${process.env.PUBLIC_URL}${product.imageDetail}`}
               alt="상세 이미지"
             />
           </S.ImageWrapper2>

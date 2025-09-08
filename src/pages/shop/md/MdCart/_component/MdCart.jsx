@@ -177,7 +177,7 @@ const increase = async (index) => {
               <S.CheckIcon2 onClick={() => SelectEach(index)} checked={checkedItems[index]}>
                 <FontAwesomeIcon className='icon2' icon={faCheckCircle} />
               </S.CheckIcon2>
-              <S.ProductImage src={selected.image} alt="장바구니 상품" />
+              <S.ProductImage src={`${process.env.PUBLIC_URL}${selected.image}`} alt="장바구니 상품" />
               <S.ProductInfo>
                 <S.ProductName className='name'>{selected.name}</S.ProductName>
                 <S.ProductName className='option'>{selected.option}</S.ProductName>

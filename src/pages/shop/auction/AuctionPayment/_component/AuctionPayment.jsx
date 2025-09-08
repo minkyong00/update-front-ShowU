@@ -170,7 +170,7 @@ const AuctionPayment = () => {
           <S.PaymentList key={i}>
             <S.PaymentItem>
               <S.ProductImage
-                src={auction.image || "/images/shop/md/md1.jpg"}
+                src={`${process.env.PUBLIC_URL}${auction.image}` || "/images/shop/md/md1.jpg"}
                 alt="주문 상품"
               />
               <S.Left>{auction.auctionName}</S.Left>

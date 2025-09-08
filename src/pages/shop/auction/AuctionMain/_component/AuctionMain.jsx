@@ -225,7 +225,7 @@ const AuctionMain = () => {
             <S.Auction key={auction._id}>
               <Link to={`/shop/auction/detail/${auction._id}`}>
                 <div className="image-wrapper">
-                  <img src={auction.image} alt={auction.image} className='image'/>
+                  <img src={`${process.env.PUBLIC_URL}${auction.image}`} alt={`${process.env.PUBLIC_URL}${auction.image}`} className='image'/>
                   <S.HeartIconWrapper
                     isHearted={auction.ishearted}
                     onClick={(e) => handleHeartClickCategory(e, auction._id)}

@@ -49,7 +49,7 @@ const AuctionInquiryDetail = () => {
   // 수정 내용 저장
   const handleSave = async () => {
     try {
-      const response = await fetch(`http://localhost:8000/shop/auction/inquiry/${inquiryDetail._id}`, {
+      const response = await fetch(`${API_URL}/shop/auction/inquiry/${inquiryDetail._id}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -77,7 +77,7 @@ const AuctionInquiryDetail = () => {
 
     if (confirmDelete) {
       try {
-        const response = await fetch(`http://localhost:8000/shop/auction/inquiry/${inquiryDetail._id}`, {
+        const response = await fetch(`${API_URL}/shop/auction/inquiry/${inquiryDetail._id}`, {
           method: 'DELETE',
           headers: {
             'Content-Type': 'application/json',

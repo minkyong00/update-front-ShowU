@@ -66,7 +66,7 @@ const Shop = () => {
           {mdItems.slice(6,12).map((item) => (
             <S.Md key={item._id}>
               <Link to={`/shop/md/detail/${item._id}`}>
-                <img src={item.image} alt={item.name} />
+                <img src={`${process.env.PUBLIC_URL}${item.image}`} alt={item.name} />
               </Link>
               <div className="md-category">{item.category}</div>
               <div className="md-name">{item.mdName}</div>
@@ -93,7 +93,7 @@ const Shop = () => {
           {auctionItems.slice(6,12).map((auction) => (
           <S.Closing key={auction._id}>
             <Link to={`/shop/auction/detail/${auction._id}`}>
-            <img src={auction.image} alt={auction.image} className='image'/>
+            <img src={`${process.env.PUBLIC_URL}${auction.image}`} alt={auction.image} className='image'/>
             </Link>   
             <div className='closing-category'>{auction.category}</div>
             <div className='closing-name'>{auction.auctionName}</div>

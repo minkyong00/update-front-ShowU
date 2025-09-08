@@ -139,7 +139,7 @@ const MdPayment = () => {
           {product && (
             <S.PaymentItem>
               <S.ProductImage
-                src={product.image || "/images/shop/md/md1.jpg"}
+                src={`${process.env.PUBLIC_URL}${product.image}` || "/images/shop/md/md1.jpg"}
                 alt="주문 상품"
               />
               <S.Left>{name}</S.Left>

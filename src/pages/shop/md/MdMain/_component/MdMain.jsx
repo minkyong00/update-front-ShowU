@@ -138,8 +138,6 @@ const MdMain = () => {
     setShownProducts((prev) => prev + 15);
   };
 
-  
-
   return (
     <S.MainWrapper>
       <S.MdTitle>
@@ -162,7 +160,7 @@ const MdMain = () => {
               <S.Best key={best._id} className={best.hidden ? "hidden" : ""}>
                 <Link to={`/shop/md/detail/${best._id}`}>
                   <div className="image-wrapper">
-                    <img src={best.image} alt={best.name} className="image" />
+                    <img src={`${process.env.PUBLIC_URL}${best.image}`} alt={best.name} className="image" />
                     <S.HeartIconWrapper
                       isHearted={best.ishearted}
                       onClick={(e) => handleHeartClickBest(e, best._id)}
@@ -205,7 +203,7 @@ const MdMain = () => {
             <S.Md key={product._id}>
               <Link to={`/shop/md/detail/${product._id}`}>
                 <div className="image-wrapper">
-                  <img src={product.image} alt={product.name} />
+                  <img src={`${process.env.PUBLIC_URL}${product.image}`} alt={product.name} />
                   <S.HeartIconWrapper
                     isHearted={product.ishearted}
                     onClick={(e) => handleHeartClickMd(e, product._id)}
