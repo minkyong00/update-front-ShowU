@@ -51,7 +51,7 @@ const OpenDetail = () => {
   return (
     <S.Container>
       <S.DetailContainer>
-        <S.Image src={event.img} alt={event.name} />
+        <S.Image src={`${process.env.PUBLIC_URL}${event.img}`} alt={event.name} />
         <S.InfoContainer>
           <S.Title>{event.name}</S.Title>
           <S.InfoRow>

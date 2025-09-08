@@ -366,7 +366,7 @@ const RentalSelection = () => {
             </S.TimeSelectionWrapper>
           </S.InfoWrapper>
           <S.PriceInfo>
-            <S.Img src={img} alt={name} />
+            <S.Img src={`${process.env.PUBLIC_URL}${img}`} alt={name} />
             <S.Name>{name}</S.Name>
             <S.Location>{rentalLocation}</S.Location>
             <S.SelectedDates>{renderSelectedDates()}</S.SelectedDates>

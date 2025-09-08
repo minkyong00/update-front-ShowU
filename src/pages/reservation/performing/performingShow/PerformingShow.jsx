@@ -44,7 +44,7 @@ const PerformingShow = () => {
         {performingShows.map((show) => (
           <S.PerformingBox key={show._id}>
             <S.PerformingImage
-              src={show.img}
+              src={`${process.env.PUBLIC_URL}${show.img}`}
               alt={show.name}
               onClick={() => handleImageClick(show._id)} // MongoDB의 ObjectId를 사용
               style={{ cursor: "pointer" }}

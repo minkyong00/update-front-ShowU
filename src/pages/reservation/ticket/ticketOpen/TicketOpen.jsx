@@ -49,7 +49,7 @@ const TicketOpen = () => {
               onClick={() => handleImageClick(event._id)} // MongoDB의 ObjectId를 사용
             >
               <S.TicketImage
-                src={event.img}
+                src={`${process.env.PUBLIC_URL}${event.img}`}
                 alt={event.name}
                 style={{ cursor: "pointer" }}
               />

@@ -326,7 +326,7 @@ const ShowDetail = () => {
   return (
     <S.Container>
       <S.DetailContainer>
-        <S.Image src={show.img} alt={show.name} />
+        <S.Image src={`${process.env.PUBLIC_URL}${show.img}`} alt={show.name} />
         <S.InfoContainer>
           <S.Title>{show.name}</S.Title>
           <S.InfoRow>
@@ -413,7 +413,7 @@ const ShowDetail = () => {
         <S.CastList>
           {show.cast.map((actor) => (
             <S.CastItem key={actor.name}>
-              <S.CastImage src={actor.img} alt={actor.name} />
+              <S.CastImage src={`${process.env.PUBLIC_URL}${actor.img}`} alt={actor.name} />
               <S.CastName>{actor.name}</S.CastName>
             </S.CastItem>
           ))}
@@ -440,7 +440,7 @@ const ShowDetail = () => {
                 *관람연령: 13세 이상
               </S.NoticeContent>
             </S.NoticeContainer>
-            <img src={show.detailImage} alt="공연내용" />
+            <img src={`${process.env.PUBLIC_URL}${show.detailImg}`} alt="공연내용" />
           </S.TabContent>
         )}
         {activeTab === "관람후기" && (

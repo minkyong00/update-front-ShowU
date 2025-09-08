@@ -64,7 +64,7 @@ const Reservation = () => {
         <S.TicketBoxContainer>
           {ticketEvents.map((event) => (
             <S.TicketBox key={event.id}>
-              <S.TicketImage src={event.img} alt={event.name} />
+              <S.TicketImage src={`${process.env.PUBLIC_URL}${event.img}`} alt={event.name} />
               <h3>{event.name}</h3> <p>{event.date}</p> <p>{event.type}</p>
             </S.TicketBox>
           ))}
@@ -78,7 +78,7 @@ const Reservation = () => {
         <S.PerformingBoxContainer>
           {performingShows.map((show) => (
             <S.PerformingBox key={show.id}>
-              <S.PerformingImage src={show.img} alt={show.name} />
+              <S.PerformingImage src={`${process.env.PUBLIC_URL}${show.img}`} alt={show.name} />
               <h3>{show.name}</h3> <p>{show.venue}</p> <p>{show.dates}</p>
             </S.PerformingBox>
           ))}

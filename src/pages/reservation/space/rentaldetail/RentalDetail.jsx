@@ -142,7 +142,7 @@ const RentalDetail = () => {
       <S.DetailContainer>
         <S.MainImageContainer>
           <S.Image
-            src={rental.img}
+            src={`${process.env.PUBLIC_URL}${rental.img}`}
             alt={rental.name}
             onClick={() => handleImageClick(0)}
           />
@@ -150,7 +150,7 @@ const RentalDetail = () => {
             {rental.additionalImages.map((image, index) => (
               <S.AdditionalImage
                 key={index}
-                src={image}
+                src={`${process.env.PUBLIC_URL}${image}`}
                 alt={`추가 이미지 ${index + 1}`}
                 onClick={() => handleImageClick(index + 1)}
               />
@@ -192,7 +192,7 @@ const RentalDetail = () => {
                 <S.DetailIconWrapper>
                   {rental.icons.map((icon, index) => (
                     <S.DetailIconContent key={index}>
-                      <img src={icon.icon} alt={icon.name} />
+                      <img src={`${process.env.PUBLIC_URL}${icon.icon}`} alt={icon.name} />
                       <S.DetailIconText>{icon.name}</S.DetailIconText>
                     </S.DetailIconContent>
                   ))}
@@ -280,7 +280,7 @@ const RentalDetail = () => {
           {images.map((image, index) => (
             <S.SliderImage
               key={index}
-              src={image}
+              src={`${process.env.PUBLIC_URL}${image}`}
               alt={`슬라이드 이미지 ${index + 1}`}
               isActive={index === selectedImageIndex}
             />

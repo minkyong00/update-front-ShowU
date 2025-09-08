@@ -47,7 +47,7 @@ const SpaceRental = () => {
         {spaceRentals.map((rental) => (
           <S.RentalItem key={rental._id}>
             <S.RentalImage
-              src={rental.img}
+              src={`${process.env.PUBLIC_URL}${rental.img}`}
               alt={rental.name}
               onClick={() => handleImageClick(rental._id)}
             />

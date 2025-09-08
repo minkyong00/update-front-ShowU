@@ -111,8 +111,9 @@ const TeamDetailContainer = () => {
             {/* 배너 */}
             <S.Banner>
               <img
-                src='/images/showu/team/teamBanner.png'
+                src={`${process.env.PUBLIC_URL}/images/showu/team/teamBanner.png`}
                 className='banner'
+                alt="banner"
               ></img>
               <img
                 src={`${API_URL}${item.teamProfile}`}
