@@ -26,7 +26,7 @@ const More = ({plays}) => {
               <Link to={`/vod/play?programid=${play.id}`} role='button' onClick={() => window.scrollTo(0, 0)} >
                
                   {play.mainImage && (
-                    <img src={play.mainImage} alt={`Video ${play.id}`} />
+                    <img src={`${process.env.PUBLIC_URL}${play.mainImage}`} alt={`Video ${play.id}`} />
                   )}
              
               </Link>

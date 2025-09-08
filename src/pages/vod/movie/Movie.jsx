@@ -66,7 +66,7 @@ const Movie = ({ plays }) => {
                 onClick={() => window.scrollTo(0, 0)}
               >
                 <img 
-                  src={video.mainImage} 
+                  src={`${process.env.PUBLIC_URL}${video.mainImage}`} 
                   alt={`Video ${video.title}`} 
                 />
               </Link>

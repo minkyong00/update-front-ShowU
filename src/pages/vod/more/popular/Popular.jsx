@@ -53,7 +53,7 @@ const More = () => {
               >
                 {video.mainImage && (
                   <img 
-                    src={video.mainImage} 
+                    src={`${process.env.PUBLIC_URL}${video.mainImage}`} 
                     alt={`Video ${video.title}`} 
                   />
                 )}

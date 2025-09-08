@@ -89,7 +89,7 @@ const Vod = () => {
           {randomMusicalVideos.length > 0 && (
             <Link to={`/vod/play/${randomMusicalVideos[currentSlide]._id}`} >
               <img
-                src={randomMusicalVideos[currentSlide].mainImage} 
+                src={`${process.env.PUBLIC_URL}${randomMusicalVideos[currentSlide].mainImage}`} 
                 alt={`Video ${randomMusicalVideos[currentSlide].title}`}
                 className="slide-image"
               />
@@ -120,7 +120,7 @@ const Vod = () => {
             <S.Card key={video._id}>
               <Link to={`/vod/play/${video._id}`} role="button" onClick={() => window.scrollTo(0, 0)}>
                 {video.mainImage && (
-                  <img src={video.mainImage} alt={`Video ${video.mainImage}`} />
+                  <img src={`${process.env.PUBLIC_URL}${video.mainImage}`} alt={`Video ${video.mainImage}`} />
                 )}
               </Link>
             </S.Card>
@@ -138,7 +138,7 @@ const Vod = () => {
             <S.Card key={video._id}>
               <Link to={`/vod/play/${video._id}`} role="button" onClick={() => window.scrollTo(0, 0)}>
                 {video.mainImage && (
-                  <img src={video.mainImage} alt={`Video ${video.mainImage}`} />
+                  <img src={`${process.env.PUBLIC_URL}${video.mainImage}`} alt={`Video ${video.mainImage}`} />
                 )}
               </Link>
             </S.Card>
@@ -164,7 +164,7 @@ const Vod = () => {
             <S.Card key={video._id}>
               <Link to={`/vod/play/${video._id}`} role="button" onClick={() => window.scrollTo(0, 0)}>
                 {video.mainImage && (
-                  <img src={video.mainImage} alt={`Video ${video.mainImage}`} />
+                  <img src={`${process.env.PUBLIC_URL}${video.mainImage}`} alt={`Video ${video.mainImage}`} />
                 )}
               </Link>
             </S.Card>

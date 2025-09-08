@@ -329,7 +329,7 @@ const ShowuInsert = () => {
                 <p>카드와 최종 화면을 사용하여 시청자에게 관련 동영상, 웹사이트, 클릭 유도 문구를 표시하세요.</p>
 
                 <div className="subtitle">
-                  <img src="/path-to-your-image.png" alt="icon" />
+                  <img src={`${process.env.PUBLIC_URL}/path-to-your-image.png`} alt="icon" />
                    <div className="subtitleadd">
                     <span>자막 추가</span>
                     <p>동영상에 자막을 추가하여 더 많은 시청자에게 다가가세요</p>
@@ -346,7 +346,7 @@ const ShowuInsert = () => {
                  </div>
 
                 <div className="addscreen">
-                  <img src="/path-to-your-image.png" alt="icon" />
+                  <img src={`${process.env.PUBLIC_URL}/path-to-your-image.png`} alt="icon" />
                   <div className="subtitleadd">
                     <span>최종 화면 추가</span>
                     <p>동영상이 끝날 때 관련 콘텐츠를 홍보합니다.</p>
@@ -369,7 +369,7 @@ const ShowuInsert = () => {
                 <p>ShowU에서 동영상에 공개 상태를 제한할 수 있는 문제가 있는지 검사합니다. 그러면 동영상을 게시하기 전에 문제를 해결할 수 있습니다</p>
 
                 <div className='subtitle'>
-                  <img src="/path-to-your-image.png" alt="icon" />
+                  <img src={`${process.env.PUBLIC_URL}/path-to-your-image.png`} alt="icon" />
                   <div className='subtitleadd'>
                     <span>저작권</span>
                     <p>발견된 문제가 없습니다</p>

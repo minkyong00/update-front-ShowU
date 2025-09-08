@@ -62,7 +62,7 @@ const Musical = ({ plays }) => {
                 onClick={() => window.scrollTo(0, 0)}
               >
                 <img 
-                  src={musical.mainImage} 
+                  src={`${process.env.PUBLIC_URL}${musical.mainImage}`} 
                   alt={`Video ${musical.title}`} 
                 />
               </Link>

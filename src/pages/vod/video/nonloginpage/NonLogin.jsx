@@ -139,7 +139,7 @@ const VideoDetail = () => {
     <S.VideoDetailArea>
       <div className="image">
         {vodinfo.mainImage ? (
-          <img src={vodinfo.mainImage} alt={vodinfo.title} />
+          <img src={`${process.env.PUBLIC_URL}${vodinfo.mainImage}`} alt={vodinfo.title} />
         ) : (
           <p>이미지가 없습니다.</p>
         )}
@@ -192,7 +192,7 @@ const VideoDetail = () => {
             <S.Card key={video._id}>
               <Link to={`/vod/play/${video._id}`} role="button" onClick={() => window.scrollTo(0, 0)}>
                 {video.mainImage && (
-                  <img src={video.mainImage} alt={`Video ${video.mainImage}`} />
+                  <img src={`${process.env.PUBLIC_URL}${video.mainImage}`} alt={`Video ${video.mainImage}`} />
                 )}
               </Link>
             </S.Card>
@@ -204,7 +204,7 @@ const VideoDetail = () => {
                 <div>
                   <S.MovieContainer className="movie-container">
                     <S.Poster className="poster">
-                      <img src={vodinfo.mainImage} alt="포스터 이미지" />
+                      <img src={`${process.env.PUBLIC_URL}${vodinfo.mainImage}`} alt="포스터 이미지" />
                     </S.Poster>
                     <S.MovieDetails className="movie-details">
                       <S.Title className="title">{vodinfo.title}</S.Title>
@@ -214,7 +214,7 @@ const VideoDetail = () => {
                         <p><span>장르</span> {vodinfo.genre}</p>
                         <p><span>출연</span> {vodinfo.cast}</p>
                         <p><span>감독</span> {vodinfo.director}</p>
-                        <p><span>등급</span> <img src="rating-icon.jpg" alt="15 등급" /></p>
+                        <p><span>등급</span> <img src={`${process.env.PUBLIC_URL}rating-icon.jpg`} alt="15 등급" /></p>
                       </S.Info>
                       <S.Description className="description">
                         <p>{vodinfo.description}</p>

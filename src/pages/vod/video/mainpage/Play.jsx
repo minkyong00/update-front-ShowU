@@ -12,7 +12,7 @@ const Play = () => {
 
   return (
     <div style={containerStyle}>
-      <video src={`/video/testplay.mp4`} controls width="700px"></video>
+      <video src={`${process.env.PUBLIC_URL}/video/testplay.mp4`} controls width="700px"></video>
       <h1>Play Video</h1>
     </div>
   );
