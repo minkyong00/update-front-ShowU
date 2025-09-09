@@ -71,7 +71,7 @@ const Audition = () => {
                 key={audition._id}
               >
                 <S.Images>
-                  <img src={audition.imageUrl} alt={audition.title} />
+                  <img src={`${process.env.PUBLIC_URL}${audition.imageUrl}`} alt={audition.title} />
                   <S.Info>
                     <h3>{audition.title}</h3>
                     <p>{audition.description}</p>
