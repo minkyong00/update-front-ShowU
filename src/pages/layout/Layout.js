@@ -56,7 +56,7 @@ const Layout = () => {
   useEffect(() => {
     if (searchParams.get("jwtToken")) {
       localStorage.setItem("jwtToken", jwtToken);
-      navigate("/main");
+      navigate("/update-front-ShowU");
     }
 
     if (jwtToken) {
@@ -92,7 +92,7 @@ const Layout = () => {
             <S.navbar className="navbar">
               <S.LogoBox className="logoBox">
                 <S.logo className="logo">
-                  <Link to="/main" className="logolink">
+                  <Link to="/update-front-ShowU" className="logolink">
                     Show <span className="highlight">U</span>
                   </Link>
                 </S.logo>

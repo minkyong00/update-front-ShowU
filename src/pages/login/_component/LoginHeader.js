@@ -7,7 +7,7 @@ const LoginHeader = () => {
     <>
      <S.YellowBar></S.YellowBar>
       <S.LoginHeader>
-      <Link to={"/main"}>
+      <Link to={"/update-front-ShowU"}>
           <span className='show'>Show</span>
           <span className='u'>U</span>
         </Link>

@@ -74,10 +74,10 @@ const LoginContainer = () => {
       localStorage.removeItem(LS_KEY_ID);
     }
 
-    navigate("/main");
+    navigate("/update-front-ShowU");
   };
 
-  console.log("loginID", loginID)
+  // console.log("loginID", loginID)
 
   const locationGoogle = () => {
     window.location.href = `${API_URL}/auth/google`;

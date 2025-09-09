@@ -31,7 +31,7 @@ const MainVodContainer = () => {
     getMainVod(); 
   }, [])
 
-  console.log("mainVod", mainVod)
+  // console.log("mainVod", mainVod)
 
   return (
     <div>
